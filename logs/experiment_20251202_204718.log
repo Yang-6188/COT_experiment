@@ -1,0 +1,97 @@
+📝 日志文件: logs/experiment_20251202_204718.log
+⏰ 开始时间: 2025-12-02 20:47:18
+============================================================
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_consistency: False
+  - use_entropy: False
+  - consistency_k: 3
+  - entropy_threshold: 0.6
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 智能探针配置: 答案一致性=False, 熵检测=False, 调试模式=False
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.26it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.30it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.30it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.35it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]
+✅ 模型已加载到: cuda:0
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 4.8s | Tokens: 311 
+   回答预览:  To determine the number of vertical asymptotes for the function $y=\frac{2}{x^2+x-6}$, we need to find the values of $x$ that make the denominator eq...
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 75 | 实际: 75 | 用时: 7.0s | Tokens: 515 
+   回答预览:  To find the area of kite \(ABCD\) with given coordinates \(A(0,7)\), \(B(1,0)\), \(C(12,-2)\), and \(D(7,8)\), we will use the formula for the area o...
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 5.4s | Tokens: 402 
+   回答预览:  To solve the given equation \(\frac{A\sqrt{B}}{C} = \frac{9}{2\sqrt{3}}\), we need to simplify and match the terms on both sides of the equation.  1....
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 4.0s | Tokens: 294 
+   回答预览:  Let's denote the weight of a treek as \( T \), the weight of a squig as \( S \), and the weight of a goolee as \( G \).  From the problem, we have th...
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🛑 自然停止: max_length_safety
+   ❌ 错误 | 预测: None | 实际: 8 | 用时: 11.8s | Tokens: 876 
+   回答预览:  To solve this problem, we can use Boyle's Law, which states that the pressure (P) of a gas is inversely proportional to its volume (V) at constant te...
+📊 进度: 5/10, 准确率: 80.00%, 早停率: 0.00%, 平均tokens: 479.6
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2300 | 实际: 2300 | 用时: 8.7s | Tokens: 646 
+   回答预览:  To solve this problem, we will set up a system of linear equations based on the given information and then solve for the cost of one pound of feather...
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 6.6s | Tokens: 487 
+   回答预览:  To find the radius of the circle, we need to rewrite the equation in the standard form of a circle's equation, which is $(x - h)^2 + (y - k)^2 = r^2$...
+
+📝 样本 8: If $9^{18n}=27^{24}$, find $n$....
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 4.0s | Tokens: 294 
+   回答预览:  To solve the equation \(9^{18n} = 27^{24}\), we will first express both sides of the equation with the same base.   1. **Express both sides with base...
+
+📝 样本 9: Evaluate $(1+2i)6-3i$....
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: 6 + 9i | 实际: 6 | 用时: 2.4s | Tokens: 179 
+   回答预览:  To evaluate the expression \((1+2i)6-3i\), we will follow these steps:  1. Distribute the 6 to both terms inside the parentheses. 2. Simplify the res...
+
+📝 样本 10: Simplify $(2-2i)(5+5i)$, where $i^2 = -1.$...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 4.9s | Tokens: 366 
+   回答预览:  To simplify the expression \((2-2i)(5+5i)\), we will use the distributive property (also known as the FOIL method for binomials), which involves mult...
+📊 进度: 10/10, 准确率: 80.00%, 早停率: 0.00%, 平均tokens: 437.0
+
+============================================================
+📊 HALT-CoT 实验统计结果
+============================================================
+🤖 模型: Qwen/Qwen2.5-7B-Instruct
+📝 总样本数: 10
+✅ 正确样本: 8
+🎯 准确率: 80.00%
+🛑 早停率: 0.00% (0/10)
+⏱️  平均用时: 6.0秒/样本
+💬 平均Token: 437.0个/样本
+📊 Token范围: 179 - 876
+📉 平均熵: 0.000
+🕐 总用时: 0分60秒
+============================================================
+💾 结果已保存: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251202_204823.json
+📄 摘要已保存: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251202_204823_summary.txt
+
+🎉 实验完成!
+📁 结果文件: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251202_204823.json
+
+📈 实验成功完成，处理了 10 个样本
+💡 融合了两种早停方法：
+   1. 答案一致性检测（Liu & Wang 2025）
+   2. 熵基早停（Laaouach HALT-CoT）
+============================================================
+⏰ 结束时间: 2025-12-02 20:48:23

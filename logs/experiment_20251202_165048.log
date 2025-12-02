@@ -1,0 +1,222 @@
+📝 日志文件: logs/experiment_20251202_165048.log
+⏰ 开始时间: 2025-12-02 16:50:48
+============================================================
+🔧 智能探针配置: 答案一致性=True, 熵检测=True, 调试模式=False
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.27it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.30it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.31it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:02<00:00,  1.36it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:02<00:00,  1.33it/s]
+✅ 模型已加载到: cuda:0
+
+📝 样本 1: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning an...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...g muffins:**⏎   Janet bakes muffins for her friends with 4 eggs every day.⏎⏎4. **Calculate the total
+      🧪 探针: '18' | 熵: 0.0517
+   🔎 [检查点@calculation] Tokens: 140
+      📄 上下文: ...ggs used:**⏎   \[⏎   \text{Total eggs used} = \text{Eggs for breakfast} + \text{Eggs for muffins} = 
+      🧪 探针: '7' | 熵: 0.4825
+   🔎 [检查点@conclusion] Tokens: 167
+      📄 上下文: ... for muffins} = 3 + 4 = 7 \text{ eggs}⏎   \]⏎⏎5. **Calculate the number of eggs remaining to be sold
+      🧪 探针: '9' | 熵: 0.7653
+   🔎 [检查点@conclusion] Tokens: 187
+      📄 上下文: ...lculate the number of eggs remaining to be sold:**⏎   \[⏎   \text{Eggs remaining} = \text{Total eggs
+      🧪 探针: '2' | 熵: 0.4462
+   🔎 [检查点@conclusion] Tokens: 207
+      📄 上下文: ...old:**⏎   \[⏎   \text{Eggs remaining} = \text{Total eggs laid} - \text{Total eggs used} = 16 - 7 = 9
+      🧪 探针: '9' | 熵: 0.9501
+   🔎 [检查点@conclusion] Tokens: 227
+      📄 上下文: ...s used} = 16 - 7 = 9 \text{ eggs}⏎   \]⏎⏎6. **Calculate the revenue from selling the remaining eggs:
+      🧪 探针: '18' | 熵: 1.1095
+   🔎 [检查点@calculation] Tokens: 267
+      📄 上下文: ...the remaining 9 eggs at $2 per egg.⏎   \[⏎   \text{Revenue} = 9 \text{ eggs} \times 2 \text{ dollars
+      🧪 探针: '18' | 熵: 0.3897
+   🔎 [检查点@conclusion] Tokens: 287
+      📄 上下文: ...9 \text{ eggs} \times 2 \text{ dollars per egg} = 18 \text{ dollars}⏎   \]⏎⏎Therefore, Janet makes \
+      🧪 探针: '18' | 熵: 0.1260
+   🛑 [早停] conclusion_consistency | 答案: 18
+   ✅ 正确 | 预测: 18 | 实际: 18 | 用时: 7.0s | Tokens: 287 | 早停: conclusion_consistency
+
+📝 样本 2: A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bol...
+   🔎 [检查点@conclusion] Tokens: 100
+      📄 上下文: ...he amount of blue fiber.⏎   - Therefore, the amount of white fiber needed is \( \frac{1}{2} \times 2
+      🧪 探针: '3' | 熵: 0.1637
+   🛑 [早停] conclusion_high_confidence | 答案: 3
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 1.7s | Tokens: 100 | 早停: conclusion_high_confidence
+
+📝 样本 3: Josh decides to try flipping a house.  He buys a house for $80,000 and then puts...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...epairs: $50,000⏎   - Total cost: $80,000 + $50,000 = $130,000⏎⏎2. **Determine the increased value of
+      🧪 探针: '200000' | 熵: 1.0554
+   🔎 [检查点@calculation] Tokens: 140
+      📄 上下文: ...e house increased by 150%.⏎   - To find the increased value, we calculate 150% of the total cost.⏎  
+      🧪 探针: '1.5' | 熵: 0.3125
+   🔎 [检查点@calculation] Tokens: 180
+      📄 上下文: ...sed value, we calculate 150% of the total cost.⏎   - 150% of $130,000 = 1.5 * $130,000 = $195,000⏎⏎3
+      🧪 探针: '195000' | 熵: 1.7636
+   🔎 [检查点@conclusion] Tokens: 285
+      📄 上下文: ...ofit:**⏎   - Profit = New value - Total cost⏎   - Profit = $325,000 - $130,000 = $195,000⏎⏎Therefore
+      🧪 探针: '195000' | 熵: 1.1496
+   🔎 [检查点@conclusion] Tokens: 305
+      📄 上下文: ...000 - $130,000 = $195,000⏎⏎Therefore, Josh made a profit of $195,000 from flipping the house. Answer
+      🧪 探针: '195000' | 熵: 0.8370
+   🔎 [检查点@answer_signal] Tokens: 306
+      📄 上下文: ...00 - $130,000 = $195,000⏎⏎Therefore, Josh made a profit of $195,000 from flipping the house. Answer:
+      🧪 探针: '195000' | 熵: 0.0000
+   🛑 [早停] answer_signal_high_confidence | 答案: 195000
+   ❌ 错误 | 预测: 195000 | 实际: 70000 | 用时: 6.1s | Tokens: 306 | 早停: answer_signal_high_confidence
+
+📝 样本 4: James decides to run 3 sprints 3 times a week.  He runs 60 meters each sprint.  ...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...rints/session = 180 meters/session⏎⏎Step 3: Calculate the total distance James runs in a week.⏎James
+      🧪 探针: '540' | 熵: 0.3970
+   🔎 [检查点@conclusion] Tokens: 120
+      📄 上下文: ...eek.⏎James runs 3 times a week, so we multiply the distance of one session by the number of sessions
+      🧪 探针: '180' | 熵: 0.0732
+   🛑 [早停] conclusion_high_confidence | 答案: 180
+   ❌ 错误 | 预测: 180 | 实际: 540 | 用时: 2.2s | Tokens: 120 | 早停: conclusion_high_confidence
+
+📝 样本 5: Every day, Wendi feeds each of her chickens three cups of mixed chicken feed, co...
+   🔎 [检查点@conclusion] Tokens: 100
+      📄 上下文: ...efore, the total daily feed requirement is \( 20 \text{ chickens} \times 3 \text{ cups/chicken} = 60
+      🧪 探针: '60' | 熵: 0.4600
+   🔎 [检查点@conclusion] Tokens: 120
+      📄 上下文: ...3 \text{ cups/chicken} = 60 \text{ cups} \).⏎⏎2. **Determine the amount of feed given in the morning
+      🧪 探针: '20' | 熵: 0.2988
+   🛑 [早停] conclusion_high_confidence | 答案: 20
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 2.2s | Tokens: 120 | 早停: conclusion_high_confidence
+📊 进度: 5/10, 准确率: 60.00%, 早停率: 100.00%, 平均tokens: 186.6
+
+📝 样本 6: Kylar went to the store to buy glasses for his new apartment. One glass costs $5...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...⏎- The second glass costs 60% of the price of the first glass.⏎- 60% of $5 is \( 0.60 \times 5 = 3 \
+      🧪 探针: '3' | 熵: 1.0842
+   🔎 [检查点@calculation] Tokens: 140
+      📄 上下文: ... glasses.⏎- The first glass costs $5.⏎- The second glass costs $3.⏎- Total for the first two glasses
+      🧪 探针: '5' | 熵: 0.9235
+   🔎 [检查点@calculation] Tokens: 180
+      📄 上下文: ... the pattern for the remaining glasses.⏎- The pattern is that every second glass costs $3, and every
+      🧪 探针: '40' | 熵: 2.0105
+   🔎 [检查点@conclusion] Tokens: 282
+      📄 上下文: ...r 8 pairs.⏎- Each pair costs $8.⏎- Total cost for 8 pairs: \( 8 \times 8 = 64 \) dollars.⏎⏎Therefore
+      🧪 探针: '64' | 熵: 0.1152
+   🛑 [早停] conclusion_high_confidence | 答案: 64
+   ✅ 正确 | 预测: 64 | 实际: 64 | 用时: 5.0s | Tokens: 282 | 早停: conclusion_high_confidence
+
+📝 样本 7: Toulouse has twice as many sheep as Charleston. Charleston has 4 times as many s...
+   🔎 [检查点@conclusion] Tokens: 100
+      📄 上下文: ...n = 4 * 20 = 80 sheep.⏎⏎3. **Calculate the number of sheep in Toulouse:**⏎   - Toulouse has twice as
+      🧪 探针: '140' | 熵: 0.5149
+   🔎 [检查点@conclusion] Tokens: 120
+      📄 上下文: ...oulouse has twice as many sheep as Charleston.⏎   - Therefore, the number of sheep in Toulouse = 2 *
+      🧪 探针: '180' | 熵: 0.6200
+   🔎 [检查点@conclusion] Tokens: 140
+      📄 上下文: ...re, the number of sheep in Toulouse = 2 * 80 = 160 sheep.⏎⏎4. **Calculate the total number of sheep:
+      🧪 探针: '20' | 熵: 0.7293
+   🔎 [检查点@conclusion] Tokens: 160
+      📄 上下文: ... of sheep:**⏎   - Total number of sheep = Sheep in Toulouse + Sheep in Charleston + Sheep in Seattle
+      🧪 探针: '160' | 熵: 0.8073
+   🔎 [检查点@conclusion] Tokens: 188
+      📄 上下文: ... in Charleston + Sheep in Seattle⏎   - Total number of sheep = 160 + 80 + 20 = 260 sheep.⏎⏎Therefore
+      🧪 探针: '260' | 熵: 0.0029
+   🛑 [早停] conclusion_high_confidence | 答案: 260
+   ✅ 正确 | 预测: 260 | 实际: 260 | 用时: 4.0s | Tokens: 188 | 早停: conclusion_high_confidence
+
+📝 样本 8: Carla is downloading a 200 GB file. Normally she can download 2 GB/minute, but 4...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...nute = 100 minutes.⏎⏎2. **Determine the point at which the Windows update forces a restart:**⏎   - 4
+      🧪 探针: '180' | 熵: 1.4511
+   🔎 [检查点@calculation] Tokens: 140
+      📄 上下文: ...tart:**⏎   - 40% of the file is 40% * 200 GB = 80 GB.⏎   - Time to download 80 GB at 2 GB/minute = 8
+      🧪 探针: '40' | 熵: 1.2653
+   🔎 [检查点@calculation] Tokens: 180
+      📄 上下文: ...ate the time taken for the Windows update and restart:**⏎   - The update and restart take 20 minutes
+      🧪 探针: '60' | 熵: 1.6009
+   🔎 [检查点@conclusion] Tokens: 380
+      📄 上下文: ...20 GB = 60 minutes.⏎   - Total time = 40 minutes + 20 minutes + 60 minutes = 120 minutes.⏎⏎Therefore
+      🧪 探针: '120' | 熵: 0.0036
+   🛑 [早停] conclusion_high_confidence | 答案: 120
+   ❌ 错误 | 预测: 120 | 实际: 160 | 用时: 6.4s | Tokens: 380 | 早停: conclusion_high_confidence
+
+📝 样本 9: John drives for 3 hours at a speed of 60 mph and then turns around because he re...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...les.⏎⏎2. **Return Journey:**⏎   - John turns around and tries to get home in 4 hours.⏎   - He spends
+      🧪 探针: '90' | 熵: 1.8497
+   🔎 [检查点@conclusion] Tokens: 120
+      📄 上下文: ...He spends the first 2 hours in standstill traffic, so he doesn't cover any distance during this time
+      🧪 探针: '90' | 熵: 1.8744
+   🔎 [检查点@conclusion] Tokens: 140
+      📄 上下文: ...sn't cover any distance during this time.⏎   - He then drives for the next 0.5 hours (30 minutes) at
+      🧪 探针: '120' | 熵: 1.9973
+   🔎 [检查点@conclusion] Tokens: 160
+      📄 上下文: ...ives for the next 0.5 hours (30 minutes) at a speed of 30 mph.⏎   - Distance covered in 0.5 hours = 
+      🧪 探针: '120' | 熵: 2.0609
+   🔎 [检查点@calculation] Tokens: 200
+      📄 上下文: ... 0.5 hours = 15 miles.⏎   - He then drives for the remaining time (4 hours - 2 hours - 0.5 hours = 1
+      🧪 探针: '125' | 熵: 0.9738
+   🔎 [检查点@calculation] Tokens: 240
+      📄 上下文: ...1.5 hours) at a speed of 80 mph.⏎   - Distance covered in 1.5 hours = 80 mph × 1.5 hours = 120 miles
+      🧪 探针: '15' | 熵: 0.2951
+   🔎 [检查点@calculation] Tokens: 280
+      📄 上下文: ...ey:**⏎   - Total distance = Distance covered in 0.5 hours + Distance covered in 1.5 hours = 15 miles
+      🧪 探针: '15' | 熵: 0.2262
+   🔎 [检查点@conclusion] Tokens: 361
+      📄 上下文: ...tance from home = Initial distance - Distance covered = 180 miles - 135 miles = 45 miles.⏎⏎Therefore
+      🧪 探针: '45' | 熵: 0.0081
+   🛑 [早停] conclusion_high_confidence | 答案: 45
+   ✅ 正确 | 预测: 45 | 实际: 45 | 用时: 7.4s | Tokens: 361 | 早停: conclusion_high_confidence
+
+📝 样本 10: Eliza's rate per hour for the first 40 hours she works each week is $10. She als...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ....⏎   - Regular pay = 40 hours * $10/hour = $400⏎⏎2. **Overtime Hours:**⏎   - Eliza worked a total of
+      🧪 探针: '450' | 熵: 1.0372
+   🔎 [检查点@conclusion] Tokens: 120
+      📄 上下文: ...⏎2. **Overtime Hours:**⏎   - Eliza worked a total of 45 hours, so the overtime hours are 45 - 40 = 5
+      🧪 探针: '400' | 熵: 0.7471
+   🔎 [检查点@conclusion] Tokens: 140
+      📄 上下文: ...he overtime hours are 45 - 40 = 5 hours.⏎   - Overtime pay rate is 1.2 times the regular rate, so it
+      🧪 探针: '480' | 熵: 1.2604
+   🔎 [检查点@conclusion] Tokens: 160
+      📄 上下文: ...  - Overtime pay rate is 1.2 times the regular rate, so it's 1.2 * $10 = $12 per hour.⏎   - Overtime
+      🧪 探针: '480' | 熵: 1.3084
+   🔎 [检查点@conclusion] Tokens: 180
+      📄 上下文: ...lar rate, so it's 1.2 * $10 = $12 per hour.⏎   - Overtime pay = 5 hours * $12/hour = $60⏎⏎3. **Total
+      🧪 探针: '400' | 熵: 0.4123
+   🔎 [检查点@conclusion] Tokens: 200
+      📄 上下文: ...r = $60⏎⏎3. **Total Earnings:**⏎   - Total earnings = Regular pay + Overtime pay⏎   - Total earnings
+      🧪 探针: '400' | 熵: 0.4140
+   🛑 [早停] conclusion_consistency | 答案: 400
+   ❌ 错误 | 预测: 400 | 实际: 460 | 用时: 4.5s | Tokens: 200 | 早停: conclusion_consistency
+📊 进度: 10/10, 准确率: 60.00%, 早停率: 100.00%, 平均tokens: 234.4
+
+============================================================
+📊 HALT-CoT 实验统计结果
+============================================================
+🤖 模型: Qwen/Qwen2.5-7B-Instruct
+📝 总样本数: 10
+✅ 正确样本: 6
+🎯 准确率: 60.00%
+🛑 早停率: 100.00% (10/10)
+⏱️  平均用时: 4.7秒/样本
+💬 平均Token: 234.4个/样本
+📊 Token范围: 100 - 380
+📉 平均熵: 0.684
+🕐 总用时: 0分47秒
+
+🔍 早停原因分布:
+   - conclusion_consistency: 2次
+   - conclusion_high_confidence: 7次
+   - answer_signal_high_confidence: 1次
+============================================================
+💾 结果已保存: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251202_165141.json
+📄 摘要已保存: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251202_165141_summary.txt
+
+🎉 实验完成!
+📁 结果文件: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251202_165141.json
+
+📈 实验成功完成，处理了 10 个样本
+💡 融合了两种早停方法：
+   1. 答案一致性检测（Liu & Wang 2025）
+   2. 熵基早停（Laaouach HALT-CoT）
+============================================================
+⏰ 结束时间: 2025-12-02 16:51:41

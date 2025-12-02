@@ -1,0 +1,246 @@
+📝 日志文件: logs/experiment_20251202_202401.log
+⏰ 开始时间: 2025-12-02 20:24:01
+============================================================
+🔧 智能探针配置: 答案一致性=False, 熵检测=False, 调试模式=False
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 50 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.27it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.31it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.31it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.35it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]
+✅ 模型已加载到: cuda:0
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 4.8s | Tokens: 311 
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 75 | 实际: 75 | 用时: 7.0s | Tokens: 515 
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 5.4s | Tokens: 402 
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 4.0s | Tokens: 294 
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🛑 自然停止: max_length_safety
+   ❌ 错误 | 预测: None | 实际: 8 | 用时: 11.9s | Tokens: 876 
+📊 进度: 5/50, 准确率: 80.00%, 早停率: 0.00%, 平均tokens: 479.6
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2300 | 实际: 2300 | 用时: 8.8s | Tokens: 646 
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 6.6s | Tokens: 487 
+
+📝 样本 8: If $9^{18n}=27^{24}$, find $n$....
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 4.0s | Tokens: 294 
+
+📝 样本 9: Evaluate $(1+2i)6-3i$....
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: 6 + 9i | 实际: 6 | 用时: 2.4s | Tokens: 179 
+
+📝 样本 10: Simplify $(2-2i)(5+5i)$, where $i^2 = -1.$...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 5.0s | Tokens: 366 
+📊 进度: 10/50, 准确率: 80.00%, 早停率: 0.00%, 平均tokens: 437.0
+
+📝 样本 11: Let $f(y) = y^4 -3y^3 +y - 3$ and $g(y) = y^3 + 7y^2 -2$. Find $f(y) + g(y)$.  W...
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: y^4 - 2y^3 + 7y^2 + y - 5 | 实际: 4 | 用时: 7.0s | Tokens: 519 
+
+📝 样本 12: For the arithmetic sequence $1000, ~987, ~974, ~961, \ldots ,$ what is the least...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 12 | 实际: 12 | 用时: 10.2s | Tokens: 752 
+
+📝 样本 13: Evaluate $\log_28\sqrt{2}$....
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: \frac{7 | 实际: 7 | 用时: 3.0s | Tokens: 220 
+
+📝 样本 14: Evaluate $\log_{\sqrt8}(64\sqrt{8})$....
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 7.4s | Tokens: 542 
+
+📝 样本 15: Given that $f(x)$ is a function such that $f(1)=2$, $f(4)=3$, $f(7)=4$, and $f^{...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 7 | 实际: 7 | 用时: 3.3s | Tokens: 240 
+📊 进度: 15/50, 准确率: 73.33%, 早停率: 0.00%, 平均tokens: 442.9
+
+📝 样本 16: Simplify $(3-i)(6+2i)$....
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 4.8s | Tokens: 352 
+
+📝 样本 17: What value of $x$ will give the minimum value for $x^2- 14x + 3$?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 7 | 实际: 7 | 用时: 4.6s | Tokens: 338 
+
+📝 样本 18: The ratio of two numbers is $3:5$. When 4 is subtracted from the lesser of the t...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 4.4s | Tokens: 326 
+
+📝 样本 19: For what real value of $k$ is $\frac{13-\sqrt{131}}{4}$ a root of $2x^2-13x+k$?...
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: \frac{19 | 实际: 19 | 用时: 12.1s | Tokens: 891 
+
+📝 样本 20: What is the sum of all possible values of $x$ such that $2x(x-10)=-50$?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 3.9s | Tokens: 286 
+📊 进度: 20/50, 准确率: 75.00%, 早停率: 0.00%, 平均tokens: 441.8
+
+📝 样本 21: Given that $-4$ is a solution to $x^2 + bx -36 = 0$, what is the value of $b$?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: -5 | 实际: -5 | 用时: 2.9s | Tokens: 213 
+
+📝 样本 22: Solve for $e$, given that $2d$ is $8$ less than $17e$, and $2e$ is $9$ less than...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 5.9s | Tokens: 437 
+
+📝 样本 23: Two consecutive positive even numbers are each squared.  The  difference of the ...
+   🛑 自然停止: max_length_safety
+   ❌ 错误 | 预测: None | 实际: 30 | 用时: 9.9s | Tokens: 730 
+
+📝 样本 24: How many integers belong to the arithmetic sequence 13, 20, 27, 34, $\dots$, 200...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 286 | 实际: 286 | 用时: 5.6s | Tokens: 412 
+
+📝 样本 25: Of the four points $(2,2)$, $(9,11)$, $(5,7)$, and $(11,17)$, three lie on the s...
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: (911) | 实际: 9 | 用时: 10.4s | Tokens: 771 
+📊 进度: 25/50, 准确率: 72.00%, 早停率: 0.00%, 平均tokens: 456.0
+
+📝 样本 26: The ratio of $x$ to $y$ is $1$ to $2$. What is the value of $x$ if $y=4x-36$?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 18 | 实际: 18 | 用时: 6.5s | Tokens: 478 
+
+📝 样本 27: Define $f(x) = \frac{x^2 + 2x + 3}{x}$ and $g(x) = x^3 + 2$. Evaluate $g(f(x))$ ...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: -6 | 实际: -6 | 用时: 4.7s | Tokens: 344 
+
+📝 样本 28: Express $0.6\overline{333}$ as a common fraction....
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: \frac{518 | 实际: 19 | 用时: 10.3s | Tokens: 764 
+
+📝 样本 29: The midpoint of the line segment between $(x,y)$ and $(-9,1)$ is $(3,-5)$. Find ...
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: (15 -11) | 实际: 15 | 用时: 5.9s | Tokens: 433 
+
+📝 样本 30: Line $j$ is perpendicular to $\frac{y}{3}+\frac{2x}{5}=2$. What is the slope of ...
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: \frac{5 | 实际: 56 | 用时: 4.8s | Tokens: 356 
+📊 进度: 30/50, 准确率: 66.67%, 早停率: 0.00%, 平均tokens: 459.1
+
+📝 样本 31: The vertex of the parabola described by the equation $y=2x^2-4x+4$ is $(m,n)$. W...
+   🛑 自然停止: stop_word_Human:
+   ✅ 正确 | 预测: 1 | 实际: 1 | 用时: 5.6s | Tokens: 416 
+
+📝 样本 32: Simplify and write the result with a rational denominator: $$\sqrt{\sqrt[3]{\sqr...
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: \frac{\sqrt{3 | 实际: 3 | 用时: 7.9s | Tokens: 580 
+
+📝 样本 33: For how many positive integers $n$ is $n^2-3n+2$ a prime number?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 1 | 实际: 1 | 用时: 5.0s | Tokens: 370 
+
+📝 样本 34: Consider the function $g(x) = 3$.  Find $g(2)$....
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 2.8s | Tokens: 205 
+
+📝 样本 35: What is the greatest prime factor of the sum of the arithmetic sequence $1 + 2 +...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 6.2s | Tokens: 462 
+📊 进度: 35/50, 准确率: 68.57%, 早停率: 0.00%, 平均tokens: 451.6
+
+📝 样本 36: Let $x$ be a number that satisfies both equations $18x^2+25x-3=0$ and $4x^2+8x+3...
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: -\frac{3 | 实际: 32 | 用时: 10.7s | Tokens: 788 
+
+📝 样本 37: What is the maximum number of square inches in the area of a rectangle with a pe...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 9 | 实际: 9 | 用时: 5.0s | Tokens: 366 
+
+📝 样本 38: Daniel works at an electronics store, and he claims that the popularity of a tel...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 9 | 实际: 9 | 用时: 3.6s | Tokens: 265 
+
+📝 样本 39: Simplify $(5-3i)(-4+3i)$....
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: -11 + 27i | 实际: -11 | 用时: 5.5s | Tokens: 408 
+
+📝 样本 40: If $x+\frac{1}{x}=7$, then what is the value of $x^{2}+\frac{1}{x^{2}} + 1$?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 48 | 实际: 48 | 用时: 4.6s | Tokens: 337 
+📊 进度: 40/50, 准确率: 67.50%, 早停率: 0.00%, 平均tokens: 449.3
+
+📝 样本 41: The quadratic $x^2-4x-14=3x+16$ has two solutions.  What is the positive differe...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 13 | 实际: 13 | 用时: 7.2s | Tokens: 530 
+
+📝 样本 42: Let $f(x)=x+1$ and $g(x)=2x$.  Also denote the inverses to these functions as $f...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 6 | 实际: 6 | 用时: 6.9s | Tokens: 507 
+
+📝 样本 43: If $a \star b = \dfrac{\left(\dfrac{1}{b} - \dfrac{1}{a}\right)}{(a - b)}$, expr...
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: \dfrac{1 | 实际: 1 | 用时: 6.9s | Tokens: 505 
+
+📝 样本 44: The expression $24x^2-19x-35$ can be written as $(Ax-5)(2Bx+C)$, where $A$, $B$,...
+   ❌ 错误 | 预测: None | 实际: -9 | 用时: 13.9s | Tokens: 1024 
+
+📝 样本 45: A line $\ell$ passes through the points $B(7,-1)$ and $C(-1,7)$.  The equation o...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 6.1s | Tokens: 448 
+📊 进度: 45/50, 准确率: 66.67%, 早停率: 0.00%, 平均tokens: 466.3
+
+📝 样本 46: If $j$ and $k$ are inversely proportional and $j = 42$ when $k = 56$, what is th...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 73.5 | 实际: 73.5 | 用时: 3.7s | Tokens: 277 
+
+📝 样本 47: The product of two positive numbers is 24, and the sum of their squares is 73. W...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 25 | 实际: 25 | 用时: 3.1s | Tokens: 231 
+
+📝 样本 48: If $a+b=8$, $b+c=-3$, and $a+c= -5$, what is the value of the product $abc$?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: -120 | 实际: -120 | 用时: 5.2s | Tokens: 386 
+
+📝 样本 49: The expression $6y^2-y-51$ can be rewritten as $(3Ay+B)(y-C)$, where $A$, $B$, a...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 19 | 实际: 19 | 用时: 8.5s | Tokens: 628 
+
+📝 样本 50: Given that $M( 1, -6)$ is the midpoint of $\overline{AB}$ and $A(-2, 1)$ is one ...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: -9 | 实际: -9 | 用时: 5.3s | Tokens: 394 
+📊 进度: 50/50, 准确率: 70.00%, 早停率: 0.00%, 平均tokens: 458.0
+
+============================================================
+📊 HALT-CoT 实验统计结果
+============================================================
+🤖 模型: Qwen/Qwen2.5-7B-Instruct
+📝 总样本数: 50
+✅ 正确样本: 35
+🎯 准确率: 70.00%
+🛑 早停率: 0.00% (0/50)
+⏱️  平均用时: 6.2秒/样本
+💬 平均Token: 458.0个/样本
+📊 Token范围: 179 - 1024
+📉 平均熵: 0.000
+🕐 总用时: 5分11秒
+============================================================
+💾 结果已保存: /root/autodl-tmp/results/halt_cot_qwen_50samples_20251202_202919.json
+📄 摘要已保存: /root/autodl-tmp/results/halt_cot_qwen_50samples_20251202_202919_summary.txt
+
+🎉 实验完成!
+📁 结果文件: /root/autodl-tmp/results/halt_cot_qwen_50samples_20251202_202919.json
+
+📈 实验成功完成，处理了 50 个样本
+💡 融合了两种早停方法：
+   1. 答案一致性检测（Liu & Wang 2025）
+   2. 熵基早停（Laaouach HALT-CoT）
+============================================================
+⏰ 结束时间: 2025-12-02 20:29:19

@@ -47,8 +47,8 @@
     "num_return_sequences": 1
   },
   "early_stopping": {
-    "use_answer_consistency": true,
-    "use_entropy_halt": true,
+    "use_answer_consistency": false,
+    "use_entropy_halt": false,
     "consistency_k": 3,
     "entropy_threshold": 1.0,
     "entropy_consecutive_steps": 2,

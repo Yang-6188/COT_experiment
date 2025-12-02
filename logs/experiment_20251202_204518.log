@@ -1,0 +1,288 @@
+📝 日志文件: logs/experiment_20251202_204518.log
+⏰ 开始时间: 2025-12-02 20:45:18
+============================================================
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.6
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 智能探针配置: 答案一致性=True, 熵检测=True, 调试模式=False
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.27it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.31it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.31it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:02<00:00,  1.36it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:02<00:00,  1.34it/s]
+✅ 模型已加载到: cuda:0
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🔎 [检查点@conclusion] Tokens: 120
+      📄 上下文: ...actor this as $(x + 3)(x - 2)$.⏎⏎Step 2: Set the denominator equal to zero and solve for $x$.⏎$(x + 
+      🧪 探针: '2' | 熵: 0.0659
+   🛑 [早停] conclusion_high_confidence | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 2.6s | Tokens: 120 | 早停: conclusion_high_confidence
+   回答预览:  To determine the number of vertical asymptotes for the function $y=\frac{2}{x^2+x-6}$, we need to find the values of $x$ that make the denominator eq...
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🔎 [检查点@calculation] Tokens: 180
+      📄 上下文: ...re \((12,-2)\). The distance formula between two points \((x_1, y_1)\) and \((x_2, y_2)\) is:⏎\[⏎d =
+      🧪 探针: '13' | 熵: 0.7170
+   🔎 [检查点@calculation] Tokens: 220
+      📄 上下文: ...y_2)\) is:⏎\[⏎d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}⏎\]⏎Applying this to points \(A\) and \(C\):⏎\
+      🧪 探针: '13' | 熵: 1.5836
+   🔎 [检查点@calculation] Tokens: 260
+      📄 上下文: ...is to points \(A\) and \(C\):⏎\[⏎AC = \sqrt{(12 - 0)^2 + (-2 - 7)^2} = \sqrt{12^2 + (-9)^2} = \sqrt{
+      🧪 探针: '15' | 熵: 0.8774
+   🔎 [检查点@conclusion] Tokens: 498
+      📄 上下文: ...als \(AC\) and \(BD\):⏎\[⏎A = \frac{1}{2} \times 15 \times 10 = \frac{1}{2} \times 150 = 75⏎\]⏎⏎Thus
+      🧪 探针: '75' | 熵: 0.8367
+   🔎 [检查点@answer_signal] Tokens: 511
+      📄 上下文: ...2} \times 15 \times 10 = \frac{1}{2} \times 150 = 75⏎\]⏎⏎Thus, the area of kite \(ABCD\) is \(\boxed
+      🧪 探针: '75' | 熵: 0.0708
+   🛑 [早停] answer_signal_high_confidence | 答案: 75
+   ✅ 正确 | 预测: 75 | 实际: 75 | 用时: 8.8s | Tokens: 511 | 早停: answer_signal_high_confidence
+   回答预览:  To find the area of kite \(ABCD\) with given coordinates \(A(0,7)\), \(B(1,0)\), \(C(12,-2)\), and \(D(7,8)\), we will use the formula for the area o...
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...ht-hand side:**⏎   \[⏎   \frac{9}{2\sqrt{3}} = \frac{9}{2\sqrt{3}} \cdot \frac{\sqrt{3}}{\sqrt{3}} =
+      🧪 探针: '14' | 熵: 1.9750
+   🔎 [检查点@calculation] Tokens: 140
+      📄 上下文: ... = \frac{9\sqrt{3}}{6} = \frac{3\sqrt{3}}{2}⏎   \]⏎⏎2. **Equate the simplified form to the left-hand
+      🧪 探针: '14' | 熵: 1.4246
+   🔎 [检查点@calculation] Tokens: 180
+      📄 上下文: ...rm to the left-hand side:**⏎   \[⏎   \frac{A\sqrt{B}}{C} = \frac{3\sqrt{3}}{2}⏎   \]⏎⏎3. **Match the
+      🧪 探针: '14' | 熵: 1.3187
+   🔎 [检查点@conclusion] Tokens: 225
+      📄 上下文: ...nd denominators:**⏎   - Numerator: \(A\sqrt{B} = 3\sqrt{3}\)⏎   - Denominator: \(C = 2\)⏎⏎4. **Solve
+      🧪 探针: '10' | 熵: 1.4306
+   🔎 [检查点@conclusion] Tokens: 245
+      📄 上下文: ...} = 3\sqrt{3}\)⏎   - Denominator: \(C = 2\)⏎⏎4. **Solve for \(A\) and \(B\):**⏎   - From \(A\sqrt{B}
+      🧪 探针: '10' | 熵: 1.5045
+   🔎 [检查点@conclusion] Tokens: 265
+      📄 上下文: ...4. **Solve for \(A\) and \(B\):**⏎   - From \(A\sqrt{B} = 3\sqrt{3}\), we can see that \(A = 3\) and
+      🧪 探针: '10' | 熵: 1.4393
+   🔎 [检查点@conclusion] Tokens: 285
+      📄 上下文: ...\sqrt{B} = 3\sqrt{3}\), we can see that \(A = 3\) and \(\sqrt{B} = \sqrt{3}\).⏎   - Therefore, \(B =
+      🧪 探针: '10' | 熵: 1.6843
+   🔎 [检查点@conclusion] Tokens: 305
+      📄 上下文: ...nd \(\sqrt{B} = \sqrt{3}\).⏎   - Therefore, \(B = 3\).⏎⏎5. **Verify the conditions:**⏎   - \(A = 3\)
+      🧪 探针: '3' | 熵: 1.7427
+   🔎 [检查点@conclusion] Tokens: 325
+      📄 上下文: ...y the conditions:**⏎   - \(A = 3\) and \(C = 2\) have no common prime factors (3 and 2 are prime and
+      🧪 探针: '11' | 熵: 1.5348
+   🔎 [检查点@conclusion] Tokens: 384
+      📄 上下文: ...s other than 1.⏎⏎6. **Calculate \(A + B + C\):**⏎   \[⏎   A + B + C = 3 + 3 + 2 = 8⏎   \]⏎⏎Therefore
+      🧪 探针: '8' | 熵: 0.0793
+   🛑 [早停] conclusion_high_confidence | 答案: 8
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 8.3s | Tokens: 384 | 早停: conclusion_high_confidence
+   回答预览:  To solve the given equation \(\frac{A\sqrt{B}}{C} = \frac{9}{2\sqrt{3}}\), we need to simplify and match the terms on both sides of the equation.  1....
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...n treeks weigh as much as three squigs and one goolee)⏎2. \( 2T + G = S \) (Two treeks and one goole
+      🧪 探针: '5' | 熵: 1.6660
+   🔎 [检查点@calculation] Tokens: 140
+      📄 上下文: ... to find the number of treeks that equal the weight of one squig, i.e., we need to find \( x \) such
+      🧪 探针: '5' | 熵: 1.5675
+   🔎 [检查点@conclusion] Tokens: 160
+      📄 上下文: ..., we need to find \( x \) such that \( xT = S \).⏎⏎First, let's solve the second equation for \( G \
+      🧪 探针: '5' | 熵: 1.2875
+   🔎 [检查点@conclusion] Tokens: 180
+      📄 上下文: ...irst, let's solve the second equation for \( G \):⏎⏎\[ G = S - 2T \]⏎⏎Now, substitute \( G \) in the
+      🧪 探针: '5' | 熵: 1.3434
+   🔎 [检查点@conclusion] Tokens: 200
+      📄 上下文: ...r \( G \):⏎⏎\[ G = S - 2T \]⏎⏎Now, substitute \( G \) in the first equation:⏎⏎\[ 10T = 3S + (S - 2T)
+      🧪 探针: '5' | 熵: 1.1199
+   🔎 [检查点@conclusion] Tokens: 220
+      📄 上下文: ...Now, substitute \( G \) in the first equation:⏎⏎\[ 10T = 3S + (S - 2T) \]⏎\[ 10T = 3S + S - 2T \]⏎\[
+      🧪 探针: '5' | 熵: 0.9227
+   🔎 [检查点@conclusion] Tokens: 240
+      📄 上下文: ... the first equation:⏎⏎\[ 10T = 3S + (S - 2T) \]⏎\[ 10T = 3S + S - 2T \]⏎\[ 10T = 4S - 2T \]⏎\[ 12T =
+      🧪 探针: '6' | 熵: 1.5211
+   🔎 [检查点@conclusion] Tokens: 260
+      📄 上下文: ...]⏎\[ 10T = 3S + S - 2T \]⏎\[ 10T = 4S - 2T \]⏎\[ 12T = 4S \]⏎\[ 3T = S \]⏎⏎So, the weight of one squ
+      🧪 探针: '3' | 熵: 0.0079
+   🛑 [早停] conclusion_high_confidence | 答案: 3
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 6.0s | Tokens: 260 | 早停: conclusion_high_confidence
+   回答预览:  Let's denote the weight of a treek as \( T \), the weight of a squig as \( S \), and the weight of a goolee as \( G \).  From the problem, we have th...
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...s V_2 \]⏎⏎Where:⏎- \( P_1 \) is the initial pressure (4 kPa)⏎- \( V_1 \) is the initial volume (3.67
+      🧪 探针: '8' | 熵: 0.0556
+   🔎 [检查点@conclusion] Tokens: 147
+      📄 上下文: ...need to find)⏎- \( V_2 \) is the final volume (1.835 liters)⏎⏎We can rearrange the equation to solve
+      🧪 探针: '8' | 熵: 0.0155
+   🛑 [早停] conclusion_consistency | 答案: 8
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 2.6s | Tokens: 147 | 早停: conclusion_consistency
+   回答预览:  To solve this problem, we can use Boyle's Law, which states that the pressure (P) of a gas is inversely proportional to its volume (V) at constant te...
+📊 进度: 5/10, 准确率: 100.00%, 早停率: 100.00%, 平均tokens: 284.4
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...\( G \).⏎⏎From the problem, we have the following two equations:⏎⏎1. \( 8F + 2G = 932 \)⏎2. \( 14F +
+      🧪 探针: '5' | 熵: 1.9997
+   🔎 [检查点@conclusion] Tokens: 120
+      📄 上下文: ...ns:⏎⏎1. \( 8F + 2G = 932 \)⏎2. \( 14F + 3G = 1402 \)⏎⏎We will solve this system of equations step by
+      🧪 探针: '5' | 熵: 2.4039
+   🔎 [检查点@conclusion] Tokens: 140
+      📄 上下文: ...of equations step by step.⏎⏎### Step 1: Eliminate one variable⏎To eliminate one of the variables, we
+      🧪 探针: '5' | 熵: 2.2017
+   🔎 [检查点@calculation] Tokens: 197
+      📄 上下文: ...We can do this by multiplying the first equation by 3 and the second equation by 2:⏎⏎\[ 3(8F + 2G) =
+      🧪 探针: '3' | 熵: 1.5508
+   🔎 [检查点@calculation] Tokens: 237
+      📄 上下文: ... second equation by 2:⏎⏎\[ 3(8F + 2G) = 3(932) \]⏎\[ 2(14F + 3G) = 2(1402) \]⏎⏎This gives us:⏎⏎\[ 24
+      🧪 探针: '24' | 熵: 0.7776
+   🔎 [检查点@calculation] Tokens: 277
+      📄 上下文: ...⏎This gives us:⏎⏎\[ 24F + 6G = 2796 \]⏎\[ 28F + 6G = 2804 \]⏎⏎### Step 2: Subtract the equations⏎Now
+      🧪 探针: '28' | 熵: 2.1958
+   🔎 [检查点@conclusion] Tokens: 344
+      📄 上下文: ...tion to eliminate \( G \):⏎⏎\[ (28F + 6G) - (24F + 6G) = 2804 - 2796 \]⏎\[ 4F = 8 \]⏎\[ F = 2 \]⏎⏎So
+      🧪 探针: '2' | 熵: 1.5358
+   🔎 [检查点@conclusion] Tokens: 364
+      📄 上下文: ...[ 4F = 8 \]⏎\[ F = 2 \]⏎⏎So, the cost of one pound of feathers is \( \$2 \).⏎⏎### Step 3: Substitute
+      🧪 探针: '5' | 熵: 2.2480
+   🔎 [检查点@conclusion] Tokens: 384
+      📄 上下文: ...\).⏎⏎### Step 3: Substitute \( F \) back into one of the original equations⏎Now that we know \( F = 
+      🧪 探针: '15' | 熵: 2.2029
+   🔎 [检查点@conclusion] Tokens: 404
+      📄 上下文: ... \( F = 2 \), we can substitute this value back into one of the original equations to solve for \( G
+      🧪 探针: '15' | 熵: 2.3252
+   🔎 [检查点@conclusion] Tokens: 424
+      📄 上下文: ...to one of the original equations to solve for \( G \). Let's use the first equation:⏎⏎\[ 8F + 2G = 9
+      🧪 探针: '932' | 熵: 2.1889
+   🔎 [检查点@conclusion] Tokens: 444
+      📄 上下文: ...ations to solve for \( G \). Let's use the first equation:⏎⏎\[ 8F + 2G = 932 \]⏎\[ 8(2) + 2G = 932 \
+      🧪 探针: '5' | 熵: 2.2917
+   🔎 [检查点@conclusion] Tokens: 464
+      📄 上下文: .... Let's use the first equation:⏎⏎\[ 8F + 2G = 932 \]⏎\[ 8(2) + 2G = 932 \]⏎\[ 16 + 2G = 932 \]⏎\[ 2G
+      🧪 探针: '5' | 熵: 2.2306
+   🔎 [检查点@conclusion] Tokens: 484
+      📄 上下文: ...F + 2G = 932 \]⏎\[ 8(2) + 2G = 932 \]⏎\[ 16 + 2G = 932 \]⏎\[ 2G = 916 \]⏎\[ G = 458 \]⏎⏎So, the cost
+      🧪 探针: '458' | 熵: 1.9579
+   🔎 [检查点@conclusion] Tokens: 504
+      📄 上下文: ...= 916 \]⏎\[ G = 458 \]⏎⏎So, the cost of one ounce of gold is \( \$458 \).⏎⏎### Step 4: Calculate the
+      🧪 探针: '5' | 熵: 2.3575
+   🔎 [检查点@conclusion] Tokens: 524
+      📄 上下文: ...ulate the cost of five pounds of feathers and five ounces of gold⏎Now that we have the values for \(
+      🧪 探针: '5' | 熵: 1.8711
+   🔎 [检查点@conclusion] Tokens: 609
+      📄 上下文: ...es of gold:⏎⏎\[ 5F + 5G = 5(2) + 5(458) \]⏎\[ 5F + 5G = 10 + 2290 \]⏎\[ 5F + 5G = 2300 \]⏎⏎Therefore
+      🧪 探针: '2300' | 熵: 0.4952
+   🔎 [检查点@conclusion] Tokens: 629
+      📄 上下文: ... + 5G = 2300 \]⏎⏎Therefore, the cost of five pounds of feathers and five ounces of gold is \( \$2300
+      🧪 探针: '2300' | 熵: 0.4915
+   🛑 [早停] conclusion_consistency | 答案: 2300
+   ✅ 正确 | 预测: 2300 | 实际: 2300 | 用时: 14.2s | Tokens: 629 | 早停: conclusion_consistency
+   回答预览:  To solve this problem, we will set up a system of linear equations based on the given information and then solve for the cost of one pound of feather...
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...circle and $r$ is the radius.⏎⏎Step 1: Group the $x$ and $y$ terms.⏎$x^2 + 8x + y^2 - 6y = 0$⏎⏎Step 
+      🧪 探针: '5' | 熵: 0.7759
+   🔎 [检查点@calculation] Tokens: 140
+      📄 上下文: ...he square, we need to add and subtract the square of half the coefficient of $x$ (which is 8) inside
+      🧪 探针: '5' | 熵: 0.1866
+   🔎 [检查点@conclusion] Tokens: 163
+      📄 上下文: ...e coefficient of $x$ (which is 8) inside the equation. Half of 8 is 4, and the square of 4 is 16. So
+      🧪 探针: '4.000000000000001' | 熵: 0.5254
+   🔎 [检查点@conclusion] Tokens: 183
+      📄 上下文: ...f of 8 is 4, and the square of 4 is 16. So, we add and subtract 16 inside the equation.⏎⏎$x^2 + 8x +
+      🧪 探针: '5' | 熵: 0.0184
+   🛑 [早停] conclusion_high_confidence | 答案: 5
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 3.7s | Tokens: 183 | 早停: conclusion_high_confidence
+   回答预览:  To find the radius of the circle, we need to rewrite the equation in the standard form of a circle's equation, which is $(x - h)^2 + (y - k)^2 = r^2$...
+
+📝 样本 8: If $9^{18n}=27^{24}$, find $n$....
+   🔎 [检查点@calculation] Tokens: 105
+      📄 上下文: ... be written as \(3^3\).⏎⏎2. **Rewrite the equation using these expressions:**⏎   \[⏎   (3^2)^{18n} =
+      🧪 探针: '4' | 熵: 1.6902
+   🔎 [检查点@calculation] Tokens: 145
+      📄 上下文: ...3)^{24}⏎   \]⏎⏎3. **Simplify the exponents:**⏎   - Using the power of a power property \((a^m)^n = a
+      🧪 探针: '12' | 熵: 1.8763
+   🔎 [检查点@calculation] Tokens: 185
+      📄 上下文: ...ty \((a^m)^n = a^{mn}\), we get:⏎     \[⏎     3^{2 \cdot 18n} = 3^{3 \cdot 24}⏎     \]⏎   - Simplify
+      🧪 探针: '4' | 熵: 1.7319
+   🔎 [检查点@conclusion] Tokens: 251
+      📄 上下文: ...the bases are the same, set the exponents equal to each other:**⏎   \[⏎   36n = 72⏎   \]⏎⏎5. **Solve
+      🧪 探针: '2' | 熵: 1.7859
+   🔎 [检查点@conclusion] Tokens: 271
+      📄 上下文: ...ts equal to each other:**⏎   \[⏎   36n = 72⏎   \]⏎⏎5. **Solve for \(n\):**⏎   \[⏎   n = \frac{72}{36
+      🧪 探针: '2' | 熵: 1.4381
+   🔎 [检查点@answer_signal] Tokens: 291
+      📄 上下文: ...**Solve for \(n\):**⏎   \[⏎   n = \frac{72}{36} = 2⏎   \]⏎⏎Therefore, the value of \(n\) is \(\boxed
+      🧪 探针: '2' | 熵: 0.0221
+   🛑 [早停] answer_signal_high_confidence | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 5.9s | Tokens: 291 | 早停: answer_signal_high_confidence
+   回答预览:  To solve the equation \(9^{18n} = 27^{24}\), we will first express both sides of the equation with the same base.   1. **Express both sides with base...
+
+📝 样本 9: Evaluate $(1+2i)6-3i$....
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ...s start with the distribution:⏎⏎\[⏎(1+2i)6 = 1 \cdot 6 + 2i \cdot 6⏎\]⏎⏎This simplifies to:⏎⏎\[⏎6 + 
+      🧪 探针: '6' | 熵: 0.6458
+   🔎 [检查点@calculation] Tokens: 140
+      📄 上下文: ...\]⏎⏎Now, we subtract \(3i\) from this result:⏎⏎\[⏎6 + 12i - 3i⏎\]⏎⏎Combine the imaginary parts:⏎⏎\[⏎
+      🧪 探针: '6' | 熵: 0.5149
+   🔎 [检查点@conclusion] Tokens: 162
+      📄 上下文: ...om this result:⏎⏎\[⏎6 + 12i - 3i⏎\]⏎⏎Combine the imaginary parts:⏎⏎\[⏎6 + (12i - 3i) = 6 + 9i⏎\]⏎⏎So
+      🧪 探针: '6 + 9i' | 熵: 1.4335
+   🔎 [检查点@answer_signal] Tokens: 166
+      📄 上下文: ...[⏎6 + 12i - 3i⏎\]⏎⏎Combine the imaginary parts:⏎⏎\[⏎6 + (12i - 3i) = 6 + 9i⏎\]⏎⏎So, the final answer
+      🧪 探针: '6 + 9i' | 熵: 0.0428
+   🛑 [早停] answer_signal_high_confidence | 答案: 6 + 9i
+   ❌ 错误 | 预测: 6 + 9i | 实际: 6 | 用时: 3.6s | Tokens: 166 | 早停: answer_signal_high_confidence
+   回答预览:  To evaluate the expression \((1+2i)6-3i\), we will follow these steps:  1. Distribute the 6 to both terms inside the parentheses. 2. Simplify the res...
+
+📝 样本 10: Simplify $(2-2i)(5+5i)$, where $i^2 = -1.$...
+   🔎 [检查点@calculation] Tokens: 100
+      📄 上下文: ... each term in the first binomial to each term in the second binomial.⏎\[⏎(2-2i)(5+5i) = 2 \cdot 5 + 
+      🧪 探针: '20' | 熵: 1.7565
+   🔎 [检查点@calculation] Tokens: 140
+      📄 上下文: ... \cdot 5 + 2 \cdot 5i - 2i \cdot 5 - 2i \cdot 5i⏎\]⏎⏎Step 2: Perform the multiplications.⏎\[⏎2 \cdot
+      🧪 探针: '20' | 熵: 2.1747
+   🔎 [检查点@calculation] Tokens: 180
+      📄 上下文: ...p 2: Perform the multiplications.⏎\[⏎2 \cdot 5 = 10⏎\]⏎\[⏎2 \cdot 5i = 10i⏎\]⏎\[⏎-2i \cdot 5 = -10i⏎
+      🧪 探针: '10' | 熵: 2.0065
+   🔎 [检查点@conclusion] Tokens: 340
+      📄 上下文: ...to the expression.⏎\[⏎10 - 10(-1)⏎\]⏎⏎Step 6: Simplify the expression.⏎\[⏎10 + 10 = 20⏎\]⏎⏎Therefore
+      🧪 探针: '20' | 熵: 0.0852
+   🛑 [早停] conclusion_high_confidence | 答案: 20
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 5.9s | Tokens: 340 | 早停: conclusion_high_confidence
+   回答预览:  To simplify the expression \((2-2i)(5+5i)\), we will use the distributive property (also known as the FOIL method for binomials), which involves mult...
+📊 进度: 10/10, 准确率: 90.00%, 早停率: 100.00%, 平均tokens: 303.1
+
+============================================================
+📊 HALT-CoT 实验统计结果
+============================================================
+🤖 模型: Qwen/Qwen2.5-7B-Instruct
+📝 总样本数: 10
+✅ 正确样本: 9
+🎯 准确率: 90.00%
+🛑 早停率: 100.00% (10/10)
+⏱️  平均用时: 6.2秒/样本
+💬 平均Token: 303.1个/样本
+📊 Token范围: 120 - 629
+📉 平均熵: 0.933
+🕐 总用时: 1分2秒
+
+🔍 早停原因分布:
+   - conclusion_high_confidence: 5次
+   - answer_signal_high_confidence: 3次
+   - conclusion_consistency: 2次
+============================================================
+💾 结果已保存: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251202_204626.json
+📄 摘要已保存: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251202_204626_summary.txt
+
+🎉 实验完成!
+📁 结果文件: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251202_204626.json
+
+📈 实验成功完成，处理了 10 个样本
+💡 融合了两种早停方法：
+   1. 答案一致性检测（Liu & Wang 2025）
+   2. 熵基早停（Laaouach HALT-CoT）
+============================================================
+⏰ 结束时间: 2025-12-02 20:46:26

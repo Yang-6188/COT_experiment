@@ -1,0 +1,11 @@
+📝 日志文件: logs/experiment_20251202_193359.log
+⏰ 开始时间: 2025-12-02 19:33:59
+============================================================
+❌ 实验运行失败: name 'ExperimentRunner' is not defined
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/main.py", line 66, in main
+    runner = ExperimentRunner()
+             ^^^^^^^^^^^^^^^^
+NameError: name 'ExperimentRunner' is not defined
+============================================================
+⏰ 结束时间: 2025-12-02 19:33:59
