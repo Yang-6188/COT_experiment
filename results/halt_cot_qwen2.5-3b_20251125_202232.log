@@ -1,0 +1,8 @@
+2025-11-25 20:22:32,317 - INFO - 加载测试数据...
+2025-11-25 20:22:32,317 - INFO - 已加载 10 条测试数据
+2025-11-25 20:22:32,317 - INFO - 加载模型...
+2025-11-25 20:22:32,317 - INFO - 正在加载模型: Qwen/Qwen2.5-3B-Instruct
+2025-11-25 20:22:42,991 - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-11-25 20:22:45,087 - INFO - 模型参数量: 3.1B
+2025-11-25 20:22:45,087 - INFO - 模型设备: cuda:0
+2025-11-25 20:22:45,087 - INFO - 模型数据类型: torch.bfloat16

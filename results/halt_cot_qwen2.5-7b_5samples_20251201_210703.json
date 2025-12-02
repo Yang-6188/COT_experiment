@@ -1,0 +1,164 @@
+{
+  "experiment_info": {
+    "timestamp": "20251201_210703",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_key": "qwen2.5-7b",
+    "sample_size": 5,
+    "config": {
+      "sample_size": 5,
+      "verbose": true,
+      "save_results": true,
+      "max_reasoning_steps": 10,
+      "max_new_tokens": 1024,
+      "temperature": 0.0,
+      "do_sample": false,
+      "debug_probe": true
+    },
+    "early_stopping_config": {
+      "use_answer_consistency": true,
+      "use_entropy_halt": true,
+      "consistency_k": 3,
+      "entropy_threshold": 1.0,
+      "entropy_consecutive_steps": 2,
+      "min_tokens_before_check": 100,
+      "cooldown_tokens": 30
+    }
+  },
+  "statistics": {
+    "total_samples": 5,
+    "correct_samples": 3,
+    "accuracy": 0.6,
+    "total_time": 22.739559173583984,
+    "avg_time_per_sample": 4.547911834716797,
+    "total_tokens": 1119,
+    "avg_tokens_per_sample": 223.8,
+    "min_tokens": 100,
+    "max_tokens": 543,
+    "early_stops": 5,
+    "early_stop_rate": 1.0,
+    "halt_reasons": {
+      "conclusion_high_confidence": 3,
+      "conclusion_consistency": 2
+    },
+    "avg_entropy": 0.6554493820228215,
+    "total_experiment_time": 22.740286827087402
+  },
+  "summary": "============================================================\n📊 HALT-CoT 实验统计结果\n============================================================\n🤖 模型: Qwen/Qwen2.5-7B-Instruct\n📝 总样本数: 5\n✅ 正确样本: 3\n🎯 准确率: 60.00%\n🛑 早停率: 100.00% (5/5)\n⏱️  平均用时: 4.5秒/样本\n💬 平均Token: 223.8个/样本\n📊 Token范围: 100 - 543\n📉 平均熵: 0.655\n🕐 总用时: 0分23秒\n\n🔍 早停原因分布:\n   - conclusion_high_confidence: 3次\n   - conclusion_consistency: 2次\n============================================================",
+  "results": [
+    {
+      "sample_id": 0,
+      "question": "How many vertical asymptotes does the graph of $y=\\frac{2}{x^2+x-6}$ have?",
+      "ground_truth": "2",
+      "predicted_answer": "2",
+      "correct": true,
+      "generation_time": 2.619619369506836,
+      "tokens_used": 120,
+      "response": " To determine the number of vertical asymptotes for the function $y=\\frac{2}{x^2+x-6}$, we need to find the values of $x$ that make the denominator equal to zero, as these are the points where the function is undefined and potentially has vertical asymptotes.\n\nStep 1: Factor the denominator.\nThe denominator is $x^2 + x - 6$. We can factor this as $(x + 3)(x - 2)$.\n\nStep 2: Set the denominator equal to zero and solve for $x$.\n$(x + ",
+      "early_stopped": true,
+      "halt_reason": "conclusion_high_confidence",
+      "avg_entropy": 0.06587178260087967,
+      "entropy_history": [
+        0.06587178260087967
+      ],
+      "stage_distribution": {
+        "intermediate": 11,
+        "conclusion": 10
+      }
+    },
+    {
+      "sample_id": 1,
+      "question": "What is the positive difference between $120\\%$ of 30 and $130\\%$ of 20?",
+      "ground_truth": "10",
+      "predicted_answer": "10",
+      "correct": true,
+      "generation_time": 3.9455323219299316,
+      "tokens_used": 206,
+      "response": " To find the positive difference between $120\\%$ of 30 and $130\\%$ of 20, we first calculate each percentage of the given numbers.\n\nStep 1: Calculate $120\\%$ of 30.\n\\[ 120\\% \\text{ of } 30 = \\frac{120}{100} \\times 30 = 1.2 \\times 30 = 36 \\]\n\nStep 2: Calculate $130\\%$ of 20.\n\\[ 130\\% \\text{ of } 20 = \\frac{130}{100} \\times 20 = 1.3 \\times 20 = 26 \\]\n\nStep 3: Find the positive difference between the two results.\n\\[ \\text{Positive difference} = |36 - 26| = 10 \\]\n\nTherefore",
+      "early_stopped": true,
+      "halt_reason": "conclusion_high_confidence",
+      "avg_entropy": 0.5593134586233646,
+      "entropy_history": [
+        0.4684101641178131,
+        1.6371594667434692,
+        0.1269669085741043,
+        0.004717295058071613
+      ],
+      "stage_distribution": {
+        "calculation": 106,
+        "conclusion": 1
+      }
+    },
+    {
+      "sample_id": 2,
+      "question": "Find $x$ such that $\\lceil x \\rceil + x = \\dfrac{23}{7}$. Express $x$ as a common fraction.",
+      "ground_truth": "9",
+      "predicted_answer": "\\frac{9",
+      "correct": false,
+      "generation_time": 11.640992641448975,
+      "tokens_used": 543,
+      "response": " To solve the equation \\(\\lceil x \\rceil + x = \\frac{23}{7}\\), we need to understand the properties of the ceiling function \\(\\lceil x \\rceil\\). The ceiling function \\(\\lceil x \\rceil\\) is the smallest integer greater than or equal to \\(x\\).\n\nLet's denote \\(\\lceil x \\rceil\\) by \\(n\\), where \\(n\\) is an integer. This means that \\(n-1 < x \\leq n\\). The equation then becomes:\n\\[ n + x = \\frac{23}{7} \\]\nSince \\(n\\) is an integer, \\(x\\) must be a fraction such that when added to \\(n\\), the result is \\(\\frac{23}{7}\\). We can express \\(x\\) as \\(x = \\frac{23}{7} - n\\). For \\(x\\) to be in the interval \\((n-1, n]\\), we need:\n\\[ n-1 < \\frac{23}{7} - n \\leq n \\]\n\nFirst, let's solve the left part of the inequality:\n\\[ n-1 < \\frac{23}{7} - n \\]\n\\[ 2n < \\frac{23}{7} + 1 \\]\n\\[ 2n < \\frac{23}{7} + \\frac{7}{7} \\]\n\\[ 2n < \\frac{30}{7} \\]\n\\[ n < \\frac{30}{14} \\]\n\\[ n < \\frac{15}{7} \\]\nSince \\(n\\) is an integer, the possible values for \\(n\\) are 2 or less. Now let's check the right part of the inequality:\n\\[ \\frac{23}{7} - n \\leq n \\]\n\\[ \\frac{23}{7} \\leq 2n \\]\n\\[ \\frac{23}{14} \\leq n \\]\nSince \\(n\\) is an integer, the possible values for \\(n\\) are 2 or more. Combining both parts, the only integer value for \\(n\\) is 2. So, \\(n = 2\\).\n\nNow substitute \\(n = 2\\) back into the equation for \\(x\\):\n\\[ x = \\frac{23}{7} - 2 = \\frac{23}{7} - \\frac{14}{7} = \\frac{9}{7} \\]\n\nWe need to check that \\(x = \\frac{9}{",
+      "early_stopped": true,
+      "halt_reason": "conclusion_consistency",
+      "avg_entropy": 1.7819211312702723,
+      "entropy_history": [
+        2.271242141723633,
+        2.4787755012512207,
+        2.3194706439971924,
+        1.3144710063934326,
+        1.7272776365280151,
+        2.1046149730682373,
+        1.752342700958252,
+        2.149554491043091,
+        1.5093213319778442,
+        1.403632640838623
+      ],
+      "stage_distribution": {
+        "unknown": 55,
+        "intermediate": 87,
+        "calculation": 116,
+        "conclusion": 186
+      }
+    },
+    {
+      "sample_id": 3,
+      "question": "Evaluate $i^5+i^{-25}+i^{45}$.",
+      "ground_truth": "i",
+      "predicted_answer": "0",
+      "correct": false,
+      "generation_time": 2.899149179458618,
+      "tokens_used": 150,
+      "response": " To evaluate the expression \\(i^5 + i^{-25} + i^{45}\\), we need to understand the properties of the imaginary unit \\(i\\), where \\(i = \\sqrt{-1}\\). The powers of \\(i\\) cycle every four terms as follows:\n\n\\[\n\\begin{align*}\ni^1 &= i, \\\\\ni^2 &= -1, \\\\\ni^3 &= -i, \\\\\ni^4 &= 1, \\\\\ni^5 &= i, \\\\\ni^6 &= -1, \\\\\ni^7 &= -i, \\\\\ni^8 &= 1, \\\\\n&\\vdots\n\\end{align*}\n\\]\n\nThis pattern repeats every four powers. Therefore,",
+      "early_stopped": true,
+      "halt_reason": "conclusion_consistency",
+      "avg_entropy": 0.7756448984146118,
+      "entropy_history": [
+        0.7851067781448364,
+        0.7666320204734802,
+        0.7751958966255188
+      ],
+      "stage_distribution": {
+        "calculation": 49,
+        "conclusion": 2
+      }
+    },
+    {
+      "sample_id": 4,
+      "question": "If $2^8=4^x$, what is the value of $x$?",
+      "ground_truth": "4",
+      "predicted_answer": "4",
+      "correct": true,
+      "generation_time": 1.634265661239624,
+      "tokens_used": 100,
+      "response": " To solve the equation \\(2^8 = 4^x\\), we can start by expressing 4 as a power of 2. We know that \\(4 = 2^2\\). Therefore, we can rewrite the equation as follows:\n\n\\[2^8 = (2^2)^x\\]\n\nNext, we use the property of exponents \\((a^m)^n = a^{mn}\\) to simplify the right side of the equation:\n\n\\[2^8 =",
+      "early_stopped": true,
+      "halt_reason": "conclusion_high_confidence",
+      "avg_entropy": 0.09449563920497894,
+      "entropy_history": [
+        0.09449563920497894
+      ],
+      "stage_distribution": {
+        "conclusion": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "experiment_info": {
+    "model_key": "qwen2.5-7b",
+    "model_name": "Qwen/Qwen2.5-7B-Instruct",
+    "sample_size": 100,
+    "estimated_time_seconds": 1800,
+    "created_at": "{\"timestamp\": \"now\"}"
+  },
+  "model": {
+    "device": "cuda",
+    "torch_dtype": "bfloat16",
+    "max_new_tokens": 1024,
+    "name": "Qwen/Qwen2.5-7B-Instruct"
+  },
+  "paths": {
+    "base_dir": "/root/autodl-tmp",
+    "data_dir": "/root/autodl-tmp/data",
+    "config_dir": "/root/autodl-tmp/config",
+    "train_data": "/root/autodl-tmp/data/gsm8k_train_processed.json",
+    "test_data": "/root/autodl-tmp/data/gsm8k_test_processed.json",
+    "sample_data_5": "/root/autodl-tmp/data/gsm8k_test_sample_5.json",
+    "sample_data_10": "/root/autodl-tmp/data/gsm8k_test_sample_10.json",
+    "sample_data_20": "/root/autodl-tmp/data/gsm8k_test_sample_20.json",
+    "sample_data_50": "/root/autodl-tmp/data/gsm8k_test_sample_50.json",
+    "sample_data_100": "/root/autodl-tmp/data/gsm8k_test_sample_100.json",
+    "sample_data_200": "/root/autodl-tmp/data/gsm8k_test_sample_200.json",
+    "results_dir": "/root/autodl-tmp/results"
+  },
+  "halt_cot": {
+    "entropy_threshold_strict": 0.3,
+    "entropy_threshold_loose": 0.8,
+    "k_strict": 2,
+    "k_normal": 4,
+    "k_conservative": 8,
+    "min_reasoning_steps": 3,
+    "max_reasoning_steps": 15,
+    "entropy_history_size": 10,
+    "confidence_decay": 0.95
+  },
+  "experiment": {
+    "default_sample_size": 10,
+    "verbose": true,
+    "save_generated_text": true,
+    "max_reasoning_steps": 15,
+    "early_stopping": true,
+    "sample_size": 100
+  }
+}

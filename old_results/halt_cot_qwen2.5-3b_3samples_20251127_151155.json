@@ -1,0 +1,87 @@
+{
+  "experiment_info": {
+    "timestamp": "20251127_151155",
+    "model": "Qwen/Qwen2.5-3B-Instruct",
+    "model_key": "qwen2.5-3b",
+    "sample_size": 3,
+    "config": {
+      "sample_size": 3,
+      "verbose": true,
+      "save_results": true,
+      "max_reasoning_steps": 10,
+      "max_new_tokens": 512,
+      "temperature": 0.0,
+      "do_sample": false
+    },
+    "early_stopping_config": {
+      "use_answer_consistency": true,
+      "use_entropy_halt": false,
+      "consistency_k": 3,
+      "entropy_threshold": 0.5,
+      "entropy_consecutive_steps": 2,
+      "chunk_by_sentence": false
+    }
+  },
+  "statistics": {
+    "total_samples": 3,
+    "correct_samples": 2,
+    "accuracy": 0.6666666666666666,
+    "total_time": 14.221357822418213,
+    "avg_time_per_sample": 4.740452607472737,
+    "total_tokens": 651,
+    "avg_tokens_per_sample": 217.0,
+    "min_tokens": 179,
+    "max_tokens": 255,
+    "early_stops": 2,
+    "early_stop_rate": 0.6666666666666666,
+    "halt_reasons": {
+      "answer_consistency": 2
+    },
+    "avg_entropy": 0.0,
+    "total_experiment_time": 14.222026824951172
+  },
+  "results": [
+    {
+      "sample_id": 0,
+      "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+      "ground_truth": "18",
+      "predicted_answer": "18",
+      "correct": true,
+      "generation_time": 6.460532903671265,
+      "tokens_used": 255,
+      "response": "Step 1: Calculate the total number of eggs laid per day.\nJanet's ducks lay 16 eggs per day.\n\nStep 2: Calculate the number of eggs Janet eats for breakfast.\nJanet eats 3 eggs for breakfast every morning.\n\nStep 3: Calculate the number of eggs Janet uses for baking muffins.\nJanet uses 4 eggs for baking muffins every day.\n\nStep 4: Calculate the total number of eggs used for breakfast and baking.\nTotal eggs used = Eggs for breakfast + Eggs for baking\nTotal eggs used = 3 + 4 = 7 eggs\n\nStep 5: Calculate the number of eggs remaining after breakfast and baking.\nRemaining eggs = Total eggs laid - Total eggs used\nRemaining eggs = 16 - 7 = 9 eggs\n\nStep 6: Calculate the amount of money Janet makes at the farmers' market.\nJanet sells the remaining eggs for $2 per egg.\nMoney made = Remaining eggs * Price per egg\nMoney made = 9 * $2 = $18\n\nTherefore, Janet makes $18 every day at the farmers' market.\n\nAnswer: Janet makes $18 every day at the farmers' market. The final answer is $18.",
+      "early_stopped": false,
+      "halt_reason": null,
+      "avg_entropy": 0.0,
+      "entropy_history": []
+    },
+    {
+      "sample_id": 1,
+      "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+      "ground_truth": "3",
+      "predicted_answer": "3",
+      "correct": true,
+      "generation_time": 3.554196357727051,
+      "tokens_used": 179,
+      "response": " Step 1: Determine the amount of white fiber needed.\nThe problem states that the robe takes half as much white fiber as blue fiber. Since the robe takes 2 bolts of blue fiber, we can calculate the amount of white fiber needed as follows:\nWhite fiber = (1/2) * Blue fiber\nWhite fiber = (1/2) * 2\nWhite fiber = 1 bolt\n\nStep 2: Calculate the total number of bolts needed.\nNow that we know the robe requires 2 bolts of blue fiber and 1 bolt of white fiber, we can add these amounts together to find the total number of bolts needed:\nTotal bolts = Blue fiber + White fiber\nTotal bolts = 2 + 1\nTotal bolts = 3\n\nFinal answer: It takes a total of 3 bolts to make the robe. Difficulty: Medium. (Calculator not required.)",
+      "early_stopped": true,
+      "halt_reason": "answer_consistency",
+      "avg_entropy": 0.0,
+      "entropy_history": []
+    },
+    {
+      "sample_id": 2,
+      "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+      "ground_truth": "70000",
+      "predicted_answer": "30000",
+      "correct": false,
+      "generation_time": 4.2066285610198975,
+      "tokens_used": 217,
+      "response": " Let's break down the problem step by step.\n\n1. **Initial Cost of the House:**\n   Josh buys the house for $80,000.\n\n2. **Cost of Repairs:**\n   Josh spends an additional $50,000 on repairs.\n\n3. **Total Cost:**\n   The total cost for Josh is the sum of the initial cost and the cost of repairs:\n   \\[\n   \\text{Total Cost} = \\$80,000 + \\$50,000 = \\$130,000\n   \\]\n\n4. **Increase in House Value:**\n   The house's value increases by 150%. To find the increase in value, we calculate 150% of the initial cost of the house:\n   \\[\n   \\text{Increase in Value} = 150\\% \\times \\$80,000 = 1.5 \\times \\$80,000 = \\$120,000\n",
+      "early_stopped": true,
+      "halt_reason": "answer_consistency",
+      "avg_entropy": 0.0,
+      "entropy_history": []
+    }
+  ]
+}

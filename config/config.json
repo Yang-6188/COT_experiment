@@ -1,0 +1,73 @@
+{
+  "model_configs": {
+    "qwen2.5-1.5b": {
+      "name": "Qwen/Qwen2.5-1.5B-Instruct",
+      "description": "轻量级 - 适合快速测试"
+    },
+    "qwen2.5-3b": {
+      "name": "Qwen/Qwen2.5-3B-Instruct",
+      "description": "平衡性能 - 推荐日常使用"
+    },
+    "qwen2.5-7b": {
+      "name": "Qwen/Qwen2.5-7B-Instruct",
+      "description": "高性能 - 较慢但更准确"
+    },
+    "qwen2.5-14b": {
+      "name": "Qwen/Qwen2.5-14B-Instruct",
+      "description": "最高性能 - 需要大显存"
+    }
+  },
+  "active_model": "qwen2.5-7b",
+  "experiment": {
+    "sample_size": 50,
+    "verbose": true,
+    "save_results": true,
+    "max_reasoning_steps": 10,
+    "max_new_tokens": 1024,
+    "temperature": 0.0,
+    "do_sample": false,
+    "debug_probe": true
+  },
+  "paths": {
+    "data_dir": "/root/autodl-tmp/data",
+    "results_dir": "/root/autodl-tmp/results",
+    "test_data": "data/math_test.json",
+    "raw_test_data": "/root/autodl-tmp/data/gsm8k_test.json",
+    "gsm8k_test_data": "/root/autodl-tmp/data/gsm8k_test_processed.json",
+    "gsm8k_raw_test_data": "/root/autodl-tmp/data/gsm8k_test.json",
+    "math_test_data": "/root/autodl-tmp/data/math_test_processed.json",
+    "math_raw_test_data": "/root/autodl-tmp/data/math_test.json"
+  },
+  "generation": {
+    "max_length": 2048,
+    "max_new_tokens": 512,
+    "do_sample": false,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "num_return_sequences": 1
+  },
+  "early_stopping": {
+    "use_answer_consistency": true,
+    "use_entropy_halt": true,
+    "consistency_k": 3,
+    "entropy_threshold": 1.0,
+    "entropy_consecutive_steps": 2,
+    "min_tokens_before_check": 100,
+    "cooldown_tokens": 30
+  },
+  "active_dataset": "math",
+  "dataset_configs": {
+    "gsm8k": {
+      "name": "GSM8K",
+      "test_file": "data/gsm8k_test.json",
+      "test_processed": "data/gsm8k_test_processed.json",
+      "description": "小学数学应用题"
+    },
+    "math": {
+      "name": "MATH",
+      "test_file": "data/math_test.json",
+      "test_processed": "data/math_test_processed.json",
+      "description": "竞赛数学题 (Level 1-5)"
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "experiment_info": {
+    "timestamp": "20251127_164641",
+    "model": "Qwen/Qwen2.5-3B-Instruct",
+    "model_key": "qwen2.5-3b",
+    "sample_size": 3,
+    "config": {
+      "sample_size": 3,
+      "verbose": true,
+      "save_results": true,
+      "max_reasoning_steps": 10,
+      "max_new_tokens": 512,
+      "temperature": 0.0,
+      "do_sample": false
+    },
+    "early_stopping_config": {
+      "use_answer_consistency": false,
+      "use_entropy_halt": false,
+      "consistency_k": 3,
+      "entropy_threshold": 0.5,
+      "entropy_consecutive_steps": 2,
+      "chunk_by_sentence": false
+    }
+  },
+  "statistics": {
+    "total_samples": 3,
+    "correct_samples": 3,
+    "accuracy": 1.0,
+    "total_time": 17.230947256088257,
+    "avg_time_per_sample": 5.743649085362752,
+    "total_tokens": 842,
+    "avg_tokens_per_sample": 280.6666666666667,
+    "min_tokens": 207,
+    "max_tokens": 380,
+    "early_stops": 0,
+    "early_stop_rate": 0.0,
+    "halt_reasons": {},
+    "avg_entropy": 1.6119301818289387,
+    "total_experiment_time": 17.231476545333862
+  },
+  "results": [
+    {
+      "sample_id": 0,
+      "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+      "ground_truth": "18",
+      "predicted_answer": "18",
+      "correct": true,
+      "generation_time": 5.841179132461548,
+      "tokens_used": 255,
+      "response": "Step 1: Calculate the total number of eggs laid per day.\nJanet's ducks lay 16 eggs per day.\n\nStep 2: Calculate the number of eggs Janet eats for breakfast.\nJanet eats 3 eggs for breakfast every morning.\n\nStep 3: Calculate the number of eggs Janet uses for baking muffins.\nJanet uses 4 eggs for baking muffins every day.\n\nStep 4: Calculate the total number of eggs used for breakfast and baking.\nTotal eggs used = Eggs for breakfast + Eggs for baking\nTotal eggs used = 3 + 4 = 7 eggs\n\nStep 5: Calculate the number of eggs remaining after breakfast and baking.\nRemaining eggs = Total eggs laid - Total eggs used\nRemaining eggs = 16 - 7 = 9 eggs\n\nStep 6: Calculate the amount of money Janet makes at the farmers' market.\nJanet sells the remaining eggs for $2 per egg.\nMoney made = Remaining eggs * Price per egg\nMoney made = 9 * $2 = $18\n\nTherefore, Janet makes $18 every day at the farmers' market.\n\nAnswer: Janet makes $18 every day at the farmers' market. The final answer is $18.",
+      "early_stopped": false,
+      "halt_reason": null,
+      "avg_entropy": 2.156268037357222,
+      "entropy_history": [
+        2.6596827507019043,
+        3.8090875148773193,
+        3.3846492442535236e-05
+      ]
+    },
+    {
+      "sample_id": 1,
+      "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+      "ground_truth": "3",
+      "predicted_answer": "3",
+      "correct": true,
+      "generation_time": 3.9173426628112793,
+      "tokens_used": 207,
+      "response": "Step 1: Determine the amount of white fiber needed.\nThe problem states that the robe takes half as much white fiber as blue fiber. Since the robe takes 2 bolts of blue fiber, we can calculate the amount of white fiber needed as follows:\nWhite fiber = (1/2) * Blue fiber\nWhite fiber = (1/2) * 2\nWhite fiber = 1 bolt\n\nStep 2: Calculate the total number of bolts needed.\nNow that we know the robe requires 2 bolts of blue fiber and 1 bolt of white fiber, we can add these amounts together to find the total number of bolts needed:\nTotal bolts = Blue fiber + White fiber\nTotal bolts = 2 + 1\nTotal bolts = 3\n\nFinal answer: It takes a total of 3 bolts to make the robe. Difficulty: Medium. (Calculator not required.) Formatting has been standardized to ensure consistency. The step-by-step solution is provided for clarity. The final answer is 3 bolts.",
+      "early_stopped": false,
+      "halt_reason": null,
+      "avg_entropy": 8.820866059977561e-05,
+      "entropy_history": [
+        8.820866059977561e-05
+      ]
+    },
+    {
+      "sample_id": 2,
+      "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+      "ground_truth": "70000",
+      "predicted_answer": "70000",
+      "correct": true,
+      "generation_time": 7.47242546081543,
+      "tokens_used": 380,
+      "response": " Let's break down the problem step by step.\n\n1. **Initial Cost of the House:**\n   Josh buys the house for $80,000.\n\n2. **Cost of Repairs:**\n   Josh spends an additional $50,000 on repairs.\n\n3. **Total Cost:**\n   The total cost for Josh is the sum of the initial cost and the cost of repairs:\n   \\[\n   \\text{Total Cost} = \\$80,000 + \\$50,000 = \\$130,000\n   \\]\n\n4. **Increase in House Value:**\n   The house's value increases by 150%. To find the increase in value, we calculate 150% of the initial cost of the house:\n   \\[\n   \\text{Increase in Value} = 150\\% \\times \\$80,000 = 1.5 \\times \\$80,000 = \\$120,000\n   \\]\n\n5. **Final Value of the House:**\n   The final value of the house is the initial value plus the increase in value:\n   \\[\n   \\text{Final Value} = \\$80,000 + \\$120,000 = \\$200,000\n   \\]\n\n6. **Profit Calculation:**\n   Profit is calculated as the final value of the house minus the total cost:\n   \\[\n   \\text{Profit} = \\text{Final Value} - \\text{Total Cost} = \\$200,000 - \\$130,000 = \\$70,000\n   \\]\n\nTherefore, Josh made a profit of \\(\\boxed{70000}\\",
+      "early_stopped": false,
+      "halt_reason": null,
+      "avg_entropy": 2.679434299468994,
+      "entropy_history": [
+        2.0427515506744385,
+        3.31611704826355
+      ]
+    }
+  ]
+}

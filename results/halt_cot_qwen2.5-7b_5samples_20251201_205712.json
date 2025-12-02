@@ -1,0 +1,121 @@
+{
+  "experiment_info": {
+    "timestamp": "20251201_205712",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_key": "qwen2.5-7b",
+    "sample_size": 5,
+    "config": {
+      "sample_size": 5,
+      "verbose": true,
+      "save_results": true,
+      "max_reasoning_steps": 10,
+      "max_new_tokens": 1024,
+      "temperature": 0.0,
+      "do_sample": false,
+      "debug_probe": true
+    },
+    "early_stopping_config": {
+      "use_answer_consistency": true,
+      "use_entropy_halt": true,
+      "consistency_k": 3,
+      "entropy_threshold": 1.0,
+      "entropy_consecutive_steps": 2,
+      "min_tokens_before_check": 100,
+      "cooldown_tokens": 30
+    }
+  },
+  "statistics": {
+    "total_samples": 5,
+    "correct_samples": 0,
+    "accuracy": 0.0,
+    "total_time": 0,
+    "avg_time_per_sample": 0.0,
+    "total_tokens": 0,
+    "avg_tokens_per_sample": 0.0,
+    "min_tokens": 0,
+    "max_tokens": 0,
+    "early_stops": 0,
+    "early_stop_rate": 0.0,
+    "halt_reasons": {},
+    "avg_entropy": 0.0,
+    "total_experiment_time": 49.63861966133118
+  },
+  "summary": "============================================================\n📊 HALT-CoT 实验统计结果\n============================================================\n🤖 模型: Qwen/Qwen2.5-7B-Instruct\n📝 总样本数: 5\n✅ 正确样本: 0\n🎯 准确率: 0.00%\n🛑 早停率: 0.00% (0/5)\n⏱️  平均用时: 0.0秒/样本\n💬 平均Token: 0.0个/样本\n📊 Token范围: 0 - 0\n📉 平均熵: 0.000\n🕐 总用时: 0分0秒\n============================================================",
+  "results": [
+    {
+      "sample_id": 0,
+      "question": "How many vertical asymptotes does the graph of $y=\\frac{2}{x^2+x-6}$ have?",
+      "ground_truth": "2",
+      "predicted_answer": null,
+      "correct": false,
+      "generation_time": 0,
+      "tokens_used": 0,
+      "response": "Error: name 'AnswerExtractor' is not defined",
+      "error": "name 'AnswerExtractor' is not defined",
+      "early_stopped": false,
+      "halt_reason": null,
+      "avg_entropy": 0.0,
+      "entropy_history": []
+    },
+    {
+      "sample_id": 1,
+      "question": "What is the positive difference between $120\\%$ of 30 and $130\\%$ of 20?",
+      "ground_truth": "10",
+      "predicted_answer": null,
+      "correct": false,
+      "generation_time": 0,
+      "tokens_used": 0,
+      "response": "Error: name 'AnswerExtractor' is not defined",
+      "error": "name 'AnswerExtractor' is not defined",
+      "early_stopped": false,
+      "halt_reason": null,
+      "avg_entropy": 0.0,
+      "entropy_history": []
+    },
+    {
+      "sample_id": 2,
+      "question": "Find $x$ such that $\\lceil x \\rceil + x = \\dfrac{23}{7}$. Express $x$ as a common fraction.",
+      "ground_truth": "9",
+      "predicted_answer": null,
+      "correct": false,
+      "generation_time": 0,
+      "tokens_used": 0,
+      "response": "Error: name 'AnswerExtractor' is not defined",
+      "error": "name 'AnswerExtractor' is not defined",
+      "early_stopped": false,
+      "halt_reason": null,
+      "avg_entropy": 0.0,
+      "entropy_history": []
+    },
+    {
+      "sample_id": 3,
+      "question": "Evaluate $i^5+i^{-25}+i^{45}$.",
+      "ground_truth": "i",
+      "predicted_answer": null,
+      "correct": false,
+      "generation_time": 0,
+      "tokens_used": 0,
+      "response": "Error: name 'AnswerExtractor' is not defined",
+      "error": "name 'AnswerExtractor' is not defined",
+      "early_stopped": false,
+      "halt_reason": null,
+      "avg_entropy": 0.0,
+      "entropy_history": []
+    },
+    {
+      "sample_id": 4,
+      "question": "If $2^8=4^x$, what is the value of $x$?",
+      "ground_truth": "4",
+      "predicted_answer": null,
+      "correct": false,
+      "generation_time": 0,
+      "tokens_used": 0,
+      "response": "Error: name 'AnswerExtractor' is not defined",
+      "error": "name 'AnswerExtractor' is not defined",
+      "early_stopped": false,
+      "halt_reason": null,
+      "avg_entropy": 0.0,
+      "entropy_history": []
+    }
+  ]
+}
