@@ -18,56 +18,65 @@
     }
   },
   "active_model": "qwen2.5-7b",
+  
   "experiment": {
     "sample_size": 50,
     "verbose": true,
     "save_results": true,
-    "max_reasoning_steps": 10,
     "max_new_tokens": 1024,
     "temperature": 0.0,
     "do_sample": false,
     "debug_probe": true
   },
+  
   "paths": {
-    "data_dir": "/root/autodl-tmp/data",
-    "results_dir": "/root/autodl-tmp/results",
-    "test_data": "data/math_test.json",
-    "raw_test_data": "/root/autodl-tmp/data/gsm8k_test.json",
-    "gsm8k_test_data": "/root/autodl-tmp/data/gsm8k_test_processed.json",
-    "gsm8k_raw_test_data": "/root/autodl-tmp/data/gsm8k_test.json",
-    "math_test_data": "/root/autodl-tmp/data/math_test_processed.json",
-    "math_raw_test_data": "/root/autodl-tmp/data/math_test.json"
+    "test_data": "data/math_test.json"
   },
-  "generation": {
-    "max_length": 2048,
-    "max_new_tokens": 512,
-    "do_sample": false,
-    "temperature": 0.0,
-    "top_p": 1.0,
-    "num_return_sequences": 1
-  },
+  
   "early_stopping": {
-    "use_answer_consistency": false,
-    "use_entropy_halt": false,
+    "use_answer_consistency": true,
+    "use_entropy_halt": true,
     "consistency_k": 3,
     "entropy_threshold": 1.0,
     "entropy_consecutive_steps": 2,
     "min_tokens_before_check": 100,
-    "cooldown_tokens": 30
+    "cooldown_tokens": 40
   },
-  "active_dataset": "math",
-  "dataset_configs": {
-    "gsm8k": {
-      "name": "GSM8K",
-      "test_file": "data/gsm8k_test.json",
-      "test_processed": "data/gsm8k_test_processed.json",
-      "description": "小学数学应用题"
-    },
-    "math": {
-      "name": "MATH",
-      "test_file": "data/math_test.json",
-      "test_processed": "data/math_test_processed.json",
-      "description": "竞赛数学题 (Level 1-5)"
+  
+  "stage_control": {
+    "use_smart_detection": false
+  },
+  
+  "sentence_detection": {
+    "enabled": true,
+    "min_tokens_before_check": 100,
+    "cooldown_tokens": 40,
+    "sentence_endings": [".", "!", "?", "。", "！", "？"],
+    "known_abbreviations": [
+      "mr", "mrs", "ms", "dr", "prof", "sr", "jr",
+      "etc", "vs", "i.e", "e.g", "approx", "est",
+      "inc", "corp", "ltd", "co", "dept"
+    ],
+    "check_after_complete_sentence": true
+  },
+  
+  "probe_system": {
+    "max_probe_tokens": 50,
+    "probe_temperature": 0.1,
+    "probe_strategies": {
+      "calculation": "\n\nThe result of this calculation is: ",
+      "conclusion": "\n\nTherefore, the final answer is: ",
+      "answer_signal": "\n#### ",
+      "intermediate": "\n\nThe current value is: ",
+      "reasoning": "\n\nBased on the above, the answer is: "
     }
+  },
+  
+  "reasoning_stage_markers": {
+    "calculation": ["=", "equals", "total", "sum", "result", "calculate"],
+    "conclusion": ["therefore", "thus", "so", "hence", "finally", "in conclusion"],
+    "intermediate": ["step", "first", "next", "then", "now", "let's"],
+    "answer_signal": ["answer is", "answer:", "####", "\\boxed", "final answer"],
+    "reasoning": ["because", "since", "if", "when", "consider"]
   }
 }

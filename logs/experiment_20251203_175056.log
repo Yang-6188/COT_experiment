@@ -1,0 +1,147 @@
+📝 日志文件: logs/experiment_20251203_175056.log
+⏰ 开始时间: 2025-12-03 17:50:56
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.24it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.28it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.29it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.31it/s]
+✅ 模型已加载到: cuda:0
+[SmartHaltDecisionMaker] 初始化配置:
+  - 检测模式: 句子边界检测
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.6
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 实验管理器初始化: 智能检测=False, 句子边界检测=True
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🔎 [句子检查点@calculation] Tokens: 140
+      📄 上下文: ...he denominator equal to zero and solve for $x$.⏎$(x + 3)(x - 2) = 0$⏎⏎Step 3: Solve the equation.⏎$x
+      🧪 探针: '2' | 熵: 0.7857
+   ❌ 处理失败: 'EntropyHaltDetector' object has no attribute 'check'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 92, in run_single_sample
+    result_data = self._generation_loop(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 210, in _generation_loop
+    decision = self.halt_decision_maker.make_decision(probe_result, current_stage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 188, in make_decision
+    return self._unified_decision(probe_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 299, in _unified_decision
+    is_low_entropy = self.entropy_detector.check(probe_result.entropy)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EntropyHaltDetector' object has no attribute 'check'
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🔎 [句子检查点@calculation] Tokens: 180
+      📄 上下文: ...re \((12,-2)\). The distance formula between two points \((x_1, y_1)\) and \((x_2, y_2)\) is:⏎\[⏎d =
+      🧪 探针: '13' | 熵: 0.7170
+   ❌ 处理失败: 'EntropyHaltDetector' object has no attribute 'check'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 92, in run_single_sample
+    result_data = self._generation_loop(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 210, in _generation_loop
+    decision = self.halt_decision_maker.make_decision(probe_result, current_stage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 188, in make_decision
+    return self._unified_decision(probe_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 299, in _unified_decision
+    is_low_entropy = self.entropy_detector.check(probe_result.entropy)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EntropyHaltDetector' object has no attribute 'check'
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...ht-hand side:**⏎   \[⏎   \frac{9}{2\sqrt{3}} = \frac{9}{2\sqrt{3}} \cdot \frac{\sqrt{3}}{\sqrt{3}} =
+      🧪 探针: '14' | 熵: 1.9750
+   ❌ 处理失败: 'EntropyHaltDetector' object has no attribute 'check'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 92, in run_single_sample
+    result_data = self._generation_loop(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 210, in _generation_loop
+    decision = self.halt_decision_maker.make_decision(probe_result, current_stage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 188, in make_decision
+    return self._unified_decision(probe_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 299, in _unified_decision
+    is_low_entropy = self.entropy_detector.check(probe_result.entropy)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EntropyHaltDetector' object has no attribute 'check'
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...n treeks weigh as much as three squigs and one goolee)⏎2. \( 2T + G = S \) (Two treeks and one goole
+      🧪 探针: '5' | 熵: 1.6660
+   ❌ 处理失败: 'EntropyHaltDetector' object has no attribute 'check'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 92, in run_single_sample
+    result_data = self._generation_loop(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 210, in _generation_loop
+    decision = self.halt_decision_maker.make_decision(probe_result, current_stage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 188, in make_decision
+    return self._unified_decision(probe_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 299, in _unified_decision
+    is_low_entropy = self.entropy_detector.check(probe_result.entropy)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EntropyHaltDetector' object has no attribute 'check'
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🔎 [句子检查点@calculation] Tokens: 208
+      📄 上下文: ...c{P_1 \times V_1}{V_2} \]⏎⏎Now, let's plug in the values:⏎⏎\[ P_2 = \frac{4 \, \text{kPa} \times 3.6
+      🧪 探针: '4' | 熵: 1.0496
+   ❌ 处理失败: 'EntropyHaltDetector' object has no attribute 'check'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 92, in run_single_sample
+    result_data = self._generation_loop(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 210, in _generation_loop
+    decision = self.halt_decision_maker.make_decision(probe_result, current_stage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 188, in make_decision
+    return self._unified_decision(probe_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 299, in _unified_decision
+    is_low_entropy = self.entropy_detector.check(probe_result.entropy)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EntropyHaltDetector' object has no attribute 'check'
+📊 进度: 5/10, 准确率: 0.00%, 早停率: 0.00%, 平均tokens: 0.0
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...\( G \).⏎⏎From the problem, we have the following two equations:⏎⏎1. \( 8F + 2G = 932 \)⏎2. \( 14F +
+      🧪 探针: '5' | 熵: 1.9997
+   ❌ 处理失败: 'EntropyHaltDetector' object has no attribute 'check'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 92, in run_single_sample
+    result_data = self._generation_loop(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 210, in _generation_loop
+    decision = self.halt_decision_maker.make_decision(probe_result, current_stage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 188, in make_decision
+    return self._unified_decision(probe_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/early_stopping/decision_maker.py", line 299, in _unified_decision
+    is_low_entropy = self.entropy_detector.check(probe_result.entropy)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EntropyHaltDetector' object has no attribute 'check'
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+
+❌ 实验被用户中断
+============================================================
+⏰ 结束时间: 2025-12-03 17:51:16

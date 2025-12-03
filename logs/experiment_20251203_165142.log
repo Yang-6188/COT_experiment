@@ -1,0 +1,88 @@
+📝 日志文件: logs/experiment_20251203_165142.log
+⏰ 开始时间: 2025-12-03 16:51:42
+============================================================
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.6
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 智能探针配置: 答案一致性=True, 熵检测=True, 调试模式=False
+🧪 开始HALT-CoT增强实验（基于句子的探针策略）
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.27it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.30it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.30it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.34it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.32it/s]
+✅ 模型已加载到: cuda:0
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 4.7s | Tokens: 311  | 探针: 0次
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 75 | 实际: 75 | 用时: 6.9s | Tokens: 515  | 探针: 0次
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 5.3s | Tokens: 402  | 探针: 0次
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 3.9s | Tokens: 294  | 探针: 0次
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🛑 自然停止: max_length_safety
+   ❌ 错误 | 预测: None | 实际: 8 | 用时: 11.7s | Tokens: 876  | 探针: 0次
+📊 进度: 5/10, 准确率: 80.00%, 早停率: 0.00%, 平均tokens: 479.6, 平均探针: 0.0次
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2300 | 实际: 2300 | 用时: 8.6s | Tokens: 646  | 探针: 0次
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 6.5s | Tokens: 487  | 探针: 0次
+
+📝 样本 8: If $9^{18n}=27^{24}$, find $n$....
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 3.9s | Tokens: 294  | 探针: 0次
+
+📝 样本 9: Evaluate $(1+2i)6-3i$....
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: 6 + 9i | 实际: 6 | 用时: 2.4s | Tokens: 179  | 探针: 0次
+
+📝 样本 10: Simplify $(2-2i)(5+5i)$, where $i^2 = -1.$...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 4.9s | Tokens: 366  | 探针: 0次
+📊 进度: 10/10, 准确率: 80.00%, 早停率: 0.00%, 平均tokens: 437.0, 平均探针: 0.0次
+
+============================================================
+📊 HALT-CoT 实验统计结果
+============================================================
+🤖 模型: Qwen/Qwen2.5-7B-Instruct
+📝 总样本数: 10
+✅ 正确样本: 8
+🎯 准确率: 80.00%
+🛑 早停率: 0.00% (0/10)
+🔍 探针检查: 总计0次, 平均0.0次/样本
+⏱️  平均用时: 5.9秒/样本
+💬 平均Token: 437.0个/样本
+📊 Token范围: 179 - 876
+📉 平均熵: 0.000
+🕐 总用时: 0分59秒
+============================================================
+💾 结果已保存: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251203_165246.json
+📄 摘要已保存: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251203_165246_summary.txt
+
+🎉 实验完成!
+📁 结果文件: /root/autodl-tmp/results/halt_cot_qwen_10samples_20251203_165246.json
+
+📈 实验成功完成，处理了 10 个样本
+💡 融合了两种早停方法：
+   1. 答案一致性检测（Liu & Wang 2025）
+   2. 熵基早停（Laaouach HALT-CoT）
+============================================================
+⏰ 结束时间: 2025-12-03 16:52:46

@@ -1,0 +1,190 @@
+📝 日志文件: logs/experiment_20251203_174636.log
+⏰ 开始时间: 2025-12-03 17:46:36
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.26it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.30it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.31it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.35it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]
+✅ 模型已加载到: cuda:0
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.6
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 实验管理器初始化: 智能检测=False, 句子边界检测=True
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🔎 [句子检查点@calculation] Tokens: 140
+      📄 上下文: ...he denominator equal to zero and solve for $x$.⏎$(x + 3)(x - 2) = 0$⏎⏎Step 3: Solve the equation.⏎$x
+      🧪 探针: '2' | 熵: 0.7857
+   🔎 [句子检查点@calculation] Tokens: 186
+      📄 上下文: ... $x - 2 = 0$⏎$x = -3$ or $x = 2$⏎⏎Step 4: Determine if these values of $x$ are vertical asymptotes.⏎
+      🧪 探针: '2' | 熵: 0.0226
+   🔎 [句子检查点@calculation] Tokens: 266
+      📄 上下文: ...e, both $x = -3$ and $x = 2$ are vertical asymptotes.⏎⏎Final Answer: The graph of $y=\frac{2}{x^2+x-
+      🧪 探针: '2' | 熵: 0.0816
+   🛑 [早停] calculation_high_confidence_consistent | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 5.2s | Tokens: 266 | 早停: calculation_high_confidence_consistent
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🔎 [句子检查点@calculation] Tokens: 180
+      📄 上下文: ...re \((12,-2)\). The distance formula between two points \((x_1, y_1)\) and \((x_2, y_2)\) is:⏎\[⏎d =
+      🧪 探针: '13' | 熵: 0.7170
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 75 | 实际: 75 | 用时: 7.2s | Tokens: 515 
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...ht-hand side:**⏎   \[⏎   \frac{9}{2\sqrt{3}} = \frac{9}{2\sqrt{3}} \cdot \frac{\sqrt{3}}{\sqrt{3}} =
+      🧪 探针: '14' | 熵: 1.9750
+   🔎 [句子检查点@calculation] Tokens: 140
+      📄 上下文: ... = \frac{9\sqrt{3}}{6} = \frac{3\sqrt{3}}{2}⏎   \]⏎⏎2. **Equate the simplified form to the left-hand
+      🧪 探针: '14' | 熵: 1.4246
+   🔎 [句子检查点@calculation] Tokens: 180
+      📄 上下文: ...rm to the left-hand side:**⏎   \[⏎   \frac{A\sqrt{B}}{C} = \frac{3\sqrt{3}}{2}⏎   \]⏎⏎3. **Match the
+      🧪 探针: '14' | 熵: 1.3187
+   🔎 [句子检查点@calculation] Tokens: 223
+      📄 上下文: ...ors and denominators:**⏎   - Numerator: \(A\sqrt{B} = 3\sqrt{3}\)⏎   - Denominator: \(C = 2\)⏎⏎4. **
+      🧪 探针: '10' | 熵: 1.2929
+   🔎 [句子检查点@calculation] Tokens: 278
+      📄 上下文: ...(B\):**⏎   - From \(A\sqrt{B} = 3\sqrt{3}\), we can see that \(A = 3\) and \(\sqrt{B} = \sqrt{3}\).⏎
+      🧪 探针: '10' | 熵: 1.2849
+   🔎 [句子检查点@calculation] Tokens: 318
+      📄 上下文: ...(B = 3\).⏎⏎5. **Verify the conditions:**⏎   - \(A = 3\) and \(C = 2\) have no common prime factors (
+      🧪 探针: '8' | 熵: 0.9006
+   🔎 [句子检查点@calculation] Tokens: 358
+      📄 上下文: ...tinct).⏎   - \(B = 3\) has no perfect-square factors other than 1.⏎⏎6. **Calculate \(A + B + C\):**⏎
+      🧪 探针: '8' | 熵: 0.7424
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 7.4s | Tokens: 402 
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...n treeks weigh as much as three squigs and one goolee)⏎2. \( 2T + G = S \) (Two treeks and one goole
+      🧪 探针: '5' | 熵: 1.6660
+   🔎 [句子检查点@calculation] Tokens: 148
+      📄 上下文: ...f treeks that equal the weight of one squig, i.e., we need to find \( x \) such that \( xT = S \).⏎⏎
+      🧪 探针: '5' | 熵: 1.7134
+   🔎 [句子检查点@conclusion] Tokens: 272
+      📄 上下文: ... = 4S \]⏎\[ 3T = S \]⏎⏎So, the weight of one squig is equal to the weight of three treeks. Therefore
+      🧪 探针: '3' | 熵: 0.0081
+   🛑 [早停] conclusion_high_confidence | 答案: 3
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 4.5s | Tokens: 272 | 早停: conclusion_high_confidence
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🔎 [句子检查点@calculation] Tokens: 208
+      📄 上下文: ...c{P_1 \times V_1}{V_2} \]⏎⏎Now, let's plug in the values:⏎⏎\[ P_2 = \frac{4 \, \text{kPa} \times 3.6
+      🧪 探针: '4' | 熵: 1.0496
+   🔎 [句子检查点@calculation] Tokens: 262
+      📄 上下文: ...imes 3.67 \, \text{L}}{1.835 \, \text{L}} \]⏎⏎\[ P_2 = \frac{14.68 \, \text{kPa} \cdot \text{L}}{1.8
+      🧪 探针: '8' | 熵: 0.4940
+   🛑 自然停止: max_length_safety
+   ❌ 错误 | 预测: None | 实际: 8 | 用时: 12.4s | Tokens: 876 
+📊 进度: 5/10, 准确率: 80.00%, 早停率: 40.00%, 平均tokens: 466.2
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...\( G \).⏎⏎From the problem, we have the following two equations:⏎⏎1. \( 8F + 2G = 932 \)⏎2. \( 14F +
+      🧪 探针: '5' | 熵: 1.9997
+   🔎 [句子检查点@calculation] Tokens: 358
+      📄 上下文: ...6G) = 2804 - 2796 \]⏎\[ 4F = 8 \]⏎\[ F = 2 \]⏎⏎So, the cost of one pound of feathers is \( \$2 \).⏎⏎
+      🧪 探针: '2' | 熵: 1.1897
+   🔎 [句子检查点@calculation] Tokens: 497
+      📄 上下文: ...[ 16 + 2G = 932 \]⏎\[ 2G = 916 \]⏎\[ G = 458 \]⏎⏎So, the cost of one ounce of gold is \( \$458 \).⏎⏎
+      🧪 探针: '458' | 熵: 2.0515
+   🔎 [句子检查点@conclusion] Tokens: 632
+      📄 上下文: ...2300 \]⏎⏎Therefore, the cost of five pounds of feathers and five ounces of gold is \( \$2300 \). The
+      🧪 探针: '2300' | 熵: 0.3948
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2300 | 实际: 2300 | 用时: 9.9s | Tokens: 646 
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...circle and $r$ is the radius.⏎⏎Step 1: Group the $x$ and $y$ terms.⏎$x^2 + 8x + y^2 - 6y = 0$⏎⏎Step 
+      🧪 探针: '5' | 熵: 0.7759
+   🔎 [句子检查点@calculation] Tokens: 220
+      📄 上下文: ...^2 + 8x + 16 - 16 + y^2 - 6y = 0$⏎⏎Step 3: Complete the square for the $y$ terms.⏎Similarly, we need
+      🧪 探针: '5' | 熵: 0.7206
+   🔎 [句子检查点@calculation] Tokens: 380
+      📄 上下文: ... as:⏎⏎$(x + 4)^2 - 16 + (y - 3)^2 - 9 = 0$⏎⏎Step 5: Simplify the equation.⏎$(x + 4)^2 + (y - 3)^2 - 
+      🧪 探针: '25' | 熵: 0.6454
+   🔎 [句子检查点@calculation] Tokens: 420
+      📄 上下文: ...)^2 + (y - 3)^2 - 25 = 0$⏎⏎Step 6: Add 25 to both sides of the equation.⏎$(x + 4)^2 + (y - 3)^2 = 25
+      🧪 探针: '5' | 熵: 0.7193
+   🔎 [句子检查点@calculation] Tokens: 466
+      📄 上下文: ... circle's equation, where the center of the circle is $(-4, 3)$ and the radius is $\sqrt{25} = 5$.⏎⏎
+      🧪 探针: '5' | 熵: 0.0629
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 8.0s | Tokens: 487 
+
+📝 样本 8: If $9^{18n}=27^{24}$, find $n$....
+   🔎 [句子检查点@calculation] Tokens: 140
+      📄 上下文: ...n} = (3^3)^{24}⏎   \]⏎⏎3. **Simplify the exponents:**⏎   - Using the power of a power property \((a^
+      🧪 探针: '6' | 熵: 1.9822
+   🔎 [句子检查点@calculation] Tokens: 213
+      📄 上下文: ...} = 3^{3 \cdot 24}⏎     \]⏎   - Simplify the exponents:⏎     \[⏎     3^{36n} = 3^{72}⏎     \]⏎⏎4. **
+      🧪 探针: '2' | 熵: 1.5787
+   🔎 [句子检查点@calculation] Tokens: 253
+      📄 上下文: ...es are the same, set the exponents equal to each other:**⏎   \[⏎   36n = 72⏎   \]⏎⏎5. **Solve for \(
+      🧪 探针: '2' | 熵: 1.4763
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 4.8s | Tokens: 294 
+
+📝 样本 9: Evaluate $(1+2i)6-3i$....
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...s start with the distribution:⏎⏎\[⏎(1+2i)6 = 1 \cdot 6 + 2i \cdot 6⏎\]⏎⏎This simplifies to:⏎⏎\[⏎6 + 
+      🧪 探针: '6' | 熵: 0.6458
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: 6 + 9i | 实际: 6 | 用时: 2.7s | Tokens: 179 
+
+📝 样本 10: Simplify $(2-2i)(5+5i)$, where $i^2 = -1.$...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ... each term in the first binomial to each term in the second binomial.⏎\[⏎(2-2i)(5+5i) = 2 \cdot 5 + 
+      🧪 探针: '20' | 熵: 1.7565
+   🔎 [句子检查点@calculation] Tokens: 214
+      📄 上下文: ...cdot 5 = -10i⏎\]⏎\[⏎-2i \cdot 5i = -10i^2⏎\]⏎⏎Step 3: Combine the results from the multiplications.⏎
+      🧪 探针: '10' | 熵: 1.7331
+   🔎 [句子检查点@calculation] Tokens: 334
+      📄 上下文: ... \(i^2 = -1\) into the expression.⏎\[⏎10 - 10(-1)⏎\]⏎⏎Step 6: Simplify the expression.⏎\[⏎10 + 10 = 
+      🧪 探针: '20' | 熵: 0.7104
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 5.7s | Tokens: 366 
+📊 进度: 10/10, 准确率: 80.00%, 早停率: 20.00%, 平均tokens: 430.3
+
+============================================================
+📊 HALT-CoT 实验统计结果
+============================================================
+🤖 模型: Qwen/Qwen2.5-7B-Instruct
+📝 总样本数: 10
+✅ 正确样本: 8
+🎯 准确率: 80.00%
+🛑 早停率: 20.00% (2/10)
+⏱️  平均用时: 6.8秒/样本
+💬 平均Token: 430.3个/样本
+📊 Token范围: 179 - 876
+📉 平均熵: 0.991
+🔍 平均检查点: 6.5次/样本
+🕐 总用时: 1分8秒
+🔍 检测模式: 句子边界检测
+
+🔍 早停原因分布:
+   - calculation_high_confidence_consistent: 1次
+   - conclusion_high_confidence: 1次
+============================================================
+💾 结果已保存: /root/autodl-tmp/results/halt_cot_qwen2.5-7b_sentence_10samples_20251203_174751.json
+📄 摘要已保存: /root/autodl-tmp/results/halt_cot_qwen2.5-7b_sentence_10samples_20251203_174751_summary.txt
+
+🎉 实验完成!
+📁 结果文件: /root/autodl-tmp/results/halt_cot_qwen2.5-7b_sentence_10samples_20251203_174751.json
+
+📈 实验成功完成，处理了 10 个样本
+💡 融合了两种早停方法：
+   1. 答案一致性检测（Liu & Wang 2025）
+   2. 熵基早停（Laaouach HALT-CoT）
+============================================================
+⏰ 结束时间: 2025-12-03 17:47:51

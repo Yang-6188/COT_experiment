@@ -15,11 +15,17 @@ class GenerationState:
     predicted_answer: Optional[str] = None
 
 
-@dataclass 
+@dataclass
 class CheckpointResult:
-    """检查点结果"""
-    should_halt: bool = False
-    halt_reason: Optional[str] = None
-    answer: Optional[str] = None
-    entropy: float = 0.0
-    confidence: float = 0.0
+    """检查点结果数据类"""
+    should_halt: bool
+    halt_reason: Optional[str]
+    answer: Optional[str]
+    entropy: float
+    confidence: Optional[float] = None
+    
+    def __repr__(self) -> str:
+        """返回结果的字符串表示"""
+        return (f"CheckpointResult(should_halt={self.should_halt}, "
+                f"halt_reason={self.halt_reason}, answer={self.answer}, "
+                f"entropy={self.entropy:.4f}, confidence={self.confidence})")

@@ -1,0 +1,44 @@
+📝 日志文件: logs/experiment_20251203_173300.log
+⏰ 开始时间: 2025-12-03 17:33:00
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.37it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.38it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.41it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:02<00:00,  1.47it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:02<00:00,  1.44it/s]
+✅ 模型已加载到: cuda:0
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.6
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 实验管理器初始化: 智能检测=True, 句子边界检测=False
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🔎 [智能检查点@conclusion] Tokens: 120
+      📄 上下文: ...actor this as $(x + 3)(x - 2)$.⏎⏎Step 2: Set the denominator equal to zero and solve for $x$.⏎$(x + 
+      🧪 探针: '2' | 熵: 0.0659
+   🛑 [早停] conclusion_high_confidence | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 2.6s | Tokens: 120 | 早停: conclusion_high_confidence
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...re \((12,-2)\). The distance formula between two points \((x_1, y_1)\) and \((x_2, y_2)\) is:⏎\[⏎d =
+      🧪 探针: '13' | 熵: 0.7170
+   🔎 [智能检查点@calculation] Tokens: 220
+      📄 上下文: ...y_2)\) is:⏎\[⏎d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}⏎\]⏎Applying this to points \(A\) and \(C\):⏎\
+      🧪 探针: '13' | 熵: 1.5836
+   🔎 [智能检查点@calculation] Tokens: 260
+      📄 上下文: ...is to points \(A\) and \(C\):⏎\[⏎AC = \sqrt{(12 - 0)^2 + (-2 - 7)^2} = \sqrt{12^2 + (-9)^2} = \sqrt{
+      🧪 探针: '15' | 熵: 0.8774
+   🔎 [智能检查点@conclusion] Tokens: 498
+      📄 上下文: ...als \(AC\) and \(BD\):⏎\[⏎A = \frac{1}{2} \times 15 \times 10 = \frac{1}{2} \times 150 = 75⏎\]⏎⏎Thus
+      🧪 探针: '75' | 熵: 0.8367
+
+❌ 实验被用户中断
+============================================================
+⏰ 结束时间: 2025-12-03 17:33:17

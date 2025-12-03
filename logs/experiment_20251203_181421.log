@@ -1,0 +1,53 @@
+📝 日志文件: logs/experiment_20251203_181421.log
+⏰ 开始时间: 2025-12-03 18:14:21
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.27it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.31it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.30it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.35it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]
+✅ 模型已加载到: cuda:0
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.6
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 实验管理器初始化: 智能检测=False, 句子边界检测=True
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   ❌ 处理失败: CheckpointResult.__init__() missing 1 required positional argument: 'halt_reason'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 92, in run_single_sample
+    result_data = self._generation_loop(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 199, in _generation_loop
+    probe_result = probe_system.probe_answer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/probe_system.py", line 164, in probe_answer
+    return CheckpointResult(
+           ^^^^^^^^^^^^^^^^^
+TypeError: CheckpointResult.__init__() missing 1 required positional argument: 'halt_reason'
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   ❌ 处理失败: CheckpointResult.__init__() missing 1 required positional argument: 'halt_reason'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 92, in run_single_sample
+    result_data = self._generation_loop(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_manager.py", line 199, in _generation_loop
+    probe_result = probe_system.probe_answer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/probe_system.py", line 164, in probe_answer
+    return CheckpointResult(
+           ^^^^^^^^^^^^^^^^^
+TypeError: CheckpointResult.__init__() missing 1 required positional argument: 'halt_reason'
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+
+❌ 实验被用户中断
+============================================================
+⏰ 结束时间: 2025-12-03 18:14:30

@@ -1,0 +1,21 @@
+📝 日志文件: logs/experiment_20251203_172618.log
+⏰ 开始时间: 2025-12-03 17:26:18
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+❌ 实验失败: name 'torch' is not defined
+Traceback (most recent call last):
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_runner.py", line 109, in run_experiment
+    tokenizer, model = self.load_model()
+                       ^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/halt_cot_project/src/experiment_runner.py", line 80, in load_model
+    torch_dtype=torch.float16,
+                ^^^^^
+NameError: name 'torch' is not defined
+
+💥 实验失败或没有有效结果
+============================================================
+⏰ 结束时间: 2025-12-03 17:26:19

@@ -1,0 +1,148 @@
+📝 日志文件: logs/experiment_20251203_163717.log
+⏰ 开始时间: 2025-12-03 16:37:17
+============================================================
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.6
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 智能探针配置: 答案一致性=True, 熵检测=True, 阶段模式=固定阶段['problem_understanding', 'reasoning', 'calculation', 'verification', 'conclusion'], 调试模式=False
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.25it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.28it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.28it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.31it/s]
+✅ 模型已加载到: cuda:0
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🔎 [固定检查点@calculation] Tokens: 250
+      📄 上下文: ... (2), which is not zero. Therefore, both $x = -3$ and $x = 2$ are vertical asymptotes.⏎⏎Final Answer
+      🧪 探针: '2' | 熵: 0.0739
+   🔎 [固定检查点@calculation] Tokens: 300
+      📄 上下文: ...rtical asymptotes. The vertical asymptotes occur at $x = -3$ and $x = 2$. ⏎⏎Therefore, the answer is
+      🧪 探针: '2' | 熵: 0.0112
+   🛑 [早停] calculation_high_confidence_consistent | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 5.3s | Tokens: 300 | 模式: fixed | 早停: calculation_high_confidence_consistent
+   回答预览:  To determine the number of vertical asymptotes for the function $y=\frac{2}{x^2+x-6}$, we need to find the values of $x$ that make the denominator eq...
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🔎 [固定检查点@calculation] Tokens: 250
+      📄 上下文: ...)^2}⏎\]⏎Applying this to points \(A\) and \(C\):⏎\[⏎AC = \sqrt{(12 - 0)^2 + (-2 - 7)^2} = \sqrt{12^2
+      🧪 探针: '13.416407864998739' | 熵: 1.3217
+   🔎 [固定检查点@calculation] Tokens: 300
+      📄 上下文: ...4 + 81} = \sqrt{225} = 15⏎\]⏎⏎### Step 2: Calculate the length of diagonal \(BD\)⏎The coordinates of
+      🧪 探针: '36' | 熵: 2.0349
+   ❌ 错误 | 预测: None | 实际: 75 | 用时: 7.4s | Tokens: 512 | 模式: fixed 
+   回答预览:  To find the area of kite \(ABCD\) with given coordinates \(A(0,7)\), \(B(1,0)\), \(C(12,-2)\), and \(D(7,8)\), we will use the formula for the area o...
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🔎 [固定检查点@calculation] Tokens: 250
+      📄 上下文: ...t{3}\)⏎   - Denominator: \(C = 2\)⏎⏎4. **Solve for \(A\) and \(B\):**⏎   - From \(A\sqrt{B} = 3\sqrt
+      🧪 探针: '10' | 熵: 1.4795
+   🔎 [固定检查点@calculation] Tokens: 300
+      📄 上下文: ...= 3\) and \(\sqrt{B} = \sqrt{3}\).⏎   - Therefore, \(B = 3\).⏎⏎5. **Verify the conditions:**⏎   - \(
+      🧪 探针: '8' | 熵: 0.8988
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 6.0s | Tokens: 402 | 模式: fixed 
+   回答预览:  To solve the given equation \(\frac{A\sqrt{B}}{C} = \frac{9}{2\sqrt{3}}\), we need to simplify and match the terms on both sides of the equation.  1....
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🔎 [固定检查点@calculation] Tokens: 250
+      📄 上下文: ...ation:⏎⏎\[ 10T = 3S + (S - 2T) \]⏎\[ 10T = 3S + S - 2T \]⏎\[ 10T = 4S - 2T \]⏎\[ 12T = 4S \]⏎\[ 3T =
+      🧪 探针: '3' | 熵: 0.8433
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 4.3s | Tokens: 294 | 模式: fixed 
+   回答预览:  Let's denote the weight of a treek as \( T \), the weight of a squig as \( S \), and the weight of a goolee as \( G \).  From the problem, we have th...
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🔎 [固定检查点@calculation] Tokens: 250
+      📄 上下文: ...ac{4 \, \text{kPa} \times 3.67 \, \text{L}}{1.835 \, \text{L}} \]⏎⏎\[ P_2 = \frac{14.68 \, \text{kPa
+      🧪 探针: '8' | 熵: 1.0307
+   🔎 [固定检查点@calculation] Tokens: 300
+      📄 上下文: ...t \text{L}}{1.835 \, \text{L}} \]⏎⏎\[ P_2 \approx 7.99 \, \text{kPa} \]⏎⏎So, the new pressure in the
+      🧪 探针: '7.99' | 熵: 0.5098
+   ❌ 错误 | 预测: None | 实际: 8 | 用时: 7.4s | Tokens: 512 | 模式: fixed 
+   回答预览:  To solve this problem, we can use Boyle's Law, which states that the pressure (P) of a gas is inversely proportional to its volume (V) at constant te...
+📊 进度: 5/10, 准确率: 60.00%, 早停率: 20.00%, 平均tokens: 404.0
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🔎 [固定检查点@calculation] Tokens: 250
+      📄 上下文: ...by 2:⏎⏎\[ 3(8F + 2G) = 3(932) \]⏎\[ 2(14F + 3G) = 2(1402) \]⏎⏎This gives us:⏎⏎\[ 24F + 6G = 2796 \]⏎
+      🧪 探针: '24' | 熵: 0.8279
+   🔎 [固定检查点@calculation] Tokens: 300
+      📄 上下文: ...tions⏎Now, we subtract the first equation from the second equation to eliminate \( G \):⏎⏎\[ (28F + 
+      🧪 探针: '28' | 熵: 1.1544
+   ❌ 错误 | 预测: 2 | 实际: 2300 | 用时: 7.5s | Tokens: 512 | 模式: fixed 
+   回答预览:  To solve this problem, we will set up a system of linear equations based on the given information and then solve for the cost of one pound of feather...
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+   🔎 [固定检查点@calculation] Tokens: 250
+      📄 上下文: ...ubtract the square of half the coefficient of $y$ (which is -6) inside the equation. Half of -6 is -
+      🧪 探针: '5.000000000000001' | 熵: 0.1080
+   🔎 [固定检查点@calculation] Tokens: 300
+      📄 上下文: ...quare of -3 is 9. So, we add and subtract 9 inside the equation.⏎⏎$x^2 + 8x + 16 - 16 + y^2 - 6y + 9
+      🧪 探针: '2' | 熵: 2.6588
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 7.2s | Tokens: 487 | 模式: fixed 
+   回答预览:  To find the radius of the circle, we need to rewrite the equation in the standard form of a circle's equation, which is $(x - h)^2 + (y - k)^2 = r^2$...
+
+📝 样本 8: If $9^{18n}=27^{24}$, find $n$....
+   🔎 [固定检查点@calculation] Tokens: 250
+      📄 上下文: ...nce the bases are the same, set the exponents equal to each other:**⏎   \[⏎   36n = 72⏎   \]⏎⏎5. **S
+      🧪 探针: '2' | 熵: 1.7436
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 4.2s | Tokens: 294 | 模式: fixed 
+   回答预览:  To solve the equation \(9^{18n} = 27^{24}\), we will first express both sides of the equation with the same base.   1. **Express both sides with base...
+
+📝 样本 9: Evaluate $(1+2i)6-3i$....
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: 6 + 9i | 实际: 6 | 用时: 2.4s | Tokens: 179 | 模式: fixed 
+   回答预览:  To evaluate the expression \((1+2i)6-3i\), we will follow these steps:  1. Distribute the 6 to both terms inside the parentheses. 2. Simplify the res...
+
+📝 样本 10: Simplify $(2-2i)(5+5i)$, where $i^2 = -1.$...
+   🔎 [固定检查点@calculation] Tokens: 250
+      📄 上下文: ... the multiplications.⏎\[⏎10 + 10i - 10i - 10i^2⏎\]⏎⏎Step 4: Simplify by combining like terms. Notice
+      🧪 探针: '20' | 熵: 2.7450
+   🔎 [固定检查点@calculation] Tokens: 300
+      📄 上下文: ...) and \(-10i\) cancel each other out.⏎\[⏎10 + 0 - 10i^2⏎\]⏎⏎Step 5: Substitute \(i^2 = -1\) into the
+      🧪 探针: '20' | 熵: 2.2565
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 5.5s | Tokens: 366 | 模式: fixed 
+   回答预览:  To simplify the expression \((2-2i)(5+5i)\), we will use the distributive property (also known as the FOIL method for binomials), which involves mult...
+📊 进度: 10/10, 准确率: 60.00%, 早停率: 10.00%, 平均tokens: 385.8
+
+============================================================
+📊 HALT-CoT 实验统计结果
+============================================================
+🤖 模型: Qwen/Qwen2.5-7B-Instruct
+📝 总样本数: 10
+✅ 正确样本: 6
+🎯 准确率: 60.00%
+🛑 早停率: 10.00% (1/10)
+⏱️  平均用时: 5.7秒/样本
+💬 平均Token: 385.8个/样本
+📊 Token范围: 179 - 512
+📉 平均熵: 1.114
+🕐 总用时: 0分57秒
+🔍 阶段检测模式: 固定间隔
+   - 固定检查阶段: ['problem_understanding', 'reasoning', 'calculation', 'verification', 'conclusion']
+   - 检查间隔: [50, 100, 150, 200, 250, 300]
+
+🔍 早停原因分布:
+   - calculation_high_confidence_consistent: 1次
+============================================================
+💾 结果已保存: /root/autodl-tmp/results/halt_cot_qwen2.5-7b_fixed_10samples_20251203_163820.json
+📄 摘要已保存: /root/autodl-tmp/results/halt_cot_qwen2.5-7b_fixed_10samples_20251203_163820_summary.txt
+
+🎉 实验完成!
+📁 结果文件: /root/autodl-tmp/results/halt_cot_qwen2.5-7b_fixed_10samples_20251203_163820.json
+
+📈 实验成功完成，处理了 10 个样本
+💡 融合了两种早停方法：
+   1. 答案一致性检测（Liu & Wang 2025）
+   2. 熵基早停（Laaouach HALT-CoT）
+============================================================
+⏰ 结束时间: 2025-12-03 16:38:20

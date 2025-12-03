@@ -1,0 +1,34 @@
+📝 日志文件: logs/experiment_20251203_163140.log
+⏰ 开始时间: 2025-12-03 16:31:40
+============================================================
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_consistency: False
+  - use_entropy: False
+  - consistency_k: 3
+  - entropy_threshold: 0.6
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 智能探针配置: 答案一致性=False, 熵检测=False, 阶段模式=智能检测, 调试模式=False
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 10 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.26it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.30it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.30it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.36it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]
+✅ 模型已加载到: cuda:0
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 4.7s | Tokens: 311 | 模式: smart 
+   回答预览:  To determine the number of vertical asymptotes for the function $y=\frac{2}{x^2+x-6}$, we need to find the values of $x$ that make the denominator eq...
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 75 | 实际: 75 | 用时: 6.8s | Tokens: 515 | 模式: smart 
+   回答预览:  To find the area of kite \(ABCD\) with given coordinates \(A(0,7)\), \(B(1,0)\), \(C(12,-2)\), and \(D(7,8)\), we will use the formula for the area o...
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+
+❌ 实验被用户中断
+============================================================
+⏰ 结束时间: 2025-12-03 16:32:02

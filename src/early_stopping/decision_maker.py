@@ -213,6 +213,71 @@ class SmartHaltDecisionMaker:
         if self.use_consistency:
             self.consistency_detector.add_answer(probe_result.answer)
         
+        # 如果使用熵检测，记录熵值
+        if self.use_entropy:
+            self.entropy_detector.add_entropy(probe_result.entropy)
+        
+        return CheckpointResult(
+            should_halt=False,
+            halt_reason=None,
+            answer=probe_result.answer,
+            entropy=probe_result.entropy,
+            confidence=probe_result.confidence
+        )
+    
+    def _unified_decision(self, probe_result: CheckpointResult) -> CheckpointResult:
+        """
+        统一决策方法（如果需要的话）
+        
+        Args:
+            probe_result: 探针结果
+            
+        Returns:
+            决策结果
+        """
+        if not probe_result.answer:
+            return probe_result
+        
+        # 添加熵值到检测器（如果启用）
+        if self.use_entropy:
+            should_halt_by_entropy = self.entropy_detector.add_entropy(probe_result.entropy)
+            
+            # 如果连续低熵，考虑停止
+            if should_halt_by_entropy:
+                # 如果同时启用一致性检测，需要一致性确认
+                if self.use_consistency:
+                    is_consistent = self.consistency_detector.add_answer(probe_result.answer)
+                    if is_consistent:
+                        return CheckpointResult(
+                            should_halt=True,
+                            halt_reason="low_entropy_consistent",
+                            answer=probe_result.answer,
+                            entropy=probe_result.entropy,
+                            confidence=probe_result.confidence
+                        )
+                else:
+                    # 只使用熵值检测
+                    return CheckpointResult(
+                        should_halt=True,
+                        halt_reason="low_entropy",
+                        answer=probe_result.answer,
+                        entropy=probe_result.entropy,
+                        confidence=probe_result.confidence
+                    )
+        
+        # 一致性检测
+        if self.use_consistency:
+            is_consistent = self.consistency_detector.add_answer(probe_result.answer)
+            if is_consistent:
+                return CheckpointResult(
+                    should_halt=True,
+                    halt_reason="answer_consistency",
+                    answer=probe_result.answer,
+                    entropy=probe_result.entropy,
+                    confidence=probe_result.confidence
+                )
+        
+        # 不停止
         return CheckpointResult(
             should_halt=False,
             halt_reason=None,
