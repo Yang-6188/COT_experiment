@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 配置管理器 - 交互式菜单系统
-支持选择数据集并逐项修改参数
+支持选择数据集并逐项修改参数（自动保存版本）
 """
 
 import json
@@ -289,11 +289,12 @@ class InteractiveConfigManager:
         print("  8. 切换开关选项")
         print("  9. 重置为默认配置")
         print()
-        print("  s. 保存当前配置")
         print("  0. 退出")
         print(f"\n{'='*80}\n")
+        print("💡 提示: 所有修改将自动保存")
+        print()
         
-        return input("请选择操作 [输入数字或字母]: ").strip().lower()
+        return input("请选择操作 [输入数字]: ").strip().lower()
     
     def modify_generation_params(self):
         """修改生成参数"""
@@ -305,23 +306,31 @@ class InteractiveConfigManager:
         print(f"  温度参数: {self.current_config['temperature']}")
         print()
         
+        modified = False
         try:
             val = input("样本数量 (回车跳过): ").strip()
             if val:
                 self.current_config['sample_size'] = int(val)
                 print(f"  ✓ 已修改为: {self.current_config['sample_size']}")
+                modified = True
             
             val = input("最大tokens (回车跳过): ").strip()
             if val:
                 self.current_config['max_tokens'] = int(val)
                 print(f"  ✓ 已修改为: {self.current_config['max_tokens']}")
+                modified = True
             
             val = input("温度参数 0.0-2.0 (回车跳过): ").strip()
             if val:
                 self.current_config['temperature'] = float(val)
                 print(f"  ✓ 已修改为: {self.current_config['temperature']}")
+                modified = True
             
-            print("\n✅ 参数修改完成")
+            if modified:
+                print("\n✅ 参数修改完成")
+                self.save_config(silent=True)
+            else:
+                print("\n⚠️ 未进行任何修改")
         except ValueError:
             print("\n❌ 输入格式错误，修改已取消")
         
@@ -345,14 +354,17 @@ class InteractiveConfigManager:
             self.current_config['use_smart_detection'] = True
             self.current_config['use_sentence_detection'] = False
             print("\n✅ 已切换到智能阶段检测模式")
+            self.save_config(silent=True)
         elif choice == '2':
             self.current_config['use_smart_detection'] = False
             self.current_config['use_sentence_detection'] = True
             print("\n✅ 已切换到句子边界检测模式")
+            self.save_config(silent=True)
         elif choice == '3':
             self.current_config['use_smart_detection'] = False
             self.current_config['use_sentence_detection'] = False
             print("\n✅ 已禁用检测模式")
+            self.save_config(silent=True)
         elif choice == '0':
             return
         else:
@@ -372,23 +384,31 @@ class InteractiveConfigManager:
         print(f"  连续步数: {self.current_config['entropy_steps']}")
         print()
         
+        modified = False
         try:
             val = input("一致性窗口 (回车跳过): ").strip()
             if val:
                 self.current_config['consistency_k'] = int(val)
                 print(f"  ✓ 已修改为: {self.current_config['consistency_k']}")
+                modified = True
             
             val = input("熵值阈值 (回车跳过): ").strip()
             if val:
                 self.current_config['entropy_threshold'] = float(val)
                 print(f"  ✓ 已修改为: {self.current_config['entropy_threshold']}")
+                modified = True
             
             val = input("连续步数 (回车跳过): ").strip()
             if val:
                 self.current_config['entropy_steps'] = int(val)
                 print(f"  ✓ 已修改为: {self.current_config['entropy_steps']}")
+                modified = True
             
-            print("\n✅ 早停参数修改完成")
+            if modified:
+                print("\n✅ 早停参数修改完成")
+                self.save_config(silent=True)
+            else:
+                print("\n⚠️ 未进行任何修改")
         except ValueError:
             print("\n❌ 输入格式错误，修改已取消")
         
@@ -403,18 +423,25 @@ class InteractiveConfigManager:
         print(f"  冷却tokens: {self.current_config['cooldown']}")
         print()
         
+        modified = False
         try:
             val = input("最小tokens (开始检测前) (回车跳过): ").strip()
             if val:
                 self.current_config['min_tokens'] = int(val)
                 print(f"  ✓ 已修改为: {self.current_config['min_tokens']}")
+                modified = True
             
             val = input("冷却tokens (两次检测间隔) (回车跳过): ").strip()
             if val:
                 self.current_config['cooldown'] = int(val)
                 print(f"  ✓ 已修改为: {self.current_config['cooldown']}")
+                modified = True
             
-            print("\n✅ 检查点参数修改完成")
+            if modified:
+                print("\n✅ 检查点参数修改完成")
+                self.save_config(silent=True)
+            else:
+                print("\n⚠️ 未进行任何修改")
         except ValueError:
             print("\n❌ 输入格式错误，修改已取消")
         
@@ -429,18 +456,25 @@ class InteractiveConfigManager:
         print(f"  探针温度: {self.current_config['probe_temperature']}")
         print()
         
+        modified = False
         try:
             val = input("最大探针tokens (回车跳过): ").strip()
             if val:
                 self.current_config['max_probe_tokens'] = int(val)
                 print(f"  ✓ 已修改为: {self.current_config['max_probe_tokens']}")
+                modified = True
             
             val = input("探针温度 0.0-1.0 (回车跳过): ").strip()
             if val:
                 self.current_config['probe_temperature'] = float(val)
                 print(f"  ✓ 已修改为: {self.current_config['probe_temperature']}")
+                modified = True
             
-            print("\n✅ 探针参数修改完成")
+            if modified:
+                print("\n✅ 探针参数修改完成")
+                self.save_config(silent=True)
+            else:
+                print("\n⚠️ 未进行任何修改")
         except ValueError:
             print("\n❌ 输入格式错误，修改已取消")
         
@@ -479,6 +513,7 @@ class InteractiveConfigManager:
                 self.current_config[config_key] = not self.current_config[config_key]
                 status = '启用' if self.current_config[config_key] else '禁用'
                 print(f"  ✓ {name}已{status}")
+                self.save_config(silent=True)
             else:
                 print("  ❌ 无效选择")
     
@@ -488,6 +523,7 @@ class InteractiveConfigManager:
         if confirm == 'y':
             self.current_config = self.DEFAULT_CONFIG.copy()
             print("✅ 已重置为默认配置")
+            self.save_config(silent=True)
         else:
             print("❌ 已取消重置")
         input("\n按回车继续...")
@@ -569,46 +605,52 @@ class InteractiveConfigManager:
             }
         }
     
-    def save_config(self):
-        """保存配置"""
+    def save_config(self, silent: bool = False):
+        """保存配置
+        
+        Args:
+            silent: 是否静默保存（不显示详细信息）
+        """
         # 备份旧配置
         if self.current_config_path.exists():
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             backup_path = self.backup_dir / f"config_{timestamp}.json"
             shutil.copy(self.current_config_path, backup_path)
-            print(f"📦 已备份旧配置到: {backup_path.name}")
+            if not silent:
+                print(f"📦 已备份旧配置到: {backup_path.name}")
         
         # 保存新配置
         full_config = self.build_full_config()
         with open(self.current_config_path, 'w', encoding='utf-8') as f:
             json.dump(full_config, f, indent=2, ensure_ascii=False)
         
-        print(f"✅ 配置已保存到: {self.current_config_path}")
-        
-        # 显示保存的配置摘要
-        print(f"\n保存的配置摘要:")
-        print(f"  模型: {self.current_config['active_model']}")
-        print(f"  数据集: {self.current_config['data']} ({self.current_config['sample_size']}样本)")
-        
-        if self.current_config['use_smart_detection']:
-            print(f"  检测模式: 智能阶段检测")
-        elif self.current_config['use_sentence_detection']:
-            print(f"  检测模式: 句子边界检测")
+        if silent:
+            print(f"💾 配置已自动保存")
         else:
-            print(f"  检测模式: 禁用")
-        
-        early_stop_status = []
-        if self.current_config['use_answer_consistency']:
-            early_stop_status.append("答案一致性")
-        if self.current_config['use_entropy_halt']:
-            early_stop_status.append("熵值检测")
-        
-        if early_stop_status:
-            print(f"  早停策略: {', '.join(early_stop_status)}")
-        else:
-            print(f"  早停策略: 禁用")
-        
-        input("\n按回车继续...")
+            print(f"✅ 配置已保存到: {self.current_config_path}")
+            
+            # 显示保存的配置摘要
+            print(f"\n保存的配置摘要:")
+            print(f"  模型: {self.current_config['active_model']}")
+            print(f"  数据集: {self.current_config['data']} ({self.current_config['sample_size']}样本)")
+            
+            if self.current_config['use_smart_detection']:
+                print(f"  检测模式: 智能阶段检测")
+            elif self.current_config['use_sentence_detection']:
+                print(f"  检测模式: 句子边界检测")
+            else:
+                print(f"  检测模式: 禁用")
+            
+            early_stop_status = []
+            if self.current_config['use_answer_consistency']:
+                early_stop_status.append("答案一致性")
+            if self.current_config['use_entropy_halt']:
+                early_stop_status.append("熵值检测")
+            
+            if early_stop_status:
+                print(f"  早停策略: {', '.join(early_stop_status)}")
+            else:
+                print(f"  早停策略: 禁用")
     
     def run(self):
         """运行交互式配置"""
@@ -626,6 +668,7 @@ class InteractiveConfigManager:
                     self.current_config['active_model'] = result
                     model_info = self.MODELS[result]
                     print(f"\n✅ 已选择模型: {result} ({model_info['desc']})")
+                    self.save_config(silent=True)
                     input("按回车继续...")
             
             elif choice == '2':
@@ -636,6 +679,7 @@ class InteractiveConfigManager:
                     self.current_config['data'] = data_file
                     self.current_config['sample_size'] = sample_size
                     print(f"\n✅ 已选择数据集: {data_file} ({sample_size}样本)")
+                    self.save_config(silent=True)
                     input("按回车继续...")
             
             elif choice == '3':
@@ -666,10 +710,6 @@ class InteractiveConfigManager:
                 # 重置为默认配置
                 self.reset_to_default()
             
-            elif choice == 's':
-                # 保存配置
-                self.save_config()
-            
             else:
                 print("\n❌ 无效选择")
                 input("按回车继续...")
@@ -680,9 +720,10 @@ def main():
     print("""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                                                                            ║
-║                    HALT-CoT 交互式配置管理器 v2.0                          ║
+║                    HALT-CoT 交互式配置管理器 v2.1                          ║
 ║                                                                            ║
 ║                    支持句子边界检测 & 智能阶段检测                         ║
+║                         (自动保存版本)                                     ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
     """)

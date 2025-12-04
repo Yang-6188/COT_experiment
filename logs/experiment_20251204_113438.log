@@ -1,0 +1,937 @@
+📝 日志文件: logs/experiment_20251204_113438.log
+⏰ 开始时间: 2025-12-04 11:34:38
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 50 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.26it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.30it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.30it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.36it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]
+✅ 模型已加载到: cuda:0
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_smart_detection: True
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.5
+  - entropy_consecutive_steps: 3
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 实验管理器初始化: 智能检测=True, 句子边界检测=False
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🔎 [智能检查点@conclusion] Tokens: 140
+      📄 上下文: ...he denominator equal to zero and solve for $x$.⏎$(x + 3)(x - 2) = 0$⏎⏎Step 3: Solve the equation.⏎$x
+      🧪 探针: '2' | 熵: 0.1085
+   🛑 [早停] conclusion_very_low_entropy | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 2.9s | Tokens: 140 | 早停: conclusion_very_low_entropy
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...re \((12,-2)\). The distance formula between two points \((x_1, y_1)\) and \((x_2, y_2)\) is:⏎\[⏎d =
+      🧪 探针: '13' | 熵: 0.7170
+   🔎 [智能检查点@calculation] Tokens: 220
+      📄 上下文: ...y_2)\) is:⏎\[⏎d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}⏎\]⏎Applying this to points \(A\) and \(C\):⏎\
+      🧪 探针: '13' | 熵: 1.5836
+   🔎 [智能检查点@calculation] Tokens: 260
+      📄 上下文: ...is to points \(A\) and \(C\):⏎\[⏎AC = \sqrt{(12 - 0)^2 + (-2 - 7)^2} = \sqrt{12^2 + (-9)^2} = \sqrt{
+      🧪 探针: '15' | 熵: 0.8774
+   🔎 [智能检查点@conclusion] Tokens: 498
+      📄 上下文: ...als \(AC\) and \(BD\):⏎\[⏎A = \frac{1}{2} \times 15 \times 10 = \frac{1}{2} \times 150 = 75⏎\]⏎⏎Thus
+      🧪 探针: '75' | 熵: 0.8367
+   🔎 [智能检查点@answer_signal] Tokens: 511
+      📄 上下文: ...2} \times 15 \times 10 = \frac{1}{2} \times 150 = 75⏎\]⏎⏎Thus, the area of kite \(ABCD\) is \(\boxed
+      🧪 探针: '75' | 熵: 0.0708
+   🛑 [早停] answer_signal_low_entropy | 答案: 75
+   ✅ 正确 | 预测: 75 | 实际: 75 | 用时: 8.5s | Tokens: 511 | 早停: answer_signal_low_entropy
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...ht-hand side:**⏎   \[⏎   \frac{9}{2\sqrt{3}} = \frac{9}{2\sqrt{3}} \cdot \frac{\sqrt{3}}{\sqrt{3}} =
+      🧪 探针: '14' | 熵: 1.9750
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... = \frac{9\sqrt{3}}{6} = \frac{3\sqrt{3}}{2}⏎   \]⏎⏎2. **Equate the simplified form to the left-hand
+      🧪 探针: '14' | 熵: 1.4246
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...rm to the left-hand side:**⏎   \[⏎   \frac{A\sqrt{B}}{C} = \frac{3\sqrt{3}}{2}⏎   \]⏎⏎3. **Match the
+      🧪 探针: '14' | 熵: 1.3187
+   🛑 [早停] calculation_consistency | 答案: 14
+   ❌ 错误 | 预测: 14 | 实际: 8 | 用时: 3.3s | Tokens: 180 | 早停: calculation_consistency
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...n treeks weigh as much as three squigs and one goolee)⏎2. \( 2T + G = S \) (Two treeks and one goole
+      🧪 探针: '5' | 熵: 1.6660
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... to find the number of treeks that equal the weight of one squig, i.e., we need to find \( x \) such
+      🧪 探针: '5' | 熵: 1.5675
+   🔎 [智能检查点@conclusion] Tokens: 180
+      📄 上下文: ...irst, let's solve the second equation for \( G \):⏎⏎\[ G = S - 2T \]⏎⏎Now, substitute \( G \) in the
+      🧪 探针: '5' | 熵: 1.3434
+   🛑 [早停] conclusion_consistency | 答案: 5
+   ❌ 错误 | 预测: 5 | 实际: 3 | 用时: 3.2s | Tokens: 180 | 早停: conclusion_consistency
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...s V_2 \]⏎⏎Where:⏎- \( P_1 \) is the initial pressure (4 kPa)⏎- \( V_1 \) is the initial volume (3.67
+      🧪 探针: '8' | 熵: 0.0556
+   🛑 [早停] calculation_very_low_entropy | 答案: 8
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 1.6s | Tokens: 100 | 早停: calculation_very_low_entropy
+📊 进度: 5/50, 准确率: 60.00%, 早停率: 100.00%, 平均tokens: 222.2
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...\( G \).⏎⏎From the problem, we have the following two equations:⏎⏎1. \( 8F + 2G = 932 \)⏎2. \( 14F +
+      🧪 探针: '5' | 熵: 1.9997
+   🔎 [智能检查点@conclusion] Tokens: 140
+      📄 上下文: ...of equations step by step.⏎⏎### Step 1: Eliminate one variable⏎To eliminate one of the variables, we
+      🧪 探针: '5' | 熵: 2.2017
+   🔎 [智能检查点@calculation] Tokens: 197
+      📄 上下文: ...We can do this by multiplying the first equation by 3 and the second equation by 2:⏎⏎\[ 3(8F + 2G) =
+      🧪 探针: '3' | 熵: 1.5508
+   🔎 [智能检查点@calculation] Tokens: 237
+      📄 上下文: ... second equation by 2:⏎⏎\[ 3(8F + 2G) = 3(932) \]⏎\[ 2(14F + 3G) = 2(1402) \]⏎⏎This gives us:⏎⏎\[ 24
+      🧪 探针: '24' | 熵: 0.7776
+   🔎 [智能检查点@calculation] Tokens: 277
+      📄 上下文: ...⏎This gives us:⏎⏎\[ 24F + 6G = 2796 \]⏎\[ 28F + 6G = 2804 \]⏎⏎### Step 2: Subtract the equations⏎Now
+      🧪 探针: '28' | 熵: 2.1958
+   🔎 [智能检查点@conclusion] Tokens: 344
+      📄 上下文: ...tion to eliminate \( G \):⏎⏎\[ (28F + 6G) - (24F + 6G) = 2804 - 2796 \]⏎\[ 4F = 8 \]⏎\[ F = 2 \]⏎⏎So
+      🧪 探针: '2' | 熵: 1.5358
+   🔎 [智能检查点@conclusion] Tokens: 384
+      📄 上下文: ...\).⏎⏎### Step 3: Substitute \( F \) back into one of the original equations⏎Now that we know \( F = 
+      🧪 探针: '15' | 熵: 2.2029
+   🔎 [智能检查点@conclusion] Tokens: 424
+      📄 上下文: ...to one of the original equations to solve for \( G \). Let's use the first equation:⏎⏎\[ 8F + 2G = 9
+      🧪 探针: '932' | 熵: 2.1889
+   🔎 [智能检查点@conclusion] Tokens: 464
+      📄 上下文: .... Let's use the first equation:⏎⏎\[ 8F + 2G = 932 \]⏎\[ 8(2) + 2G = 932 \]⏎\[ 16 + 2G = 932 \]⏎\[ 2G
+      🧪 探针: '5' | 熵: 2.2306
+   🔎 [智能检查点@conclusion] Tokens: 504
+      📄 上下文: ...= 916 \]⏎\[ G = 458 \]⏎⏎So, the cost of one ounce of gold is \( \$458 \).⏎⏎### Step 4: Calculate the
+      🧪 探针: '5' | 熵: 2.3575
+   🔎 [智能检查点@conclusion] Tokens: 609
+      📄 上下文: ...es of gold:⏎⏎\[ 5F + 5G = 5(2) + 5(458) \]⏎\[ 5F + 5G = 10 + 2290 \]⏎\[ 5F + 5G = 2300 \]⏎⏎Therefore
+      🧪 探针: '2300' | 熵: 0.4952
+   🛑 [早停] conclusion_low_entropy | 答案: 2300
+   ✅ 正确 | 预测: 2300 | 实际: 2300 | 用时: 11.4s | Tokens: 609 | 早停: conclusion_low_entropy
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...circle and $r$ is the radius.⏎⏎Step 1: Group the $x$ and $y$ terms.⏎$x^2 + 8x + y^2 - 6y = 0$⏎⏎Step 
+      🧪 探针: '5' | 熵: 0.7759
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...he square, we need to add and subtract the square of half the coefficient of $x$ (which is 8) inside
+      🧪 探针: '5' | 熵: 0.1866
+   🔎 [智能检查点@conclusion] Tokens: 180
+      📄 上下文: ... Half of 8 is 4, and the square of 4 is 16. So, we add and subtract 16 inside the equation.⏎⏎$x^2 + 
+      🧪 探针: '5' | 熵: 0.0344
+   🛑 [早停] conclusion_very_low_entropy | 答案: 5
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 3.2s | Tokens: 180 | 早停: conclusion_very_low_entropy
+
+📝 样本 8: If $9^{18n}=27^{24}$, find $n$....
+   🔎 [智能检查点@calculation] Tokens: 105
+      📄 上下文: ... be written as \(3^3\).⏎⏎2. **Rewrite the equation using these expressions:**⏎   \[⏎   (3^2)^{18n} =
+      🧪 探针: '4' | 熵: 1.6902
+   🔎 [智能检查点@calculation] Tokens: 145
+      📄 上下文: ...3)^{24}⏎   \]⏎⏎3. **Simplify the exponents:**⏎   - Using the power of a power property \((a^m)^n = a
+      🧪 探针: '12' | 熵: 1.8763
+   🔎 [智能检查点@calculation] Tokens: 185
+      📄 上下文: ...ty \((a^m)^n = a^{mn}\), we get:⏎     \[⏎     3^{2 \cdot 18n} = 3^{3 \cdot 24}⏎     \]⏎   - Simplify
+      🧪 探针: '4' | 熵: 1.7319
+   🔎 [智能检查点@conclusion] Tokens: 251
+      📄 上下文: ...the bases are the same, set the exponents equal to each other:**⏎   \[⏎   36n = 72⏎   \]⏎⏎5. **Solve
+      🧪 探针: '2' | 熵: 1.7859
+   🔎 [智能检查点@answer_signal] Tokens: 291
+      📄 上下文: ...**Solve for \(n\):**⏎   \[⏎   n = \frac{72}{36} = 2⏎   \]⏎⏎Therefore, the value of \(n\) is \(\boxed
+      🧪 探针: '2' | 熵: 0.0221
+   🛑 [早停] answer_signal_low_entropy | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 5.4s | Tokens: 291 | 早停: answer_signal_low_entropy
+
+📝 样本 9: Evaluate $(1+2i)6-3i$....
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...s start with the distribution:⏎⏎\[⏎(1+2i)6 = 1 \cdot 6 + 2i \cdot 6⏎\]⏎⏎This simplifies to:⏎⏎\[⏎6 + 
+      🧪 探针: '6' | 熵: 0.6458
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...\]⏎⏎Now, we subtract \(3i\) from this result:⏎⏎\[⏎6 + 12i - 3i⏎\]⏎⏎Combine the imaginary parts:⏎⏎\[⏎
+      🧪 探针: '6' | 熵: 0.5149
+   🔎 [智能检查点@answer_signal] Tokens: 166
+      📄 上下文: ...[⏎6 + 12i - 3i⏎\]⏎⏎Combine the imaginary parts:⏎⏎\[⏎6 + (12i - 3i) = 6 + 9i⏎\]⏎⏎So, the final answer
+      🧪 探针: '6 + 9i' | 熵: 0.0428
+   🛑 [早停] answer_signal_low_entropy | 答案: 6 + 9i
+   ❌ 错误 | 预测: 6 + 9i | 实际: 6 | 用时: 3.2s | Tokens: 166 | 早停: answer_signal_low_entropy
+
+📝 样本 10: Simplify $(2-2i)(5+5i)$, where $i^2 = -1.$...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ... each term in the first binomial to each term in the second binomial.⏎\[⏎(2-2i)(5+5i) = 2 \cdot 5 + 
+      🧪 探针: '20' | 熵: 1.7565
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... \cdot 5 + 2 \cdot 5i - 2i \cdot 5 - 2i \cdot 5i⏎\]⏎⏎Step 2: Perform the multiplications.⏎\[⏎2 \cdot
+      🧪 探针: '20' | 熵: 2.1747
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...p 2: Perform the multiplications.⏎\[⏎2 \cdot 5 = 10⏎\]⏎\[⏎2 \cdot 5i = 10i⏎\]⏎\[⏎-2i \cdot 5 = -10i⏎
+      🧪 探针: '10' | 熵: 2.0065
+   🔎 [智能检查点@conclusion] Tokens: 340
+      📄 上下文: ...to the expression.⏎\[⏎10 - 10(-1)⏎\]⏎⏎Step 6: Simplify the expression.⏎\[⏎10 + 10 = 20⏎\]⏎⏎Therefore
+      🧪 探针: '20' | 熵: 0.0852
+   🛑 [早停] conclusion_very_low_entropy | 答案: 20
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 5.7s | Tokens: 340 | 早停: conclusion_very_low_entropy
+📊 进度: 10/50, 准确率: 70.00%, 早停率: 100.00%, 平均tokens: 269.7
+
+📝 样本 11: Let $f(y) = y^4 -3y^3 +y - 3$ and $g(y) = y^3 + 7y^2 -2$. Find $f(y) + g(y)$.  W...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...gh this step by step.⏎⏎1. **Identify the terms in each polynomial:**⏎   - \( f(y) = y^4 - 3y^3 + y -
+      🧪 探针: '4' | 熵: 2.7389
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...^3 + y - 3 \)⏎   - \( g(y) = y^3 + 7y^2 - 2 \)⏎⏎2. **Write down the polynomials side by side:**⏎   \
+      🧪 探针: '4' | 熵: 2.9137
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...e down the polynomials side by side:**⏎   \[⏎   f(y) + g(y) = (y^4 - 3y^3 + y - 3) + (y^3 + 7y^2 - 2
+      🧪 探针: '1' | 熵: 3.4095
+   🔎 [智能检查点@conclusion] Tokens: 487
+      📄 上下文: ... terms in decreasing order of degree:**⏎   \[⏎   f(y) + g(y) = y^4 - 2y^3 + 7y^2 + y - 5⏎   \]⏎⏎Thus
+      🧪 探针: '4' | 熵: 0.8873
+   🔎 [智能检查点@answer_signal] Tokens: 491
+      📄 上下文: ...ng order of degree:**⏎   \[⏎   f(y) + g(y) = y^4 - 2y^3 + 7y^2 + y - 5⏎   \]⏎⏎Thus, the final answer
+      🧪 探针: 'y^4 - 2y^3 + 7y^2 + y - 5' | 熵: 2.0628
+   🔎 [智能检查点@answer_signal] Tokens: 492
+      📄 上下文: ...order of degree:**⏎   \[⏎   f(y) + g(y) = y^4 - 2y^3 + 7y^2 + y - 5⏎   \]⏎⏎Thus, the final answer is
+      🧪 探针: 'y^4 - 2y^3 + 7y^2 + y - 5' | 熵: 2.1912
+   🔎 [智能检查点@answer_signal] Tokens: 493
+      📄 上下文: ...der of degree:**⏎   \[⏎   f(y) + g(y) = y^4 - 2y^3 + 7y^2 + y - 5⏎   \]⏎⏎Thus, the final answer is:⏎
+      🧪 探针: 'y^4 - 2y^3 + 7y^2 + y - 5' | 熵: 2.3946
+   🛑 [早停] answer_signal_consistency | 答案: y^4 - 2y^3 + 7y^2 + y - 5
+   ❌ 错误 | 预测: y^4 - 2y^3 + 7y^2 + y - 5 | 实际: 4 | 用时: 9.1s | Tokens: 493 | 早停: answer_signal_consistency
+
+📝 样本 12: For the arithmetic sequence $1000, ~987, ~974, ~961, \ldots ,$ what is the least...
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...1000 = -13⏎     \]⏎⏎2. **Write the general formula for the \(n\)-th term of the arithmetic sequence:
+      🧪 探针: '7' | 熵: 2.2192
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ... \(n\)-th term \(a_n\) of an arithmetic sequence can be expressed as:⏎   \[⏎   a_n = a_1 + (n-1)d⏎  
+      🧪 探针: '13' | 熵: 2.1461
+   🔎 [智能检查点@calculation] Tokens: 220
+      📄 上下文: ...⏎   Substituting the known values:⏎   \[⏎   a_n = 1000 + (n-1)(-13)⏎   \]⏎   Simplify the expression
+      🧪 探针: '95' | 熵: 2.1976
+   🔎 [智能检查点@conclusion] Tokens: 350
+      📄 上下文: ...nd the smallest positive integer \(n\) such that \(a_n > 0\):⏎   \[⏎   1013 - 13n > 0⏎   \]⏎   Solve
+      🧪 探针: '79' | 熵: 1.8523
+   🔎 [智能检查点@conclusion] Tokens: 390
+      📄 上下文: ...⏎   1013 - 13n > 0⏎   \]⏎   Solve for \(n\):⏎   \[⏎   1013 > 13n⏎   \]⏎   \[⏎   n < \frac{1013}{13}⏎
+      🧪 探针: '78' | 熵: 1.5250
+   🔎 [智能检查点@conclusion] Tokens: 430
+      📄 上下文: ...013}{13}⏎   \]⏎   Calculate the division:⏎   \[⏎   \frac{1013}{13} \approx 77.923⏎   \]⏎   Since \(n
+      🧪 探针: '78' | 熵: 1.0466
+   🔎 [智能检查点@conclusion] Tokens: 736
+      📄 上下文: ...ce \(a_{78}\) is negative, the least positive integer in the sequence is \(a_{77} = 12\).⏎⏎Therefore
+      🧪 探针: '12' | 熵: 0.1134
+   🛑 [早停] conclusion_very_low_entropy | 答案: 12
+   ✅ 正确 | 预测: 12 | 实际: 12 | 用时: 11.9s | Tokens: 736 | 早停: conclusion_very_low_entropy
+
+📝 样本 13: Evaluate $\log_28\sqrt{2}$....
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...t{2}$ can be written as a power of 2.⏎$8\sqrt{2} = 2^3 \cdot 2^{1/2} = 2^{3 + 1/2} = 2^{7/2}$.⏎⏎Step
+      🧪 探针: '3.5' | 熵: 0.4964
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: .../2}$.⏎⏎Step 2: Apply the logarithm property $\log_b(a^c) = c\log_b(a)$.⏎$\log_2(2^{7/2}) = \frac{7}{
+      🧪 探针: '7' | 熵: 0.4183
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...c{7}{2}\log_2(2)$.⏎⏎Step 3: Simplify the expression.⏎Since $\log_2(2) = 1$, we have $\frac{7}{2}\log
+      🧪 探针: '3.5' | 熵: 0.6305
+   🔎 [智能检查点@answer_signal] Tokens: 211
+      📄 上下文: ... = 1$, we have $\frac{7}{2}\log_2(2) = \frac{7}{2} \cdot 1 = \frac{7}{2}$.⏎⏎Therefore, the answer is
+      🧪 探针: '3.5' | 熵: 0.4333
+   🔎 [智能检查点@answer_signal] Tokens: 212
+      📄 上下文: ...1$, we have $\frac{7}{2}\log_2(2) = \frac{7}{2} \cdot 1 = \frac{7}{2}$.⏎⏎Therefore, the answer is $\
+      🧪 探针: '\frac{7' | 熵: 1.6882
+   🔎 [智能检查点@answer_signal] Tokens: 213
+      📄 上下文: ...e have $\frac{7}{2}\log_2(2) = \frac{7}{2} \cdot 1 = \frac{7}{2}$.⏎⏎Therefore, the answer is $\boxed
+      🧪 探针: '\frac{7' | 熵: 0.2626
+   🛑 [早停] answer_signal_low_entropy | 答案: \frac{7
+   ❌ 错误 | 预测: \frac{7 | 实际: 7 | 用时: 4.9s | Tokens: 213 | 早停: answer_signal_low_entropy
+
+📝 样本 14: Evaluate $\log_{\sqrt8}(64\sqrt{8})$....
+   🔎 [智能检查点@calculation] Tokens: 119
+      📄 上下文: ...can be written as \(64 \cdot 8^{1/2}\).⏎⏎2. **Simplify the base and the argument:**⏎   - Since \(8 =
+      🧪 探针: '5' | 熵: 1.0925
+   🔎 [智能检查点@calculation] Tokens: 159
+      📄 上下文: ...he argument:**⏎   - Since \(8 = 2^3\), we have \(\sqrt{8} = (2^3)^{1/2} = 2^{3/2}\).⏎   - Since \(64
+      🧪 探针: '5' | 熵: 0.8860
+   🔎 [智能检查点@calculation] Tokens: 199
+      📄 上下文: ...^3)^{1/2} = 2^{3/2}\).⏎   - Since \(64 = 2^6\), we have \(64\sqrt{8} = 2^6 \cdot 2^{3/2} = 2^{6 + 3/
+      🧪 探针: '\frac{9' | 熵: 1.9171
+   🔎 [智能检查点@conclusion] Tokens: 351
+      📄 上下文: ...(c^d) = \frac{d}{b} \log_a(c)⏎   \]⏎   Here, \(a = 2\), \(b = 3/2\), \(c = 2\), and \(d = 15/2\). So
+      🧪 探针: '5' | 熵: 0.5307
+   🔎 [智能检查点@conclusion] Tokens: 391
+      📄 上下文: ...3/2\), \(c = 2\), and \(d = 15/2\). So,⏎   \[⏎   \log_{2^{3/2}}(2^{15/2}) = \frac{15/2}{3/2} \log_2(
+      🧪 探针: '5' | 熵: 0.5363
+   🔎 [智能检查点@conclusion] Tokens: 431
+      📄 上下文: ...15/2}{3/2} \log_2(2)⏎   \]⏎⏎5. **Simplify the fraction:**⏎   \[⏎   \frac{15/2}{3/2} = \frac{15}{2} \
+      🧪 探针: '5' | 熵: 0.3545
+   🛑 [早停] conclusion_consistency | 答案: 5
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 7.5s | Tokens: 431 | 早停: conclusion_consistency
+
+📝 样本 15: Given that $f(x)$ is a function such that $f(1)=2$, $f(4)=3$, $f(7)=4$, and $f^{...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: .... This means that if $f(a) = b$, then $f^{-1}(b) = a$.⏎⏎Given the values:⏎- $f(1) = 2$⏎- $f(4) = 3$⏎
+      🧪 探针: '4' | 熵: 0.7150
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...7) = 4$⏎⏎We can determine the following from these:⏎- Since $f(4) = 3$, it follows that $f^{-1}(3) =
+      🧪 探针: '4' | 熵: 0.0338
+   🛑 [早停] calculation_very_low_entropy | 答案: 4
+   ❌ 错误 | 预测: 4 | 实际: 7 | 用时: 2.4s | Tokens: 140 | 早停: calculation_very_low_entropy
+📊 进度: 15/50, 准确率: 60.00%, 早停率: 100.00%, 平均tokens: 314.0
+
+📝 样本 16: Simplify $(3-i)(6+2i)$....
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...erm in the first binomial to each term in the second binomial.⏎\[⏎(3-i)(6+2i) = 3 \cdot 6 + 3 \cdot 
+      🧪 探针: '24' | 熵: 1.1559
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...6 + 3 \cdot 2i - i \cdot 6 - i \cdot 2i⏎\]⏎⏎Step 2: Perform the multiplications.⏎\[⏎3 \cdot 6 = 18⏎\
+      🧪 探针: '18' | 熵: 1.0727
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...ultiplications.⏎\[⏎3 \cdot 6 = 18⏎\]⏎\[⏎3 \cdot 2i = 6i⏎\]⏎\[⏎-i \cdot 6 = -6i⏎\]⏎\[⏎-i \cdot 2i = -
+      🧪 探针: '18' | 熵: 1.8832
+   🔎 [智能检查点@conclusion] Tokens: 328
+      📄 上下文: ... \(-1\) for \(i^2\).⏎\[⏎18 - 2(-1)⏎\]⏎⏎Step 6: Simplify the expression.⏎\[⏎18 + 2 = 20⏎\]⏎⏎Therefore
+      🧪 探针: '20' | 熵: 0.2247
+   🛑 [早停] conclusion_very_low_entropy | 答案: 20
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 5.5s | Tokens: 328 | 早停: conclusion_very_low_entropy
+
+📝 样本 17: What value of $x$ will give the minimum value for $x^2- 14x + 3$?...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...icients of the quadratic and linear terms, respectively.⏎⏎In the given function, $a = 1$ and $b = -1
+      🧪 探针: '7.0' | 熵: 0.0128
+   🛑 [早停] calculation_very_low_entropy | 答案: 7.0
+   ✅ 正确 | 预测: 7.0 | 实际: 7 | 用时: 1.6s | Tokens: 100 | 早停: calculation_very_low_entropy
+
+📝 样本 18: The ratio of two numbers is $3:5$. When 4 is subtracted from the lesser of the t...
+   🔎 [智能检查点@calculation] Tokens: 106
+      📄 上下文: ...he greater number, the new ratio becomes \(2:7\). We can express this as:⏎\[⏎\frac{3x - 4}{5x + 8} =
+      🧪 探针: '10' | 熵: 0.7485
+   🔎 [智能检查点@conclusion] Tokens: 146
+      📄 上下文: ...rac{3x - 4}{5x + 8} = \frac{2}{7}⏎\]⏎⏎To solve for \(x\), we cross-multiply:⏎\[⏎7(3x - 4) = 2(5x + 8
+      🧪 探针: '10' | 熵: 0.7558
+   🔎 [智能检查点@conclusion] Tokens: 186
+      📄 上下文: ...+ 8)⏎\]⏎⏎Expanding both sides:⏎\[⏎21x - 28 = 10x + 16⏎\]⏎⏎Next, we isolate \(x\) by moving all terms
+      🧪 探针: '14' | 熵: 1.2312
+   🔎 [智能检查点@conclusion] Tokens: 226
+      📄 上下文: ...all terms involving \(x\) to one side and constants to the other:⏎\[⏎21x - 10x = 16 + 28⏎\]⏎\[⏎11x =
+      🧪 探针: '14' | 熵: 1.2918
+   🔎 [智能检查点@conclusion] Tokens: 266
+      📄 上下文: ...8⏎\]⏎\[⏎11x = 44⏎\]⏎⏎Solving for \(x\):⏎\[⏎x = \frac{44}{11} = 4⏎\]⏎⏎Now, we find the greater of the
+      🧪 探针: '20' | 熵: 0.2933
+   🛑 [早停] conclusion_low_entropy | 答案: 20
+   ✅ 正确 | 预测: 20 | 实际: 20 | 用时: 5.0s | Tokens: 266 | 早停: conclusion_low_entropy
+
+📝 样本 19: For what real value of $k$ is $\frac{13-\sqrt{131}}{4}$ a root of $2x^2-13x+k$?...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ... $r_1$ and $r_2$, then the sum of the roots is $-\frac{b}{a}$ and the product of the roots is $\frac
+      🧪 探针: '52' | 熵: 2.5709
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...ots is $\frac{c}{a}$.⏎⏎Given the quadratic equation $2x^2-13x+k=0$, we have $a=2$, $b=-13$, and $c=k
+      🧪 探针: '52.25' | 熵: 2.2430
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ... the roots of the equation as $r_1$ and $r_2$. We are given that one of the roots is $r_1 = \frac{13
+      🧪 探针: '52.25' | 熵: 2.1556
+   🔎 [智能检查点@conclusion] Tokens: 317
+      📄 上下文: ...he sum of the roots equation, we get:⏎\[ \frac{13-\sqrt{131}}{4} + r_2 = \frac{13}{2}. \]⏎To isolate
+      🧪 探针: '52.25' | 熵: 2.1482
+   🛑 [早停] conclusion_consistency | 答案: 52.25
+   ❌ 错误 | 预测: 52.25 | 实际: 19 | 用时: 5.4s | Tokens: 317 | 早停: conclusion_consistency
+
+📝 样本 20: What is the sum of all possible values of $x$ such that $2x(x-10)=-50$?...
+   🔎 [智能检查点@conclusion] Tokens: 100
+      📄 上下文: ...e equation.⏎\[2x(x-10) = 2x^2 - 20x\]⏎⏎Step 2: Set the equation equal to -50.⏎\[2x^2 - 20x = -50\]⏎⏎
+      🧪 探针: '10.0' | 熵: 0.2579
+   🛑 [早停] conclusion_low_entropy | 答案: 10.0
+   ❌ 错误 | 预测: 10.0 | 实际: 5 | 用时: 1.6s | Tokens: 100 | 早停: conclusion_low_entropy
+📊 进度: 20/50, 准确率: 60.00%, 早停率: 100.00%, 平均tokens: 291.1
+
+📝 样本 21: Given that $-4$ is a solution to $x^2 + bx -36 = 0$, what is the value of $b$?...
+   🔎 [智能检查点@conclusion] Tokens: 100
+      📄 上下文: ...titute $x = -4$ into the equation.⏎\[⏎(-4)^2 + b(-4) - 36 = 0⏎\]⏎⏎Step 2: Simplify the equation.⏎\[⏎
+      🧪 探针: '5' | 熵: 2.1151
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... Simplify the equation.⏎\[⏎16 - 4b - 36 = 0⏎\]⏎⏎Step 3: Combine like terms.⏎\[⏎-4b - 20 = 0⏎\]⏎⏎Step
+      🧪 探针: '5' | 熵: 0.3564
+   🔎 [智能检查点@conclusion] Tokens: 180
+      📄 上下文: ...like terms.⏎\[⏎-4b - 20 = 0⏎\]⏎⏎Step 4: Solve for $b$.⏎\[⏎-4b = 20⏎\]⏎\[⏎b = \frac{20}{-4}⏎\]⏎\[⏎b =
+      🧪 探针: '5' | 熵: 0.5479
+   🛑 [早停] conclusion_consistency | 答案: 5
+   ❌ 错误 | 预测: 5 | 实际: -5 | 用时: 3.3s | Tokens: 180 | 早停: conclusion_consistency
+
+📝 样本 22: Solve for $e$, given that $2d$ is $8$ less than $17e$, and $2e$ is $9$ less than...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...s:⏎  \[⏎  2d = 17e - 8⏎  \]⏎- The second statement, "2e is 9 less than d," can be written as:⏎  \[⏎ 
+      🧪 探针: '3' | 熵: 2.2032
+   🔎 [智能检查点@conclusion] Tokens: 140
+      📄 上下文: ...itten as:⏎  \[⏎  2e = d - 9⏎  \]⏎⏎Step 2: Solve the second equation for $d$.⏎\[⏎d = 2e + 9⏎\]⏎⏎Step 
+      🧪 探针: '3.5' | 熵: 2.0105
+   🔎 [智能检查点@conclusion] Tokens: 180
+      📄 上下文: ...expression for $d$ from the second equation into the first equation.⏎\[⏎2(2e + 9) = 17e - 8⏎\]⏎⏎Step
+      🧪 探针: '5.470588235294118' | 熵: 2.0857
+   🔎 [智能检查点@conclusion] Tokens: 220
+      📄 上下文: ...⏎\[⏎2(2e + 9) = 17e - 8⏎\]⏎⏎Step 4: Simplify and solve for $e$.⏎\[⏎4e + 18 = 17e - 8⏎\]⏎\[⏎18 + 8 = 
+      🧪 探针: '2' | 熵: 1.9143
+   🔎 [智能检查点@conclusion] Tokens: 260
+      📄 上下文: ...for $e$.⏎\[⏎4e + 18 = 17e - 8⏎\]⏎\[⏎18 + 8 = 17e - 4e⏎\]⏎\[⏎26 = 13e⏎\]⏎\[⏎e = \frac{26}{13}⏎\]⏎\[⏎e
+      🧪 探针: '2' | 熵: 0.7142
+   🔎 [智能检查点@conclusion] Tokens: 300
+      📄 上下文: ...olution by substituting $e = 2$ back into the original equations.⏎- For the first equation:⏎  \[⏎  2
+      🧪 探针: '2' | 熵: 0.5503
+   🛑 [早停] conclusion_consistency | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 5.8s | Tokens: 300 | 早停: conclusion_consistency
+
+📝 样本 23: Two consecutive positive even numbers are each squared.  The  difference of the ...
+   🔎 [智能检查点@conclusion] Tokens: 140
+      📄 上下文: ... 2)^2 - x^2 = 60 \]⏎⏎Step 2: Expand and simplify the equation.⏎\[ (x + 2)^2 = x^2 + 4x + 4 \]⏎So the
+      🧪 探针: '14' | 熵: 0.5203
+   🔎 [智能检查点@conclusion] Tokens: 180
+      📄 上下文: ...+ 4 \]⏎So the equation becomes:⏎\[ x^2 + 4x + 4 - x^2 = 60 \]⏎⏎Step 3: Simplify further.⏎\[ 4x + 4 =
+      🧪 探针: '16' | 熵: 0.6446
+   🔎 [智能检查点@conclusion] Tokens: 220
+      📄 上下文: ...ther.⏎\[ 4x + 4 = 60 \]⏎⏎Step 4: Solve for \( x \).⏎\[ 4x = 56 \]⏎\[ x = 14 \]⏎⏎Step 5: Find the two
+      🧪 探针: '28' | 熵: 0.6704
+   🔎 [智能检查点@conclusion] Tokens: 260
+      📄 上下文: ...two numbers are \( x = 14 \) and \( x + 2 = 16 \).⏎⏎Step 6: Find the sum of the original two numbers
+      🧪 探针: '30' | 熵: 0.9362
+   🔎 [智能检查点@answer_signal] Tokens: 291
+      📄 上下文: ...ginal two numbers.⏎\[ 14 + 16 = 30 \]⏎⏎Therefore, the sum of the original two numbers is 30. Answer:
+      🧪 探针: '30' | 熵: 0.0000
+   🛑 [早停] answer_signal_low_entropy | 答案: 30
+   ✅ 正确 | 预测: 30 | 实际: 30 | 用时: 5.4s | Tokens: 291 | 早停: answer_signal_low_entropy
+
+📝 样本 24: How many integers belong to the arithmetic sequence 13, 20, 27, 34, $\dots$, 200...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...) is 13.⏎   - The common difference \(d\) is \(20 - 13 = 7\).⏎⏎2. **Write the general form of the \(
+      🧪 探针: '288' | 熵: 0.1613
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...ence:**⏎   The \(n\)-th term \(a_n\) of an arithmetic sequence can be expressed as:⏎   \[⏎   a_n = a
+      🧪 探针: '289' | 熵: 0.1732
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...  \[⏎   a_n = a_1 + (n-1)d⏎   \]⏎   Substituting the known values:⏎   \[⏎   a_n = 13 + (n-1) \cdot 7
+      🧪 探针: '286' | 熵: 0.1206
+   🛑 [早停] calculation_very_low_entropy | 答案: 286
+   ✅ 正确 | 预测: 286 | 实际: 286 | 用时: 3.2s | Tokens: 180 | 早停: calculation_very_low_entropy
+
+📝 样本 25: Of the four points $(2,2)$, $(9,11)$, $(5,7)$, and $(11,17)$, three lie on the s...
+   🔎 [智能检查点@calculation] Tokens: 148
+      📄 上下文: ...f points⏎⏎The slope \( m \) between two points \((x_1, y_1)\) and \((x_2, y_2)\) is given by:⏎\[ m =
+      🧪 探针: '2' | 熵: 1.9861
+   🔎 [智能检查点@answer_signal] Tokens: 170
+      📄 上下文: ...wo points \((x_1, y_1)\) and \((x_2, y_2)\) is given by:⏎\[ m = \frac{y_2 - y_1}{x_2 - x_1} \]⏎⏎####
+      🧪 探针: '1' | 熵: 0.7800
+   🔎 [智能检查点@answer_signal] Tokens: 171
+      📄 上下文: ...oints \((x_1, y_1)\) and \((x_2, y_2)\) is given by:⏎\[ m = \frac{y_2 - y_1}{x_2 - x_1} \]⏎⏎#### Slo
+      🧪 探针: '1' | 熵: 2.7417
+   🔎 [智能检查点@answer_signal] Tokens: 172
+      📄 上下文: ...nts \((x_1, y_1)\) and \((x_2, y_2)\) is given by:⏎\[ m = \frac{y_2 - y_1}{x_2 - x_1} \]⏎⏎#### Slope
+      🧪 探针: '1' | 熵: 0.1227
+   🛑 [早停] answer_signal_low_entropy | 答案: 1
+   ❌ 错误 | 预测: 1 | 实际: 9 | 用时: 3.8s | Tokens: 172 | 早停: answer_signal_low_entropy
+📊 进度: 25/50, 准确率: 60.00%, 早停率: 100.00%, 平均tokens: 277.8
+
+📝 样本 26: The ratio of $x$ to $y$ is $1$ to $2$. What is the value of $x$ if $y=4x-36$?...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...s can be written as:⏎   \[⏎   \frac{x}{y} = \frac{1}{2}⏎   \]⏎⏎2. **Express \( y \) in terms of \( x
+      🧪 探针: '36' | 熵: 1.4616
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...om the ratio, we can write:⏎   \[⏎   y = 2x⏎   \]⏎⏎3. **Substitute \( y \) in the given equation:**⏎
+      🧪 探针: '36' | 熵: 0.8686
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...are given the equation \( y = 4x - 36 \). Substitute \( y = 2x \) into this equation:⏎   \[⏎   2x = 
+      🧪 探针: '36' | 熵: 0.4715
+   🛑 [早停] calculation_consistency | 答案: 36
+   ❌ 错误 | 预测: 36 | 实际: 18 | 用时: 3.2s | Tokens: 180 | 早停: calculation_consistency
+
+📝 样本 27: Define $f(x) = \frac{x^2 + 2x + 3}{x}$ and $g(x) = x^3 + 2$. Evaluate $g(f(x))$ ...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ... f(x) = \frac{x^2 + 2x + 3}{x} \]⏎⏎Step 2: Simplify $f(x)$.⏎\[ f(x) = \frac{x^2}{x} + \frac{2x}{x} +
+      🧪 探针: '6' | 熵: 2.5717
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...} + \frac{2x}{x} + \frac{3}{x} \]⏎\[ f(x) = x + 2 + \frac{3}{x} \]⏎⏎Step 3: Substitute $x = -3$ into
+      🧪 探针: '24' | 熵: 2.1800
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...]⏎⏎Step 3: Substitute $x = -3$ into $f(x)$.⏎\[ f(-3) = -3 + 2 + \frac{3}{-3} \]⏎\[ f(-3) = -3 + 2 - 
+      🧪 探针: '0' | 熵: 2.3332
+   🔎 [智能检查点@conclusion] Tokens: 321
+      📄 上下文: ...-2)$.⏎\[ g(x) = x^3 + 2 \]⏎\[ g(-2) = (-2)^3 + 2 \]⏎\[ g(-2) = -8 + 2 \]⏎\[ g(-2) = -6 \]⏎⏎Therefore
+      🧪 探针: '-6' | 熵: 1.3582
+   🔎 [智能检查点@answer_signal] Tokens: 341
+      📄 上下文: ... \]⏎\[ g(-2) = -8 + 2 \]⏎\[ g(-2) = -6 \]⏎⏎Therefore, the value of $g(f(x))$ when $x = -3$ is \boxed
+      🧪 探针: '-6' | 熵: 0.1223
+   🛑 [早停] answer_signal_low_entropy | 答案: -6
+   ✅ 正确 | 预测: -6 | 实际: -6 | 用时: 6.2s | Tokens: 341 | 早停: answer_signal_low_entropy
+
+📝 样本 28: Express $0.6\overline{333}$ as a common fraction....
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...e non-repeating part from the repeating part. We can write \(x\) as:⏎⏎\[ x = 0.6 + 0.0\overline{333}
+      🧪 探针: '2' | 熵: 0.7964
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...ing part \(0.0\overline{333}\). We can represent this repeating decimal as a fraction. Let \(y = 0.0
+      🧪 探针: '\frac{2' | 熵: 1.2945
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...liminate the repeating part, we multiply \(y\) by 1000 (since the repeating block "333" has 3 digits
+      🧪 探针: '2' | 熵: 0.7881
+   🔎 [智能检查点@conclusion] Tokens: 273
+      📄 上下文: ...000y - y = 333.\overline{333} - 0.0\overline{333} \]⏎⏎This simplifies to:⏎⏎\[ 999y = 333 \]⏎⏎Solving
+      🧪 探针: '\frac{2' | 熵: 1.3080
+   🔎 [智能检查点@conclusion] Tokens: 313
+      📄 上下文: ...\frac{333}{999} \]⏎⏎We can simplify this fraction by finding the greatest common divisor (GCD) of 33
+      🧪 探针: '\frac{20' | 熵: 1.5278
+   🔎 [智能检查点@conclusion] Tokens: 353
+      📄 上下文: ...mon divisor (GCD) of 333 and 999. The GCD of 333 and 999 is 9. Therefore:⏎⏎\[ y = \frac{333 \div 9}{
+      🧪 探针: '\frac{59' | 熵: 0.6906
+   🔎 [智能检查点@conclusion] Tokens: 393
+      📄 上下文: ... 9}{999 \div 9} = \frac{37}{111} \]⏎⏎Now, we return to our original expression for \(x\):⏎⏎\[ x = 0.
+      🧪 探针: '\frac{20' | 熵: 1.1362
+   🔎 [智能检查点@conclusion] Tokens: 669
+      📄 上下文: ...ons:⏎⏎\[ x = \frac{333}{555} + \frac{185}{555} = \frac{333 + 185}{555} = \frac{518}{555} \]⏎⏎Finally
+      🧪 探针: '\frac{518' | 熵: 0.9457
+   🔎 [智能检查点@conclusion] Tokens: 709
+      📄 上下文: ...{555} \]⏎⏎Finally, we simplify \(\frac{518}{555}\) by finding the GCD of 518 and 555. The GCD of 518
+      🧪 探针: '\frac{518' | 熵: 0.8786
+   🔎 [智能检查点@conclusion] Tokens: 749
+      📄 上下文: ... already in its simplest form.⏎⏎Thus, the common fraction representation of \(0.6\overline{333}\) is
+      🧪 探针: '\frac{518' | 熵: 1.1615
+   🛑 [早停] conclusion_consistency | 答案: \frac{518
+   ❌ 错误 | 预测: \frac{518 | 实际: 19 | 用时: 13.0s | Tokens: 749 | 早停: conclusion_consistency
+
+📝 样本 29: The midpoint of the line segment between $(x,y)$ and $(-9,1)$ is $(3,-5)$. Find ...
+   🔎 [智能检查点@calculation] Tokens: 206
+      📄 上下文: ...ng equations based on the midpoint formula:⏎⏎\[⏎\left( \frac{x + (-9)}{2}, \frac{y + 1}{2} \right) =
+      🧪 探针: '7' | 熵: 1.9771
+   🔎 [智能检查点@conclusion] Tokens: 246
+      📄 上下文: ...-5)⏎\]⏎⏎This gives us two separate equations to solve for \(x\) and \(y\):⏎⏎1. \(\frac{x - 9}{2} = 3
+      🧪 探针: '15' | 熵: 1.7239
+   🔎 [智能检查点@conclusion] Tokens: 286
+      📄 上下文: ...2. \(\frac{y + 1}{2} = -5\)⏎⏎Let's solve these equations step by step.⏎⏎### Solving for \(x\):⏎⏎\[⏎\
+      🧪 探针: '(15 -11)' | 熵: 0.8258
+   🔎 [智能检查点@conclusion] Tokens: 326
+      📄 上下文: ...⏎⏎\[⏎\frac{x - 9}{2} = 3⏎\]⏎⏎Multiply both sides by 2 to clear the fraction:⏎⏎\[⏎x - 9 = 6⏎\]⏎⏎Add 9
+      🧪 探针: '(15 -11)' | 熵: 1.5479
+   🔎 [智能检查点@conclusion] Tokens: 366
+      📄 上下文: ...- 9 = 6⏎\]⏎⏎Add 9 to both sides:⏎⏎\[⏎x = 15⏎\]⏎⏎### Solving for \(y\):⏎⏎\[⏎\frac{y + 1}{2} = -5⏎\]⏎⏎
+      🧪 探针: '(15 -11)' | 熵: 0.9205
+   🛑 [早停] conclusion_consistency | 答案: (15 -11)
+   ❌ 错误 | 预测: (15 -11) | 实际: 15 | 用时: 6.4s | Tokens: 366 | 早停: conclusion_consistency
+
+📝 样本 30: Line $j$ is perpendicular to $\frac{y}{3}+\frac{2x}{5}=2$. What is the slope of ...
+   🔎 [智能检查点@conclusion] Tokens: 100
+      📄 上下文: ...slope-intercept form \( y = mx + b \), where \( m \) is the slope.⏎⏎1. Start by isolating \( y \) on
+      🧪 探针: '-\frac{5' | 熵: 1.4394
+   🔎 [智能检查点@conclusion] Tokens: 140
+      📄 上下文: ...every term by 15 (the least common multiple of 3 and 5) to clear the fractions:⏎⏎\[⏎15 \left( \frac{
+      🧪 探针: '-\frac{5' | 熵: 2.4229
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...ons:⏎⏎\[⏎15 \left( \frac{y}{3} \right) + 15 \left( \frac{2x}{5} \right) = 15 \cdot 2⏎\]⏎⏎2. Simplify
+      🧪 探针: '5' | 熵: 1.1769
+   🔎 [智能检查点@conclusion] Tokens: 220
+      📄 上下文: ...15 \cdot 2⏎\]⏎⏎2. Simplify each term:⏎⏎\[⏎5y + 6x = 30⏎\]⏎⏎3. Solve for \( y \):⏎⏎\[⏎5y = -6x + 30⏎\
+      🧪 探针: '-\frac{5' | 熵: 1.9876
+   🔎 [智能检查点@conclusion] Tokens: 260
+      📄 上下文: ...\]⏎⏎\[⏎y = -\frac{6}{5}x + 6⏎\]⏎⏎From this, we see that the slope \( m \) of the given line is \( -\
+      🧪 探针: '\frac{5' | 熵: 1.3533
+   🔎 [智能检查点@conclusion] Tokens: 300
+      📄 上下文: ...ne is the negative reciprocal of the slope of the original line. Therefore, the slope of line \( j \
+      🧪 探针: '\frac{5' | 熵: 0.7780
+   🔎 [智能检查点@conclusion] Tokens: 340
+      📄 上下文: ...line \( j \) is:⏎⏎\[⏎m_j = -\left( -\frac{5}{6} \right) = \frac{5}{6}⏎\]⏎⏎Thus, the slope of line \(
+      🧪 探针: '\frac{5' | 熵: 0.1751
+   🛑 [早停] conclusion_very_low_entropy | 答案: \frac{5
+   ❌ 错误 | 预测: \frac{5 | 实际: 56 | 用时: 6.5s | Tokens: 340 | 早停: conclusion_very_low_entropy
+📊 进度: 30/50, 准确率: 53.33%, 早停率: 100.00%, 平均tokens: 297.3
+
+📝 样本 31: The vertex of the parabola described by the equation $y=2x^2-4x+4$ is $(m,n)$. W...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...ex, \( m \), is given by the formula:⏎⏎\[ m = -\frac{b}{2a} \]⏎⏎In the given equation \( y = 2x^2 - 
+      🧪 探针: '1' | 熵: 0.0033
+   🛑 [早停] calculation_very_low_entropy | 答案: 1
+   ✅ 正确 | 预测: 1 | 实际: 1 | 用时: 1.6s | Tokens: 100 | 早停: calculation_very_low_entropy
+
+📝 样本 32: Simplify and write the result with a rational denominator: $$\sqrt{\sqrt[3]{\sqr...
+   🔎 [智能检查点@conclusion] Tokens: 100
+      📄 上下文: ...\sqrt{\frac{1}{729}}⏎   \]⏎   We know that \(729 = 9^3 = (3^2)^3 = 3^6\). Therefore,⏎   \[⏎   \frac{
+      🧪 探针: '\frac{1' | 熵: 1.4466
+   🔎 [智能检查点@conclusion] Tokens: 140
+      📄 上下文: ...  \[⏎   \frac{1}{729} = \frac{1}{3^6}⏎   \]⏎   Taking the square root of \(\frac{1}{3^6}\):⏎   \[⏎  
+      🧪 探针: '\frac{1' | 熵: 1.3961
+   🔎 [智能检查点@conclusion] Tokens: 180
+      📄 上下文: ...(\frac{1}{3^6}\):⏎   \[⏎   \sqrt{\frac{1}{3^6}} = \left(\frac{1}{3^6}\right)^{1/2} = \frac{1}{3^{6 \
+      🧪 探针: '\frac{1' | 熵: 1.4375
+   🛑 [早停] conclusion_consistency | 答案: \frac{1
+   ❌ 错误 | 预测: \frac{1 | 实际: 3 | 用时: 3.2s | Tokens: 180 | 早停: conclusion_consistency
+
+📝 样本 33: For how many positive integers $n$ is $n^2-3n+2$ a prime number?...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ... number, one of the factors must be 1 and the other must be a prime number. This is because the only
+      🧪 探针: '2' | 熵: 0.9007
+   🔎 [智能检查点@calculation] Tokens: 148
+      📄 上下文: ...is as $1 \times p$, where $p$ is a prime number.⏎⏎Let's consider the two cases:⏎⏎1. **Case 1: $n-1 =
+      🧪 探针: '2' | 熵: 1.0924
+   🔎 [智能检查点@calculation] Tokens: 188
+      📄 上下文: ...n-1 = 1$**⏎⏎   If $n-1 = 1$, then $n = 2$. Substituting $n = 2$ into the expression, we get:⏎⏎   \[⏎
+      🧪 探针: '2' | 熵: 1.0023
+   🛑 [早停] calculation_consistency | 答案: 2
+   ❌ 错误 | 预测: 2 | 实际: 1 | 用时: 3.4s | Tokens: 188 | 早停: calculation_consistency
+
+📝 样本 34: Consider the function $g(x) = 3$.  Find $g(2)$....
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...ute the value**: We need to find $g(2)$. According to the function definition, we substitute $x = 2$
+      🧪 探针: '3' | 熵: 1.3946
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...on.⏎⏎3. **Evaluate the function**: Since $g(x) = 3$ for all $x$, substituting $x = 2$ gives us $g(2)
+      🧪 探针: '3' | 熵: 1.2257
+   🔎 [智能检查点@answer_signal] Tokens: 162
+      📄 上下文: ...x$, substituting $x = 2$ gives us $g(2) = 3$.⏎⏎Therefore, the value of $g(2)$ is $3$. ⏎⏎Final answer
+      🧪 探针: '3' | 熵: 0.0034
+   🛑 [早停] answer_signal_low_entropy | 答案: 3
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 3.2s | Tokens: 162 | 早停: answer_signal_low_entropy
+
+📝 样本 35: What is the greatest prime factor of the sum of the arithmetic sequence $1 + 2 +...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...c{n(a_1 + a_n)}{2}$$⏎⏎where $S$ is the sum, $n$ is the number of terms, $a_1$ is the first term, and
+      🧪 探针: '32040' | 熵: 1.3380
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... term, and $a_n$ is the last term. In this case, $n = 80$, $a_1 = 1$, and $a_n = 80$. Plugging these
+      🧪 探针: '79' | 熵: 1.8166
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ... Plugging these values into the formula, we get:⏎⏎$$S = \frac{80(1 + 80)}{2} = \frac{80 \cdot 81}{2}
+      🧪 探针: '3240' | 熵: 0.5799
+   🔎 [智能检查点@conclusion] Tokens: 281
+      📄 上下文: ...prime number, 2:⏎⏎$$3240 \div 2 = 1620$$⏎⏎We can continue dividing by 2 until we can no longer do so
+      🧪 探针: '53' | 熵: 1.3310
+   🔎 [智能检查点@conclusion] Tokens: 321
+      📄 上下文: ...til we can no longer do so:⏎⏎$$1620 \div 2 = 810$$⏎$$810 \div 2 = 405$$⏎⏎Now, we move on to the next
+      🧪 探针: '5' | 熵: 1.8084
+   🔎 [智能检查点@conclusion] Tokens: 361
+      📄 上下文: ...$$⏎⏎Now, we move on to the next prime number, 3:⏎⏎$$405 \div 3 = 135$$⏎$$135 \div 3 = 45$$⏎$$45 \div
+      🧪 探针: '13' | 熵: 1.6078
+   🔎 [智能检查点@conclusion] Tokens: 401
+      📄 上下文: ...$15 \div 3 = 5$$⏎⏎Finally, we have reached a prime number, 5. Therefore, the prime factorization of 
+      🧪 探针: '5' | 熵: 0.0888
+   🛑 [早停] conclusion_very_low_entropy | 答案: 5
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 7.4s | Tokens: 401 | 早停: conclusion_very_low_entropy
+📊 进度: 35/50, 准确率: 54.29%, 早停率: 100.00%, 平均tokens: 284.3
+
+📝 样本 36: Let $x$ be a number that satisfies both equations $18x^2+25x-3=0$ and $4x^2+8x+3...
+   🔎 [智能检查点@conclusion] Tokens: 100
+      📄 上下文: ...on.⏎⏎### Step 1: Solve the first equation \( 18x^2 + 25x - 3 = 0 \)⏎⏎We use the quadratic formula \(
+      🧪 探针: '-\frac{3' | 熵: 1.4989
+   🔎 [智能检查点@conclusion] Tokens: 140
+      📄 上下文: ...se the quadratic formula \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \), where \( a = 18 \), \( b = 25
+      🧪 探针: '-\frac{3' | 熵: 0.8029
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...\( b = 25 \), and \( c = -3 \).⏎⏎First, calculate the discriminant:⏎\[⏎b^2 - 4ac = 25^2 - 4 \cdot 18
+      🧪 探针: '625' | 熵: 1.7506
+   🔎 [智能检查点@calculation] Tokens: 220
+      📄 上下文: ...\cdot 18 \cdot (-3) = 625 + 216 = 841⏎\]⏎⏎Next, find the square root of the discriminant:⏎\[⏎\sqrt{8
+      🧪 探针: '29.01699437494742' | 熵: 1.3908
+   🔎 [智能检查点@calculation] Tokens: 260
+      📄 上下文: ...ant:⏎\[⏎\sqrt{841} = 29⏎\]⏎⏎Now, apply the quadratic formula:⏎\[⏎x = \frac{-25 \pm 29}{2 \cdot 18}⏎\
+      🧪 探针: '1' | 熵: 2.4718
+   🔎 [智能检查点@conclusion] Tokens: 300
+      📄 上下文: ...{2 \cdot 18}⏎\]⏎⏎This gives us two solutions:⏎\[⏎x = \frac{-25 + 29}{36} = \frac{4}{36} = \frac{1}{9
+      🧪 探针: '\frac{1' | 熵: 1.3224
+   🔎 [智能检查点@conclusion] Tokens: 340
+      📄 上下文: ...29}{36} = \frac{4}{36} = \frac{1}{9}⏎\]⏎\[⏎x = \frac{-25 - 29}{36} = \frac{-54}{36} = -\frac{3}{2}⏎\
+      🧪 探针: '\frac{1' | 熵: 1.7331
+   🔎 [智能检查点@conclusion] Tokens: 380
+      📄 上下文: ...he solutions to the first equation are \( x = \frac{1}{9} \) and \( x = -\frac{3}{2} \).⏎⏎### Step 2
+      🧪 探针: '\frac{1' | 熵: 1.5759
+   🛑 [早停] conclusion_consistency | 答案: \frac{1
+   ❌ 错误 | 预测: \frac{1 | 实际: 32 | 用时: 7.4s | Tokens: 380 | 早停: conclusion_consistency
+
+📝 样本 37: What is the maximum number of square inches in the area of a rectangle with a pe...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...\[ 2l + 2w = 12 \]⏎⏎Dividing the entire equation by 2, we get:⏎⏎\[ l + w = 6 \]⏎⏎The area \( A \) of
+      🧪 探针: '9' | 熵: 0.1204
+   🛑 [早停] calculation_very_low_entropy | 答案: 9
+   ✅ 正确 | 预测: 9 | 实际: 9 | 用时: 1.6s | Tokens: 100 | 早停: calculation_very_low_entropy
+
+📝 样本 38: Daniel works at an electronics store, and he claims that the popularity of a tel...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...C \) is the cost of the television, and \( k \) is a constant.⏎⏎Given:⏎- When \( C = 1500 \) dollars
+      🧪 探针: '15' | 熵: 1.5147
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... \( P = 15 \) customers.⏎⏎First, we find the constant \( k \):⏎⏎\[ k = P \times C = 15 \times 1500 =
+      🧪 探针: '22500' | 熵: 0.1445
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...⏎⏎Now, we need to find the number of customers, \( P \), when the cost, \( C \), is $2500. Using the
+      🧪 探针: '9' | 熵: 0.0334
+   🛑 [早停] calculation_very_low_entropy | 答案: 9
+   ✅ 正确 | 预测: 9 | 实际: 9 | 用时: 3.3s | Tokens: 180 | 早停: calculation_very_low_entropy
+
+📝 样本 39: Simplify $(5-3i)(-4+3i)$....
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...bute each term in the first binomial to each term in the second binomial.⏎\[⏎(5-3i)(-4+3i) = 5(-4) +
+      🧪 探针: '27' | 熵: 1.6966
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...5-3i)(-4+3i) = 5(-4) + 5(3i) - 3i(-4) - 3i(3i)⏎\]⏎⏎Step 2: Perform the multiplications.⏎\[⏎5(-4) = -
+      🧪 探针: '7' | 熵: 2.2777
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...⏎⏎Step 2: Perform the multiplications.⏎\[⏎5(-4) = -20⏎\]⏎\[⏎5(3i) = 15i⏎\]⏎\[⏎-3i(-4) = 12i⏎\]⏎\[⏎-3
+      🧪 探针: '7' | 熵: 2.5221
+   🔎 [智能检查点@conclusion] Tokens: 298
+      📄 上下文: ...nary parts).⏎\[⏎-20 + (15i + 12i) - 9i^2 = -20 + 27i - 9i^2⏎\]⏎⏎Step 5: Recall that \(i^2 = -1\), so
+      🧪 探针: '-20 + 27i + 9' | 熵: 0.7042
+   🔎 [智能检查点@conclusion] Tokens: 338
+      📄 上下文: ... 5: Recall that \(i^2 = -1\), so substitute \(-1\) for \(i^2\).⏎\[⏎-20 + 27i - 9(-1) = -20 + 27i + 9
+      🧪 探针: '-11 + 27i' | 熵: 0.4840
+   🛑 [早停] conclusion_low_entropy | 答案: -11 + 27i
+   ❌ 错误 | 预测: -11 + 27i | 实际: -11 | 用时: 6.0s | Tokens: 338 | 早停: conclusion_low_entropy
+
+📝 样本 40: If $x+\frac{1}{x}=7$, then what is the value of $x^{2}+\frac{1}{x^{2}} + 1$?...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...:**⏎   \[⏎   \left(x + \frac{1}{x}\right)^2 = 7^2⏎   \]⏎   This expands to:⏎   \[⏎   x^2 + 2 \cdot x
+      🧪 探针: '50' | 熵: 0.2935
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...+ 2 \cdot x \cdot \frac{1}{x} + \frac{1}{x^2} = 49⏎   \]⏎   Simplifying the middle term:⏎   \[⏎   x^
+      🧪 探针: '50' | 熵: 0.5564
+   🔎 [智能检查点@conclusion] Tokens: 180
+      📄 上下文: ...ying the middle term:⏎   \[⏎   x^2 + 2 + \frac{1}{x^2} = 49⏎   \]⏎⏎2. **Isolate \(x^2 + \frac{1}{x^2
+      🧪 探针: '48' | 熵: 1.6795
+   🔎 [智能检查点@conclusion] Tokens: 220
+      📄 上下文: ...2. **Isolate \(x^2 + \frac{1}{x^2}\):**⏎   \[⏎   x^2 + \frac{1}{x^2} = 49 - 2⏎   \]⏎   \[⏎   x^2 + \
+      🧪 探针: '47' | 熵: 0.8857
+   🔎 [智能检查点@conclusion] Tokens: 260
+      📄 上下文: ...⏎   \]⏎   \[⏎   x^2 + \frac{1}{x^2} = 47⏎   \]⏎⏎3. **Add 1 to the result:**⏎   \[⏎   x^2 + \frac{1}{
+      🧪 探针: '48' | 熵: 0.2550
+   🛑 [早停] conclusion_low_entropy | 答案: 48
+   ✅ 正确 | 预测: 48 | 实际: 48 | 用时: 4.9s | Tokens: 260 | 早停: conclusion_low_entropy
+📊 进度: 40/50, 准确率: 55.00%, 早停率: 100.00%, 平均tokens: 280.2
+
+📝 样本 41: The quadratic $x^2-4x-14=3x+16$ has two solutions.  What is the positive differe...
+   🔎 [智能检查点@conclusion] Tokens: 100
+      📄 上下文: ...atic form:**⏎   \[⏎   x^2 - 4x - 14 - 3x - 16 = 0⏎   \]⏎   Simplify the left-hand side:⏎   \[⏎   x^2
+      🧪 探针: '9.583333333333334' | 熵: 1.4941
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...⏎   \]⏎⏎2. **Identify the coefficients:**⏎   The quadratic equation is now in the form \(ax^2 + bx +
+      🧪 探针: '7' | 熵: 0.8560
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...+ c = 0\), where \(a = 1\), \(b = -7\), and \(c = -30\).⏎⏎3. **Use the quadratic formula to find the
+      🧪 探针: '13' | 熵: 0.9600
+   🔎 [智能检查点@conclusion] Tokens: 220
+      📄 上下文: ...utions:**⏎   The quadratic formula is given by:⏎   \[⏎   x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}⏎   \
+      🧪 探针: '13' | 熵: 0.9599
+   🔎 [智能检查点@conclusion] Tokens: 260
+      📄 上下文: ...- 4ac}}{2a}⏎   \]⏎   Substitute \(a = 1\), \(b = -7\), and \(c = -30\):⏎   \[⏎   x = \frac{-(-7) \pm
+      🧪 探针: '13' | 熵: 1.2488
+   🛑 [早停] conclusion_consistency | 答案: 13
+   ✅ 正确 | 预测: 13 | 实际: 13 | 用时: 4.9s | Tokens: 260 | 早停: conclusion_consistency
+
+📝 样本 42: Let $f(x)=x+1$ and $g(x)=2x$.  Also denote the inverses to these functions as $f...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...  \[⏎   f(x) = x + 1 \implies f(5) = 5 + 1 = 6⏎   \]⏎⏎2. **Evaluate \( g(f(5)) \):**⏎   \[⏎   g(x) =
+      🧪 探针: '7' | 熵: 2.0372
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...)) \):**⏎   \[⏎   g(x) = 2x \implies g(f(5)) = g(6) = 2 \cdot 6 = 12⏎   \]⏎⏎3. **Evaluate \( f^{-1}(
+      🧪 探针: '4' | 熵: 1.9875
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...f(5))) \):**⏎   First, find \( f^{-1}(x) \). Since \( f(x) = x + 1 \), the inverse function is:⏎   \
+      🧪 探针: '6' | 熵: 1.7749
+   🔎 [智能检查点@conclusion] Tokens: 458
+      📄 上下文: ...}(10) = \frac{10}{2} = 5⏎   \]⏎⏎6. **Evaluate \( f(g^{-1}(f^{-1}(f^{-1}(g(f(5)))))) \):**⏎   Finally
+      🧪 探针: '5' | 熵: 0.9316
+   🔎 [智能检查点@answer_signal] Tokens: 498
+      📄 上下文: ...( f \) to the result from the previous step:⏎   \[⏎   f(5) = 5 + 1 = 6⏎   \]⏎⏎Thus, the final answer
+      🧪 探针: '6' | 熵: 0.0396
+   🛑 [早停] answer_signal_low_entropy | 答案: 6
+   ✅ 正确 | 预测: 6 | 实际: 6 | 用时: 8.3s | Tokens: 498 | 早停: answer_signal_low_entropy
+
+📝 样本 43: If $a \star b = \dfrac{\left(\dfrac{1}{b} - \dfrac{1}{a}\right)}{(a - b)}$, expr...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...Step 1: Substitute \(a = 3\) and \(b = 11\) into the expression.⏎\[⏎3 \star 11 = \dfrac{\left(\dfrac
+      🧪 探针: '1' | 熵: 2.2931
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...c{\left(\dfrac{1}{11} - \dfrac{1}{3}\right)}{(3 - 11)}⏎\]⏎⏎Step 2: Simplify the numerator \(\dfrac{1
+      🧪 探针: '1' | 熵: 1.9408
+   🔎 [智能检查点@calculation] Tokens: 193
+      📄 上下文: ...ommon denominator for the fractions. The least common multiple of 11 and 3 is 33.⏎\[⏎\dfrac{1}{11} =
+      🧪 探针: '-\frac{1' | 熵: 1.6442
+   🔎 [智能检查点@conclusion] Tokens: 486
+      📄 上下文: ...dfrac{-8}{33} \times \dfrac{1}{-8} = \dfrac{-8 \times 1}{33 \times -8} = \dfrac{1}{33}⏎\]⏎⏎Therefore
+      🧪 探针: '\dfrac{1' | 熵: 0.8131
+   🔎 [智能检查点@answer_signal] Tokens: 490
+      📄 上下文: ...es \dfrac{1}{-8} = \dfrac{-8 \times 1}{33 \times -8} = \dfrac{1}{33}⏎\]⏎⏎Therefore, the final answer
+      🧪 探针: '1' | 熵: 0.7324
+   🔎 [智能检查点@answer_signal] Tokens: 491
+      📄 上下文: ...\dfrac{1}{-8} = \dfrac{-8 \times 1}{33 \times -8} = \dfrac{1}{33}⏎\]⏎⏎Therefore, the final answer is
+      🧪 探针: '1' | 熵: 0.3760
+   🛑 [早停] answer_signal_low_entropy | 答案: 1
+   ✅ 正确 | 预测: 1 | 实际: 1 | 用时: 8.7s | Tokens: 491 | 早停: answer_signal_low_entropy
+
+📝 样本 44: The expression $24x^2-19x-35$ can be written as $(Ax-5)(2Bx+C)$, where $A$, $B$,...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ... factored form⏎First, let's expand \((Ax - 5)(2Bx + C)\):⏎\[⏎(Ax - 5)(2Bx + C) = Ax \cdot 2Bx + Ax \
+      🧪 探针: '17' | 熵: 2.3931
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...x - 5)(2Bx + C) = Ax \cdot 2Bx + Ax \cdot C - 5 \cdot 2Bx - 5 \cdot C⏎\]⏎\[⏎= 2ABx^2 + ACx - 10Bx - 
+      🧪 探针: '17' | 熵: 2.1008
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...x^2 + ACx - 10Bx - 5C⏎\]⏎\[⏎= 2ABx^2 + (AC - 10B)x - 5C⏎\]⏎⏎### Step 2: Compare coefficients⏎We need
+      🧪 探针: '17' | 熵: 2.0746
+   🛑 [早停] calculation_consistency | 答案: 17
+   ❌ 错误 | 预测: 17 | 实际: -9 | 用时: 3.3s | Tokens: 180 | 早停: calculation_consistency
+
+📝 样本 45: A line $\ell$ passes through the points $B(7,-1)$ and $C(-1,7)$.  The equation o...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...ulate the slope \( m \)⏎The formula for the slope \( m \) between two points \((x_1, y_1)\) and \((x
+      🧪 探针: '2.0' | 熵: 2.1052
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ..._1, y_1)\) and \((x_2, y_2)\) is:⏎\[⏎m = \frac{y_2 - y_1}{x_2 - x_1}⏎\]⏎Substituting the coordinates
+      🧪 探针: '1' | 熵: 2.1459
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...stituting the coordinates of points \( B(7, -1) \) and \( C(-1, 7) \):⏎\[⏎m = \frac{7 - (-1)}{-1 - 7
+      🧪 探针: '3' | 熵: 2.2178
+   🔎 [智能检查点@conclusion] Tokens: 328
+      📄 上下文: ...-1 \):⏎\[⏎y - (-1) = -1(x - 7)⏎\]⏎Simplify:⏎\[⏎y + 1 = -x + 7⏎\]⏎Subtract 1 from both sides to solve
+      🧪 探针: '6' | 熵: 0.7849
+   🔎 [智能检查点@conclusion] Tokens: 368
+      📄 上下文: ...( y \):⏎\[⏎y = -x + 6⏎\]⏎⏎### Step 3: Identify the y-intercept \( b \)⏎From the equation \( y = -x +
+      🧪 探针: '5' | 熵: 1.4461
+   🔎 [智能检查点@conclusion] Tokens: 435
+      📄 上下文: ...# Step 4: Calculate \( m + b \)⏎We have \( m = -1 \) and \( b = 6 \):⏎\[⏎m + b = -1 + 6 = 5⏎\]⏎⏎Thus
+      🧪 探针: '5' | 熵: 0.2424
+   🛑 [早停] conclusion_very_low_entropy | 答案: 5
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 7.6s | Tokens: 435 | 早停: conclusion_very_low_entropy
+📊 进度: 45/50, 准确率: 57.78%, 早停率: 100.00%, 平均tokens: 290.5
+
+📝 样本 46: If $j$ and $k$ are inversely proportional and $j = 42$ when $k = 56$, what is th...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ... \( k = 56 \), we can find the constant \( c \) by substituting these values into the equation:⏎⏎\[ 
+      🧪 探针: '3' | 熵: 1.9843
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... 56 = c \]⏎⏎Calculating the product:⏎⏎\[ c = 2352 \]⏎⏎Now, we need to find the value of \( j \) when
+      🧪 探针: '3' | 熵: 0.2784
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...= 32 \). Using the same relationship \( j \cdot k = c \), we substitute \( k = 32 \) and \( c = 2352
+      🧪 探针: '3' | 熵: 0.5278
+   🛑 [早停] calculation_consistency | 答案: 3
+   ❌ 错误 | 预测: 3 | 实际: 73.5 | 用时: 3.3s | Tokens: 180 | 早停: calculation_consistency
+
+📝 样本 47: The product of two positive numbers is 24, and the sum of their squares is 73. W...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...he square of their difference, which is \((x - y)^2\).⏎⏎First, we use the identity for the square of
+      🧪 探针: '1' | 熵: 1.7995
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... for the square of a difference:⏎\[⏎(x - y)^2 = x^2 - 2xy + y^2⏎\]⏎⏎We already know \(x^2 + y^2 = 73
+      🧪 探针: '17' | 熵: 1.7843
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ... and \(xy = 24\). Substituting these values into the identity, we get:⏎\[⏎(x - y)^2 = 73 - 2 \cdot 2
+      🧪 探针: '25' | 熵: 0.1882
+   🔎 [智能检查点@conclusion] Tokens: 220
+      📄 上下文: ...(x - y)^2 = 73 - 2 \cdot 24⏎\]⏎\[⏎(x - y)^2 = 73 - 48⏎\]⏎\[⏎(x - y)^2 = 25⏎\]⏎⏎Therefore, the square
+      🧪 探针: '25' | 熵: 0.0207
+   🛑 [早停] conclusion_very_low_entropy | 答案: 25
+   ✅ 正确 | 预测: 25 | 实际: 25 | 用时: 4.1s | Tokens: 220 | 早停: conclusion_very_low_entropy
+
+📝 样本 48: If $a+b=8$, $b+c=-3$, and $a+c= -5$, what is the value of the product $abc$?...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...three equations together:⏎⏎\[⏎(a + b) + (b + c) + (a + c) = 8 + (-3) + (-5)⏎\]⏎⏎Simplifying the left
+      🧪 探针: '2' | 熵: 2.3754
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...he left-hand side, we get:⏎⏎\[⏎2a + 2b + 2c = 0⏎\]⏎⏎Dividing the entire equation by 2:⏎⏎\[⏎a + b + c
+      🧪 探针: '0' | 熵: 1.5411
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...ow, we can use this result to find the values of \(a\), \(b\), and \(c\). We already have:⏎⏎\[⏎a + b
+      🧪 探针: '12' | 熵: 2.0489
+   🔎 [智能检查点@conclusion] Tokens: 245
+      📄 上下文: ...= 8\) from \(a + b + c = 0\):⏎⏎\[⏎c = -8⏎\]⏎⏎Next, we use \(b + c = -3\):⏎⏎\[⏎b - 8 = -3⏎\]⏎⏎Solving
+      🧪 探针: '40' | 熵: 1.9871
+   🔎 [智能检查点@conclusion] Tokens: 285
+      📄 上下文: ...b - 8 = -3⏎\]⏎⏎Solving for \(b\):⏎⏎\[⏎b = 5⏎\]⏎⏎Finally, we use \(a + c = -5\):⏎⏎\[⏎a - 8 = -5⏎\]⏎⏎S
+      🧪 探针: '40' | 熵: 1.9125
+   🔎 [智能检查点@conclusion] Tokens: 325
+      📄 上下文: ...a - 8 = -5⏎\]⏎⏎Solving for \(a\):⏎⏎\[⏎a = 3⏎\]⏎⏎Now that we have \(a = 3\), \(b = 5\), and \(c = -8\
+      🧪 探针: '-120' | 熵: 1.3015
+   🔎 [智能检查点@conclusion] Tokens: 365
+      📄 上下文: ...c = -8\), we can find the product \(abc\):⏎⏎\[⏎abc = 3 \times 5 \times (-8) = 15 \times (-8) = -120⏎
+      🧪 探针: '-120' | 熵: 0.4930
+   🛑 [早停] conclusion_low_entropy | 答案: -120
+   ✅ 正确 | 预测: -120 | 实际: -120 | 用时: 7.0s | Tokens: 365 | 早停: conclusion_low_entropy
+
+📝 样本 49: The expression $6y^2-y-51$ can be rewritten as $(3Ay+B)(y-C)$, where $A$, $B$, a...
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...are:⏎   - \(a = 6\) (coefficient of \(y^2\))⏎   - \(b = -1\) (coefficient of \(y\))⏎   - \(c = -51\)
+      🧪 探针: '17' | 熵: 1.8354
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...\) (constant term)⏎⏎2. **Find the product of \(a\) and \(c\):**⏎   \[⏎   ac = 6 \times (-51) = -306⏎
+      🧪 探针: '243' | 熵: 2.1752
+   🔎 [智能检查点@calculation] Tokens: 220
+      📄 上下文: ...hat multiply to \(-306\) and add up to \(-1\):**⏎   We need to find two numbers whose product is \(-
+      🧪 探针: '79' | 熵: 2.0678
+   🔎 [智能检查点@conclusion] Tokens: 614
+      📄 上下文: ...   (AC)^2 = 6^2 = 36⏎   \]⏎   \[⏎   B = 17⏎   \]⏎   \[⏎   (AC)^2 - B = 36 - 17 = 19⏎   \]⏎⏎Therefore
+      🧪 探针: '19' | 熵: 0.4489
+   🛑 [早停] conclusion_low_entropy | 答案: 19
+   ✅ 正确 | 预测: 19 | 实际: 19 | 用时: 9.4s | Tokens: 614 | 早停: conclusion_low_entropy
+
+📝 样本 50: Given that $M( 1, -6)$ is the midpoint of $\overline{AB}$ and $A(-2, 1)$ is one ...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...t formula for a line segment with endpoints \( (x_1, y_1) \) and \( (x_2, y_2) \) is:⏎⏎\[⏎M = \left(
+      🧪 探针: '0' | 熵: 1.9887
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... y_2) \) is:⏎⏎\[⏎M = \left( \frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2} \right)⏎\]⏎⏎Given:⏎- \( M(1, -6
+      🧪 探针: '0' | 熵: 2.2133
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ... A(-2, 1) \)⏎- Let \( B(x, y) \)⏎⏎We can set up the equations based on the midpoint formula:⏎⏎\[⏎1 =
+      🧪 探针: '10' | 熵: 2.1667
+   🔎 [智能检查点@conclusion] Tokens: 220
+      📄 上下文: ...formula:⏎⏎\[⏎1 = \frac{-2 + x}{2}⏎\]⏎\[⏎-6 = \frac{1 + y}{2}⏎\]⏎⏎First, solve for \( x \):⏎⏎\[⏎1 = \
+      🧪 探针: '10' | 熵: 2.2524
+   🔎 [智能检查点@conclusion] Tokens: 260
+      📄 上下文: ...⏎1 = \frac{-2 + x}{2}⏎\]⏎⏎Multiply both sides by 2:⏎⏎\[⏎2 = -2 + x⏎\]⏎⏎Add 2 to both sides:⏎⏎\[⏎x = 
+      🧪 探针: '0' | 熵: 1.9754
+   🔎 [智能检查点@conclusion] Tokens: 300
+      📄 上下文: ...\[⏎x = 4⏎\]⏎⏎Next, solve for \( y \):⏎⏎\[⏎-6 = \frac{1 + y}{2}⏎\]⏎⏎Multiply both sides by 2:⏎⏎\[⏎-12
+      🧪 探针: '-13' | 熵: 2.2794
+   🔎 [智能检查点@conclusion] Tokens: 340
+      📄 上下文: ...1 + y⏎\]⏎⏎Subtract 1 from both sides:⏎⏎\[⏎y = -13⏎\]⏎⏎So, the coordinates of point \( B \) are \( (4
+      🧪 探针: '4' | 熵: 1.7515
+   🔎 [智能检查点@conclusion] Tokens: 380
+      📄 上下文: ...o find the sum of the coordinates of point \( B \):⏎⏎\[⏎4 + (-13) = -9⏎\]⏎⏎Therefore, the sum of the
+      🧪 探针: '-9' | 熵: 0.2265
+   🛑 [早停] conclusion_very_low_entropy | 答案: -9
+   ✅ 正确 | 预测: -9 | 实际: -9 | 用时: 7.4s | Tokens: 380 | 早停: conclusion_very_low_entropy
+📊 进度: 50/50, 准确率: 60.00%, 早停率: 100.00%, 平均tokens: 296.6
+
+============================================================
+📊 HALT-CoT 实验统计结果
+============================================================
+🤖 模型: Qwen/Qwen2.5-7B-Instruct
+📝 总样本数: 50
+✅ 正确样本: 30
+🎯 准确率: 60.00%
+🛑 早停率: 100.00% (50/50)
+⏱️  平均用时: 5.3秒/样本
+💬 平均Token: 296.6个/样本
+📊 Token范围: 100 - 749
+📉 平均熵: 1.091
+🔍 平均检查点: 0.0次/样本
+🕐 总用时: 4分26秒
+🔍 检测模式: 智能检测
+
+🔍 早停原因分布:
+   - conclusion_very_low_entropy: 10次
+   - answer_signal_low_entropy: 10次
+   - calculation_consistency: 5次
+   - conclusion_consistency: 10次
+   - calculation_very_low_entropy: 7次
+   - conclusion_low_entropy: 7次
+   - answer_signal_consistency: 1次
+============================================================
+💾 结果已保存: /root/autodl-tmp/results/halt_cot_qwen2.5-7b_smart_50samples_20251204_113910.json
+📄 摘要已保存: /root/autodl-tmp/results/halt_cot_qwen2.5-7b_smart_50samples_20251204_113910_summary.txt
+
+🎉 实验完成!
+📁 结果文件: /root/autodl-tmp/results/halt_cot_qwen2.5-7b_smart_50samples_20251204_113910.json
+
+📈 实验成功完成，处理了 50 个样本
+💡 融合了两种早停方法：
+   1. 答案一致性检测（Liu & Wang 2025）
+   2. 熵基早停（Laaouach HALT-CoT）
+============================================================
+⏰ 结束时间: 2025-12-04 11:39:10

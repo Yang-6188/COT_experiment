@@ -1,0 +1,94 @@
+📝 日志文件: logs/experiment_20251204_112323.log
+⏰ 开始时间: 2025-12-04 11:23:23
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 50 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.26it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.30it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.30it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.35it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]
+✅ 模型已加载到: cuda:0
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_smart_detection: True
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.5
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 实验管理器初始化: 智能检测=True, 句子边界检测=False
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🔎 [智能检查点@conclusion] Tokens: 120
+      📄 上下文: ...actor this as $(x + 3)(x - 2)$.⏎⏎Step 2: Set the denominator equal to zero and solve for $x$.⏎$(x + 
+      🧪 探针: '2' | 熵: 0.0659
+   🛑 [早停] conclusion_very_low_entropy | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 2.6s | Tokens: 120 | 早停: conclusion_very_low_entropy
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...re \((12,-2)\). The distance formula between two points \((x_1, y_1)\) and \((x_2, y_2)\) is:⏎\[⏎d =
+      🧪 探针: '13' | 熵: 0.7170
+   🔎 [智能检查点@calculation] Tokens: 220
+      📄 上下文: ...y_2)\) is:⏎\[⏎d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}⏎\]⏎Applying this to points \(A\) and \(C\):⏎\
+      🧪 探针: '13' | 熵: 1.5836
+   🛑 [早停] calculation_consistency | 答案: 13
+   ❌ 错误 | 预测: 13 | 实际: 75 | 用时: 3.6s | Tokens: 220 | 早停: calculation_consistency
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...ht-hand side:**⏎   \[⏎   \frac{9}{2\sqrt{3}} = \frac{9}{2\sqrt{3}} \cdot \frac{\sqrt{3}}{\sqrt{3}} =
+      🧪 探针: '14' | 熵: 1.9750
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... = \frac{9\sqrt{3}}{6} = \frac{3\sqrt{3}}{2}⏎   \]⏎⏎2. **Equate the simplified form to the left-hand
+      🧪 探针: '14' | 熵: 1.4246
+   🛑 [早停] calculation_consistency | 答案: 14
+   ❌ 错误 | 预测: 14 | 实际: 8 | 用时: 2.5s | Tokens: 140 | 早停: calculation_consistency
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...n treeks weigh as much as three squigs and one goolee)⏎2. \( 2T + G = S \) (Two treeks and one goole
+      🧪 探针: '5' | 熵: 1.6660
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... to find the number of treeks that equal the weight of one squig, i.e., we need to find \( x \) such
+      🧪 探针: '5' | 熵: 1.5675
+   🛑 [早停] calculation_consistency | 答案: 5
+   ❌ 错误 | 预测: 5 | 实际: 3 | 用时: 2.5s | Tokens: 140 | 早停: calculation_consistency
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...s V_2 \]⏎⏎Where:⏎- \( P_1 \) is the initial pressure (4 kPa)⏎- \( V_1 \) is the initial volume (3.67
+      🧪 探针: '8' | 熵: 0.0556
+   🛑 [早停] calculation_very_low_entropy | 答案: 8
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 1.6s | Tokens: 100 | 早停: calculation_very_low_entropy
+📊 进度: 5/50, 准确率: 40.00%, 早停率: 100.00%, 平均tokens: 144.0
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...\( G \).⏎⏎From the problem, we have the following two equations:⏎⏎1. \( 8F + 2G = 932 \)⏎2. \( 14F +
+      🧪 探针: '5' | 熵: 1.9997
+   🔎 [智能检查点@conclusion] Tokens: 120
+      📄 上下文: ...ns:⏎⏎1. \( 8F + 2G = 932 \)⏎2. \( 14F + 3G = 1402 \)⏎⏎We will solve this system of equations step by
+      🧪 探针: '5' | 熵: 2.4039
+   🛑 [早停] conclusion_consistency | 答案: 5
+   ❌ 错误 | 预测: 5 | 实际: 2300 | 用时: 2.2s | Tokens: 120 | 早停: conclusion_consistency
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...circle and $r$ is the radius.⏎⏎Step 1: Group the $x$ and $y$ terms.⏎$x^2 + 8x + y^2 - 6y = 0$⏎⏎Step 
+      🧪 探针: '5' | 熵: 0.7759
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ...he square, we need to add and subtract the square of half the coefficient of $x$ (which is 8) inside
+      🧪 探针: '5' | 熵: 0.1866
+   🛑 [早停] calculation_consistency | 答案: 5
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 2.4s | Tokens: 140 | 早停: calculation_consistency
+
+📝 样本 8: If $9^{18n}=27^{24}$, find $n$....
+   🔎 [智能检查点@calculation] Tokens: 105
+      📄 上下文: ... be written as \(3^3\).⏎⏎2. **Rewrite the equation using these expressions:**⏎   \[⏎   (3^2)^{18n} =
+      🧪 探针: '4' | 熵: 1.6902
+
+❌ 实验被用户中断
+============================================================
+⏰ 结束时间: 2025-12-04 11:23:48

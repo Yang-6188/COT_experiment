@@ -1,0 +1,162 @@
+📝 日志文件: logs/experiment_20251204_111123.log
+⏰ 开始时间: 2025-12-04 11:11:23
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 50 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.24it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.29it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.30it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.34it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.32it/s]
+✅ 模型已加载到: cuda:0
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_smart_detection: False
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.5
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 实验管理器初始化: 智能检测=False, 句子边界检测=True
+
+📝 样本 1: Evaluate $i^5+i^{-25}+i^{45}$....
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ... four terms as follows:⏎⏎\[⏎\begin{align*}⏎i^1 &= i, \\⏎i^2 &= -1, \\⏎i^3 &= -i, \\⏎i^4 &= 1, \\⏎i^5
+      🧪 探针: '0' | 熵: 0.7851
+   🔎 [句子检查点@conclusion] Tokens: 149
+      📄 上下文: ...^7 &= -i, \\⏎i^8 &= 1, \\⏎&\vdots⏎\end{align*}⏎\]⏎⏎This pattern repeats every four powers. Therefore
+      🧪 探针: '0' | 熵: 0.7529
+   🔎 [句子检查点@conclusion] Tokens: 189
+      📄 上下文: .... Therefore, to find \(i^n\), we can reduce \(n\) modulo 4.⏎⏎1. Evaluate \(i^5\):⏎\[⏎i^5 = i^{4+1} =
+      🧪 探针: '0' | 熵: 0.7939
+   🛑 [早停] answer_consistency | 答案: 0
+   ❌ 错误 | 预测: 0 | 实际: i | 用时: 4.2s | Tokens: 189 | 早停: answer_consistency
+
+📝 样本 2: What is the smallest value of $x$ such that $|5x - 1| = |3x + 2|$? Express your ...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...possible cases to consider:⏎⏎1. \( 5x - 1 = 3x + 2 \)⏎2. \( 5x - 1 = -(3x + 2) \)⏎3. \( -(5x - 1) = 
+      🧪 探针: '1' | 熵: 2.2931
+   🔎 [句子检查点@calculation] Tokens: 140
+      📄 上下文: ... -(5x - 1) = 3x + 2 \)⏎4. \( -(5x - 1) = -(3x + 2) \)⏎⏎Let's solve each case step by step.⏎⏎**Case 1
+      🧪 探针: '\frac{1' | 熵: 1.6685
+   🔎 [句子检查点@calculation] Tokens: 571
+      📄 上下文: ...\]⏎⏎From the four cases, we have the solutions \( x = \frac{3}{2} \) and \( x = -\frac{1}{8} \). The
+      🧪 探针: '-\frac{1' | 熵: 0.6731
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: -\frac{1 | 实际: 1 | 用时: 8.9s | Tokens: 592 
+
+📝 样本 3: Find the sum of all integers that satisfy these conditions: \[
+|x|+1>7\text{ and...
+   🔎 [句子检查点@conclusion] Tokens: 100
+      📄 上下文: ...be either greater than 6 or less than -6. Therefore, we have:⏎   \[⏎   x > 6 \quad \text{or} \quad x
+      🧪 探针: '20' | 熵: 1.9523
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: -21 | 实际: -15 | 用时: 5.9s | Tokens: 412 
+
+📝 样本 4: What is the smallest real number $x$ in the domain of the function $$g(x) = \sqr...
+   🛑 自然停止: boxed_answer_complete
+   ❌ 错误 | 预测: 5.5 | 实际: 11 | 用时: 3.6s | Tokens: 264 
+
+📝 样本 5: Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ... pq = n \]⏎⏎Given that \(m < 20\), we need to find all possible pairs \((p, q)\) such that \(p + q <
+      🧪 探针: '15' | 熵: 1.5583
+   🔎 [句子检查点@calculation] Tokens: 180
+      📄 上下文: ... 7, 11, 13, 17, 19.⏎⏎We will now consider all possible pairs \((p, q)\) and calculate \(n = pq\):⏎⏎1
+      🧪 探针: '8' | 熵: 1.7426
+   🔎 [句子检查点@calculation] Tokens: 220
+      📄 上下文: ...q)\) and calculate \(n = pq\):⏎⏎1. \(p = 2\):⏎   - \(q = 2\): \(n = 2 \times 2 = 4\)⏎   - \(q = 3\):
+      🧪 探针: '4' | 熵: 2.1179
+   🔎 [句子检查点@calculation] Tokens: 465
+      📄 上下文: ...= 19 < 20\))⏎   - \(q = 19\): \(n = 2 \times 19 = 38\) (not valid since \(2 + 19 = 21 > 20\))⏎⏎2. \(
+      🧪 探针: '1' | 熵: 1.9927
+   🔎 [句子检查点@calculation] Tokens: 743
+      📄 上下文: ...= 20 > 20\))⏎   - \(q = 19\): \(n = 3 \times 19 = 57\) (not valid since \(3 + 19 = 22 > 20\))⏎⏎3. \(
+      🧪 探针: '1' | 熵: 1.6977
+   🔎 [句子检查点@calculation] Tokens: 1016
+      📄 上下文: ...= 22 > 20\))⏎   - \(q = 19\): \(n = 5 \times 19 = 95\) (not valid since \(5 + 19 = 24 > 20\))⏎⏎4. \(
+      🧪 探针: '1' | 熵: 1.6069
+   🛑 [早停] answer_consistency | 答案: 1
+   ❌ 错误 | 预测: 1 | 实际: 18 | 用时: 15.7s | Tokens: 1016 | 早停: answer_consistency
+📊 进度: 5/50, 准确率: 0.00%, 早停率: 40.00%, 平均tokens: 494.6
+
+📝 样本 6: Compute the range of the function $f(x) = \sqrt{x^2}$....
+   🔎 [句子检查点@calculation] Tokens: 140
+      📄 上下文: ...lute value of $x$.⏎⏎Step 2: Determine the domain of the function.⏎The domain of the function $f(x) =
+      🧪 探针: '0' | 熵: 1.1930
+   🔎 [句子检查点@calculation] Tokens: 180
+      📄 上下文: ...l number is defined.⏎⏎Step 3: Determine the range of the function.⏎The range of the function $f(x) =
+      🧪 探针: '0' | 熵: 0.8187
+   🔎 [句子检查点@conclusion] Tokens: 220
+      📄 上下文: ...r is always non-negative, and the function can take on any non-negative value.⏎⏎Therefore, the range
+      🧪 探针: '0' | 熵: 2.1366
+   🛑 [早停] answer_consistency | 答案: 0
+   ✅ 正确 | 预测: 0 | 实际: 0 | 用时: 3.8s | Tokens: 220 | 早停: answer_consistency
+
+📝 样本 7: Find all positive integer values of $c$ such that the equation $x^2-7x+c=0$ only...
+   🔎 [句子检查点@calculation] Tokens: 140
+      📄 上下文: ...The discriminant \( \Delta \) of the quadratic equation \( x^2 - 7x + c = 0 \) is given by:⏎     \[⏎
+      🧪 探针: '12' | 熵: 1.6065
+   🔎 [句子检查点@calculation] Tokens: 180
+      📄 上下文: ...:⏎     \[⏎     \Delta = b^2 - 4ac⏎     \]⏎     Here, \( a = 1 \), \( b = -7 \), and \( c = c \). Sub
+      🧪 探针: '12' | 熵: 1.4710
+   🔎 [句子检查点@calculation] Tokens: 224
+      📄 上下文: ...ting these values, we get:⏎     \[⏎     \Delta = (-7)^2 - 4 \cdot 1 \cdot c = 49 - 4c⏎     \]⏎⏎2. **
+      🧪 探针: '12' | 熵: 2.0952
+   🛑 [早停] answer_consistency | 答案: 12
+   ✅ 正确 | 预测: 12 | 实际: 12 | 用时: 3.9s | Tokens: 224 | 早停: answer_consistency
+
+📝 样本 8: If $a$ and $b$ are the solutions to the equation $x^{2} - 5x + 9= 0$, what is th...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...he form $x^2 + px + q = 0$, the sum of the roots is $-p$ and the product of the roots is $q$. In our
+      🧪 探针: '5' | 熵: 1.7660
+   🔎 [句子检查点@calculation] Tokens: 140
+      📄 上下文: ... In our case, the equation is $x^2 - 5x + 9 = 0$, so we have:⏎⏎- The sum of the roots, $a + b = 5$.⏎
+      🧪 探针: '4' | 熵: 1.8862
+   🔎 [句子检查点@calculation] Tokens: 180
+      📄 上下文: ..., $ab = 9$.⏎⏎We need to find the value of $(a - 1)(b - 1)$. We can expand this expression as follows
+      🧪 探针: '4' | 熵: 1.5405
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 5 | 实际: 5 | 用时: 4.6s | Tokens: 279 
+
+📝 样本 9: John computes the sum of the elements of each of the 15 two-element subsets of $...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...ose 2 elements from 6 is given by the combination formula $C(n, k) = \frac{n!}{k!(n-k)!}$, where $n$
+      🧪 探针: '15' | 熵: 0.5431
+   🔎 [句子检查点@calculation] Tokens: 140
+      📄 上下文: ...er of elements, and $k$ is the number of elements to choose. In this case, $n=6$ and $k=2$.⏎⏎\[ C(6,
+      🧪 探针: '15' | 熵: 0.2751
+   🛑 [早停] low_entropy | 答案: 15
+   ❌ 错误 | 预测: 15 | 实际: 105 | 用时: 2.5s | Tokens: 140 | 早停: low_entropy
+
+📝 样本 10: The points $(x, y)$ represented in this table lie on a straight line. The point ...
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ...ormula for the slope \( m \) between two points \((x_1, y_1)\) and \((x_2, y_2)\) is:⏎\[⏎m = \frac{y
+      🧪 探针: '3.0' | 熵: 2.3770
+   🔎 [句子检查点@calculation] Tokens: 424
+      📄 上下文: ... \( p = 8 \), we can find \( q \) by using the point \((13, q)\) and the slope we found earlier. The
+      🧪 探针: '16.0' | 熵: 1.8391
+   🔎 [句子检查点@calculation] Tokens: 515
+      📄 上下文: ... form of the line equation \( y - y_1 = m(x - x_1) \) with the point \((2, -5)\):⏎\[⏎y - (-5) = -1.5
+      🧪 探针: '10.5' | 熵: 1.6430
+   🔎 [句子检查点@calculation] Tokens: 579
+      📄 上下文: ...\]⏎\[⏎y + 5 = -1.5x + 3⏎\]⏎\[⏎y = -1.5x - 2⏎\]⏎⏎Substitute \( x = 13 \) to find \( q \):⏎\[⏎q = -1.5
+      🧪 探针: '19.5' | 熵: 1.3215
+   🔎 [句子检查点@calculation] Tokens: 640
+      📄 上下文: ...(13) - 2⏎\]⏎\[⏎q = -19.5 - 2⏎\]⏎\[⏎q = -21.5⏎\]⏎⏎Finally, we find \( p + q \):⏎\[⏎p + q = 8 + (-21.5
+      🧪 探针: '8' | 熵: 1.4042
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: -13.5 | 实际: -13.5 | 用时: 10.7s | Tokens: 673 
+📊 进度: 10/50, 准确率: 40.00%, 早停率: 50.00%, 平均tokens: 400.9
+
+📝 样本 11: For what real values of $x$ is $-4<x^{4}+4x^{2}<21$ satisfied? Express your answ...
+   🔎 [句子检查点@conclusion] Tokens: 140
+      📄 上下文: ...the inequality \(-4\) is a constant negative value. Therefore, \(x^4 + 4x^2\) is always greater than
+      🧪 探针: '(-2 2)' | 熵: 1.8234
+   🔎 [句子检查点@calculation] Tokens: 223
+      📄 上下文: ...x^2 < 21\)⏎⏎Next, we solve the inequality:⏎\[⏎x^4 + 4x^2 < 21⏎\]⏎⏎To simplify, let \(y = x^2\). Then
+      🧪 探针: '0.535625' | 熵: 2.8611
+
+❌ 实验被用户中断
+============================================================
+⏰ 结束时间: 2025-12-04 11:12:38

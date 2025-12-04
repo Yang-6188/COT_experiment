@@ -1,0 +1,39 @@
+📝 日志文件: logs/experiment_20251204_112135.log
+⏰ 开始时间: 2025-12-04 11:21:35
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 50 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.27it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.30it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.30it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.34it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.33it/s]
+✅ 模型已加载到: cuda:0
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_smart_detection: False
+  - use_consistency: True
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.5
+  - entropy_consecutive_steps: 2
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 实验管理器初始化: 智能检测=False, 句子边界检测=True
+
+📝 样本 1: Evaluate $i^5+i^{-25}+i^{45}$....
+   🔎 [句子检查点@calculation] Tokens: 100
+      📄 上下文: ... four terms as follows:⏎⏎\[⏎\begin{align*}⏎i^1 &= i, \\⏎i^2 &= -1, \\⏎i^3 &= -i, \\⏎i^4 &= 1, \\⏎i^5
+      🧪 探针: '0' | 熵: 0.7851
+   🔎 [句子检查点@conclusion] Tokens: 149
+      📄 上下文: ...^7 &= -i, \\⏎i^8 &= 1, \\⏎&\vdots⏎\end{align*}⏎\]⏎⏎This pattern repeats every four powers. Therefore
+      🧪 探针: '0' | 熵: 0.7529
+   🔎 [句子检查点@conclusion] Tokens: 189
+      📄 上下文: .... Therefore, to find \(i^n\), we can reduce \(n\) modulo 4.⏎⏎1. Evaluate \(i^5\):⏎\[⏎i^5 = i^{4+1} =
+      🧪 探针: '0' | 熵: 0.7939
+   🛑 [早停] answer_consistency | 答案: 0
+   ❌ 错误 | 预测: 0 | 实际: i | 用时: 4.1s | Tokens: 189 | 早停: answer_consistency
+
+📝 样本 2: What is the smallest value of $x$ such that $|5x - 1| = |3x + 2|$? Express your ...
+
+❌ 实验被用户中断
+============================================================
+⏰ 结束时间: 2025-12-04 11:21:46

@@ -38,7 +38,7 @@
     "use_entropy_halt": true,
     "consistency_k": 3,
     "entropy_threshold": 0.65,
-    "entropy_consecutive_steps": 1,
+    "entropy_consecutive_steps": 2,
     "min_tokens_before_check": 100,
     "cooldown_tokens": 40
   },
@@ -50,7 +50,7 @@
   "sentence_detection": {
     "enabled": true,
     "min_tokens_before_check": 100,
-    "cooldown_tokens": 40,
+    "cooldown_tokens": 30,
     "sentence_endings": [".", "!", "?", "。", "！", "？"],
     "known_abbreviations": [
       "mr", "mrs", "ms", "dr", "prof", "sr", "jr",
