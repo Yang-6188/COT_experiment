@@ -1,0 +1,212 @@
+📝 日志文件: logs/experiment_20251204_165717.log
+⏰ 开始时间: 2025-12-04 16:57:17
+============================================================
+🚀 实验运行器初始化完成
+🧪 开始HALT-CoT增强实验
+============================================================
+✅ 已加载 50 条测试数据
+🤖 加载模型: Qwen/Qwen2.5-7B-Instruct
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:02,  1.25it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:01<00:01,  1.29it/s]Loading checkpoint shards:  75%|#######5  | 3/4 [00:02<00:00,  1.29it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.34it/s]Loading checkpoint shards: 100%|##########| 4/4 [00:03<00:00,  1.32it/s]
+✅ 模型已加载到: cuda:0
+[SmartHaltDecisionMaker] 初始化配置:
+  - use_smart_detection: True
+  - use_consistency: False
+  - use_entropy: True
+  - consistency_k: 3
+  - entropy_threshold: 0.01
+  - entropy_consecutive_steps: 3
+  - min_tokens_before_check: 100
+  - cooldown_tokens: 40
+🔧 实验管理器初始化: 智能检测=True, 句子边界检测=False
+
+📝 样本 1: How many vertical asymptotes does the graph of $y=\frac{2}{x^2+x-6}$ have?...
+   🔎 [智能检查点@conclusion] Tokens: 140
+      📄 上下文: ...he denominator equal to zero and solve for $x$.⏎$(x + 3)(x - 2) = 0$⏎⏎Step 3: Solve the equation.⏎$x
+      🧪 探针: '2' | 熵: 0.1085
+   🔎 [智能检查点@conclusion] Tokens: 180
+      📄 上下文: ...he equation.⏎$x + 3 = 0$ or $x - 2 = 0$⏎$x = -3$ or $x = 2$⏎⏎Step 4: Determine if these values of $x
+      🧪 探针: '2' | 熵: 0.0536
+   🔎 [智能检查点@conclusion] Tokens: 228
+      📄 上下文: ...ot zero at those points. In this case, the numerator is a constant (2), which is not zero. Therefore
+      🧪 探针: '2' | 熵: 0.0788
+   🔎 [智能检查点@answer_signal] Tokens: 268
+      📄 上下文: ...both $x = -3$ and $x = 2$ are vertical asymptotes.⏎⏎Final Answer: The graph of $y=\frac{2}{x^2+x-6}$
+      🧪 探针: '2' | 熵: 0.0026
+   🛑 [早停] answer_signal_low_entropy | 答案: 2
+   ✅ 正确 | 预测: 2 | 实际: 2 | 用时: 5.6s | Tokens: 268 | 早停: answer_signal_low_entropy
+
+📝 样本 2: Kite $ABCD$ (a quadrilateral with two pairs of adjacent equal sides) has coordin...
+   🔎 [智能检查点@calculation] Tokens: 200
+      📄 上下文: ...mula between two points \((x_1, y_1)\) and \((x_2, y_2)\) is:⏎\[⏎d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_
+      🧪 探针: '13' | 熵: 1.6775
+   🔎 [智能检查点@calculation] Tokens: 240
+      📄 上下文: ...^2 + (y_2 - y_1)^2}⏎\]⏎Applying this to points \(A\) and \(C\):⏎\[⏎AC = \sqrt{(12 - 0)^2 + (-2 - 7)^
+      🧪 探针: '13' | 熵: 1.5740
+   🔎 [智能检查点@calculation] Tokens: 280
+      📄 上下文: ...):⏎\[⏎AC = \sqrt{(12 - 0)^2 + (-2 - 7)^2} = \sqrt{12^2 + (-9)^2} = \sqrt{144 + 81} = \sqrt{225} = 15
+      🧪 探针: '15' | 熵: 0.1523
+   🔎 [智能检查点@conclusion] Tokens: 498
+      📄 上下文: ...als \(AC\) and \(BD\):⏎\[⏎A = \frac{1}{2} \times 15 \times 10 = \frac{1}{2} \times 150 = 75⏎\]⏎⏎Thus
+      🧪 探针: '75' | 熵: 0.8367
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 75 | 实际: 75 | 用时: 8.1s | Tokens: 515 
+
+📝 样本 3: If $A$, $B$ and $C$ are positive integers such that $\frac{A\sqrt{B}}{C} = \frac...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...ht-hand side:**⏎   \[⏎   \frac{9}{2\sqrt{3}} = \frac{9}{2\sqrt{3}} \cdot \frac{\sqrt{3}}{\sqrt{3}} =
+      🧪 探针: '14' | 熵: 1.9750
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... = \frac{9\sqrt{3}}{6} = \frac{3\sqrt{3}}{2}⏎   \]⏎⏎2. **Equate the simplified form to the left-hand
+      🧪 探针: '14' | 熵: 1.4246
+   🔎 [智能检查点@calculation] Tokens: 180
+      📄 上下文: ...rm to the left-hand side:**⏎   \[⏎   \frac{A\sqrt{B}}{C} = \frac{3\sqrt{3}}{2}⏎   \]⏎⏎3. **Match the
+      🧪 探针: '14' | 熵: 1.3187
+   🔎 [智能检查点@conclusion] Tokens: 225
+      📄 上下文: ...nd denominators:**⏎   - Numerator: \(A\sqrt{B} = 3\sqrt{3}\)⏎   - Denominator: \(C = 2\)⏎⏎4. **Solve
+      🧪 探针: '10' | 熵: 1.4306
+   🔎 [智能检查点@conclusion] Tokens: 265
+      📄 上下文: ...4. **Solve for \(A\) and \(B\):**⏎   - From \(A\sqrt{B} = 3\sqrt{3}\), we can see that \(A = 3\) and
+      🧪 探针: '10' | 熵: 1.4393
+   🔎 [智能检查点@conclusion] Tokens: 305
+      📄 上下文: ...nd \(\sqrt{B} = \sqrt{3}\).⏎   - Therefore, \(B = 3\).⏎⏎5. **Verify the conditions:**⏎   - \(A = 3\)
+      🧪 探针: '3' | 熵: 1.7427
+   🔎 [智能检查点@conclusion] Tokens: 384
+      📄 上下文: ...s other than 1.⏎⏎6. **Calculate \(A + B + C\):**⏎   \[⏎   A + B + C = 3 + 3 + 2 = 8⏎   \]⏎⏎Therefore
+      🧪 探针: '8' | 熵: 0.0793
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 8 | 实际: 8 | 用时: 7.5s | Tokens: 402 
+
+📝 样本 4: Ten treeks weigh as much as three squigs and one goolee. Two treeks and one gool...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...n treeks weigh as much as three squigs and one goolee)⏎2. \( 2T + G = S \) (Two treeks and one goole
+      🧪 探针: '5' | 熵: 1.6660
+   🔎 [智能检查点@calculation] Tokens: 140
+      📄 上下文: ... to find the number of treeks that equal the weight of one squig, i.e., we need to find \( x \) such
+      🧪 探针: '5' | 熵: 1.5675
+   🔎 [智能检查点@conclusion] Tokens: 180
+      📄 上下文: ...irst, let's solve the second equation for \( G \):⏎⏎\[ G = S - 2T \]⏎⏎Now, substitute \( G \) in the
+      🧪 探针: '5' | 熵: 1.3434
+   🔎 [智能检查点@conclusion] Tokens: 220
+      📄 上下文: ...Now, substitute \( G \) in the first equation:⏎⏎\[ 10T = 3S + (S - 2T) \]⏎\[ 10T = 3S + S - 2T \]⏎\[
+      🧪 探针: '5' | 熵: 0.9227
+   🔎 [智能检查点@conclusion] Tokens: 260
+      📄 上下文: ...]⏎\[ 10T = 3S + S - 2T \]⏎\[ 10T = 4S - 2T \]⏎\[ 12T = 4S \]⏎\[ 3T = S \]⏎⏎So, the weight of one squ
+      🧪 探针: '3' | 熵: 0.0079
+   🛑 [早停] conclusion_low_entropy | 答案: 3
+   ✅ 正确 | 预测: 3 | 实际: 3 | 用时: 4.9s | Tokens: 260 | 早停: conclusion_low_entropy
+
+📝 样本 5: At constant temperature, the pressure of a sample of gas is inversely proportion...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...s V_2 \]⏎⏎Where:⏎- \( P_1 \) is the initial pressure (4 kPa)⏎- \( V_1 \) is the initial volume (3.67
+      🧪 探针: '8' | 熵: 0.0556
+   🔎 [智能检查点@conclusion] Tokens: 147
+      📄 上下文: ...need to find)⏎- \( V_2 \) is the final volume (1.835 liters)⏎⏎We can rearrange the equation to solve
+      🧪 探针: '8' | 熵: 0.0155
+   🔎 [智能检查点@conclusion] Tokens: 187
+      📄 上下文: ... to solve for \( P_2 \):⏎⏎\[ P_2 = \frac{P_1 \times V_1}{V_2} \]⏎⏎Now, let's plug in the values:⏎⏎\[
+      🧪 探针: '8' | 熵: 0.0216
+   🔎 [智能检查点@conclusion] Tokens: 227
+      📄 上下文: ..., let's plug in the values:⏎⏎\[ P_2 = \frac{4 \, \text{kPa} \times 3.67 \, \text{L}}{1.835 \, \text{
+      🧪 探针: '8' | 熵: 0.2800
+   🔎 [智能检查点@calculation] Tokens: 267
+      📄 上下文: ...67 \, \text{L}}{1.835 \, \text{L}} \]⏎⏎\[ P_2 = \frac{14.68 \, \text{kPa} \cdot \text{L}}{1.835 \, \
+      🧪 探针: '7.999999999999999' | 熵: 1.1278
+   🔎 [智能检查点@conclusion] Tokens: 307
+      📄 上下文: ...1.835 \, \text{L}} \]⏎⏎\[ P_2 \approx 7.99 \, \text{kPa} \]⏎⏎So, the new pressure in the 1.835 liter
+      🧪 探针: '7.99' | 熵: 0.3581
+   🔎 [智能检查点@answer_signal] Tokens: 347
+      📄 上下文: ... The new pressure is approximately 7.99 kPa. ⏎⏎Please note that the result is rounded to two decimal
+      🧪 探针: '7.99' | 熵: 0.9500
+   🔎 [智能检查点@answer_signal] Tokens: 387
+      📄 上下文: ...u can keep more decimal places. ⏎⏎Final answer: 7.99 kPa. ⏎⏎If you need the exact value, you can use
+      🧪 探针: '7.99' | 熵: 0.5260
+   🔎 [智能检查点@answer_signal] Tokens: 427
+      📄 上下文: ...calculation: 8.00 kPa. ⏎⏎Final answer: 8.00 kPa. ⏎⏎If you need the exact value, you can use the full
+      🧪 探针: '8.00' | 熵: 0.0430
+   🔎 [智能检查点@answer_signal] Tokens: 467
+      📄 上下文: ...use the full precision of the calculation: 7.992452830188679 kPa. ⏎⏎Final answer: 7.992 kPa (rounded
+      🧪 探针: '7.99' | 熵: 0.5303
+   🔎 [智能检查点@answer_signal] Tokens: 507
+      📄 上下文: .... ⏎⏎If you need the exact value, you can use the full precision of the calculation: 7.99245283018867
+      🧪 探针: '7.992' | 熵: 0.5276
+   🔎 [智能检查点@answer_signal] Tokens: 547
+      📄 上下文: ...ee decimal places). ⏎⏎If you need the exact value, you can use the full precision of the calculation
+      🧪 探针: '7.992' | 熵: 0.3469
+   🔎 [智能检查点@answer_signal] Tokens: 587
+      📄 上下文: ...f the calculation: 7.992452830188679 kPa. ⏎⏎Final answer: 7.992 kPa (rounded to three decimal places
+      🧪 探针: '7.992' | 熵: 0.6772
+   🔎 [智能检查点@answer_signal] Tokens: 627
+      📄 上下文: ... you need the exact value, you can use the full precision of the calculation: 7.992452830188679 kPa.
+      🧪 探针: '7.992' | 熵: 0.6010
+   🔎 [智能检查点@answer_signal] Tokens: 667
+      📄 上下文: ...ecimal places). ⏎⏎If you need the exact value, you can use the full precision of the calculation: 7.
+      🧪 探针: '7.992' | 熵: 0.4358
+   🔎 [智能检查点@answer_signal] Tokens: 707
+      📄 上下文: ...lation: 7.992452830188679 kPa. ⏎⏎Final answer: 7.992 kPa (rounded to three decimal places). ⏎⏎If you
+      🧪 探针: '8.00' | 熵: 0.5675
+   🔎 [智能检查点@answer_signal] Tokens: 747
+      📄 上下文: ...act value, you can use the full precision of the calculation: 7.992452830188679 kPa. ⏎⏎Final answer:
+      🧪 探针: '7.992' | 熵: 0.2942
+   🔎 [智能检查点@answer_signal] Tokens: 787
+      📄 上下文: ...al places). ⏎⏎If you need the exact value, you can use the full precision of the calculation: 7.9924
+      🧪 探针: '7.992' | 熵: 0.6016
+   🔎 [智能检查点@answer_signal] Tokens: 827
+      📄 上下文: ...8679 kPa. ⏎⏎Final answer: 7.992 kPa (rounded to three decimal places). ⏎⏎If you need the exact value
+      🧪 探针: '7.992' | 熵: 0.6851
+   🔎 [智能检查点@answer_signal] Tokens: 867
+      📄 上下文: ...value, you can use the full precision of the calculation: 7.992452830188679 kPa. ⏎⏎Final answer: 7.9
+      🧪 探针: '7.99' | 熵: 0.3934
+   🔎 [智能检查点@answer_signal] Tokens: 907
+      📄 上下文: ...laces). ⏎⏎If you need the exact value, you can use the full precision of the calculation: 7.99245283
+      🧪 探针: '8.00' | 熵: 0.6811
+   🔎 [智能检查点@answer_signal] Tokens: 947
+      📄 上下文: ...inal answer: 7.992 kPa (rounded to three decimal places). ⏎⏎If you need the exact value, you can use
+      🧪 探针: '8.00' | 熵: 0.4247
+   🔎 [智能检查点@answer_signal] Tokens: 987
+      📄 上下文: ... you can use the full precision of the calculation: 7.992452830188679 kPa. ⏎⏎Final answer: 7.992 kPa
+      🧪 探针: '7.992' | 熵: 0.5841
+   ❌ 错误 | 预测: None | 实际: 8 | 用时: 23.1s | Tokens: 1024 
+📊 进度: 5/50, 准确率: 80.00%, 早停率: 40.00%, 平均tokens: 493.8
+
+📝 样本 6: Eight pounds of feathers and two ounces of gold together cost $\$932$. Fourteen ...
+   🔎 [智能检查点@calculation] Tokens: 100
+      📄 上下文: ...\( G \).⏎⏎From the problem, we have the following two equations:⏎⏎1. \( 8F + 2G = 932 \)⏎2. \( 14F +
+      🧪 探针: '5' | 熵: 1.9997
+   🔎 [智能检查点@conclusion] Tokens: 140
+      📄 上下文: ...of equations step by step.⏎⏎### Step 1: Eliminate one variable⏎To eliminate one of the variables, we
+      🧪 探针: '5' | 熵: 2.2017
+   🔎 [智能检查点@calculation] Tokens: 197
+      📄 上下文: ...We can do this by multiplying the first equation by 3 and the second equation by 2:⏎⏎\[ 3(8F + 2G) =
+      🧪 探针: '3' | 熵: 1.5508
+   🔎 [智能检查点@calculation] Tokens: 237
+      📄 上下文: ... second equation by 2:⏎⏎\[ 3(8F + 2G) = 3(932) \]⏎\[ 2(14F + 3G) = 2(1402) \]⏎⏎This gives us:⏎⏎\[ 24
+      🧪 探针: '24' | 熵: 0.7776
+   🔎 [智能检查点@calculation] Tokens: 277
+      📄 上下文: ...⏎This gives us:⏎⏎\[ 24F + 6G = 2796 \]⏎\[ 28F + 6G = 2804 \]⏎⏎### Step 2: Subtract the equations⏎Now
+      🧪 探针: '28' | 熵: 2.1958
+   🔎 [智能检查点@conclusion] Tokens: 344
+      📄 上下文: ...tion to eliminate \( G \):⏎⏎\[ (28F + 6G) - (24F + 6G) = 2804 - 2796 \]⏎\[ 4F = 8 \]⏎\[ F = 2 \]⏎⏎So
+      🧪 探针: '2' | 熵: 1.5358
+   🔎 [智能检查点@conclusion] Tokens: 384
+      📄 上下文: ...\).⏎⏎### Step 3: Substitute \( F \) back into one of the original equations⏎Now that we know \( F = 
+      🧪 探针: '15' | 熵: 2.2029
+   🔎 [智能检查点@conclusion] Tokens: 424
+      📄 上下文: ...to one of the original equations to solve for \( G \). Let's use the first equation:⏎⏎\[ 8F + 2G = 9
+      🧪 探针: '932' | 熵: 2.1889
+   🔎 [智能检查点@conclusion] Tokens: 464
+      📄 上下文: .... Let's use the first equation:⏎⏎\[ 8F + 2G = 932 \]⏎\[ 8(2) + 2G = 932 \]⏎\[ 16 + 2G = 932 \]⏎\[ 2G
+      🧪 探针: '5' | 熵: 2.2306
+   🔎 [智能检查点@conclusion] Tokens: 504
+      📄 上下文: ...= 916 \]⏎\[ G = 458 \]⏎⏎So, the cost of one ounce of gold is \( \$458 \).⏎⏎### Step 4: Calculate the
+      🧪 探针: '5' | 熵: 2.3575
+   🔎 [智能检查点@conclusion] Tokens: 609
+      📄 上下文: ...es of gold:⏎⏎\[ 5F + 5G = 5(2) + 5(458) \]⏎\[ 5F + 5G = 10 + 2290 \]⏎\[ 5F + 5G = 2300 \]⏎⏎Therefore
+      🧪 探针: '2300' | 熵: 0.4952
+   🛑 自然停止: boxed_answer_complete
+   ✅ 正确 | 预测: 2300 | 实际: 2300 | 用时: 11.9s | Tokens: 646 
+
+📝 样本 7: Find the radius of the circle with equation $x^2 + 8x + y^2 - 6y = 0$....
+
+❌ 实验被用户中断
+============================================================
+⏰ 结束时间: 2025-12-04 16:58:25

@@ -1,7 +1,7 @@
 """实验管理器 - 处理单个样本的生成和检测"""
 import torch
 import time
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any, Optional, Tuple, List
 from collections import Counter
 
 from .data_structures import GenerationState
@@ -15,7 +15,7 @@ from .sentence_detector import SentenceBasedCheckpointManager
 class ExperimentManager:
     """
     实验管理器 - 负责单个样本的实验执行
-    从ExperimentRunner中分离出来，专注于生成逻辑 [[0]](#__0)
+    从ExperimentRunner中分离出来，专注于生成逻辑
     """
     
     def __init__(self, config: dict, model, tokenizer):
@@ -40,7 +40,7 @@ class ExperimentManager:
         self.use_smart_stage_detection = stage_config.get('use_smart_detection', True)
         self.fixed_check_stages = stage_config.get('fixed_check_stages', ['reasoning', 'calculation'])
         
-        # 句子边界检测器（用于固定模式）[[3]](#__3)
+        # 句子边界检测器（用于固定模式）
         early_stop_config = config.get('early_stopping', {})
         self.sentence_checkpoint_manager = SentenceBasedCheckpointManager(
             min_tokens=early_stop_config.get('min_tokens_before_check', 100),
@@ -110,7 +110,8 @@ class ExperimentManager:
                 "early_stopped": state.early_stopped,
                 "halt_reason": state.halt_reason,
                 "avg_entropy": result_data['avg_entropy'],
-                "entropy_history": result_data['entropy_values'][:10],
+                "probe_history": result_data['probe_history'],  # 修改：包含熵和答案的完整历史
+                "entropy_history": result_data['entropy_values'][:10],  # 保留向后兼容
                 "stage_distribution": result_data['stage_distribution'],
                 "stage_detection_mode": "smart" if self.use_smart_stage_detection else "sentence_based",
                 "checkpoint_stats": self.sentence_checkpoint_manager.get_statistics()
@@ -152,6 +153,7 @@ class ExperimentManager:
         past_key_values = None
         current_input_ids = input_ids
         entropy_values = []
+        probe_history = []  # 新增：记录完整的探针历史
         stage_history = []
         
         while state.tokens_used < max_new_tokens and not state.early_stopped:
@@ -206,6 +208,15 @@ class ExperimentManager:
                     self._print_checkpoint_info(state, current_stage, probe_result)
                     entropy_values.append(probe_result.entropy)
                     stage_history.append(current_stage)
+                    
+                    # 新增：记录完整的探针信息
+                    probe_history.append({
+                        "token_position": state.tokens_used,
+                        "stage": current_stage,
+                        "entropy": probe_result.entropy,
+                        "probed_answer": probe_result.answer,
+                        "confidence": probe_result.confidence if hasattr(probe_result, 'confidence') else None
+                    })
                 
                 decision = self.halt_decision_maker.make_decision(probe_result, current_stage)
                 
@@ -229,6 +240,7 @@ class ExperimentManager:
             'clean_response': clean_response,
             'avg_entropy': avg_entropy,
             'entropy_values': entropy_values,
+            'probe_history': probe_history,  # 新增：返回完整探针历史
             'stage_distribution': dict(Counter(stage_history))
         }
     
@@ -240,7 +252,7 @@ class ExperimentManager:
             (是否检查, 当前阶段)
         """
         if self.use_smart_stage_detection:
-            # 智能阶段检测模式 [[7]](#__7)
+            # 智能阶段检测模式
             from .probe_system import SmartProbeSystem
             temp_probe = SmartProbeSystem(self.model, self.tokenizer, debug=False)
             current_stage = temp_probe.identify_reasoning_stage(state.full_response)
@@ -258,7 +270,7 @@ class ExperimentManager:
             
             return should_check, current_stage if should_check else None
         else:
-            # 句子边界检测模式 [[6]](#__6)
+            # 句子边界检测模式
             should_check, reason = self.sentence_checkpoint_manager.should_check_now(
                 state.full_response,
                 state.tokens_used
@@ -352,5 +364,6 @@ Answer:"""
             "halt_reason": None,
             "avg_entropy": 0.0,
             "entropy_history": [],
+            "probe_history": [],  # 新增
             "stage_detection_mode": "smart" if self.use_smart_stage_detection else "sentence_based"
         }

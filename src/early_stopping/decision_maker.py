@@ -80,11 +80,11 @@ class SmartHaltDecisionMaker:
             return (tokens_used - self.last_check_token_count) >= cooldown
         
         # 以下是智能检测逻辑
-        # 如果在答案信号阶段,立即检查
-        if stage == 'answer_signal':
-            return True
+        # 如果在答案信号阶段,立即检查(误)
+        if stage == 'answer_signal' :
+            return False
         
-        # 如果在结论阶段,且距离上次检查超过配置的一半时间
+        # 如果在结论阶段,且距离上次检查超过配置的一半时间(误)
         if stage == 'conclusion' and (tokens_used - self.last_check_token_count) >= cooldown:
             return True
         
@@ -97,7 +97,7 @@ class SmartHaltDecisionMaker:
         
         # 中间步骤阶段,更长的冷却时间
         if stage == 'intermediate':
-            return (tokens_used - self.last_check_token_count) >= cooldown * 2
+            return (tokens_used - self.last_check_token_count) >= cooldown * 1.5
         
         return False
     
