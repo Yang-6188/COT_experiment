@@ -20,7 +20,7 @@
   "active_model": "qwen2.5-7b",
   
   "experiment": {
-    "sample_size": 50,
+    "sample_size": 10,
     "verbose": true,
     "save_results": true,
     "max_new_tokens": 1024,
@@ -37,8 +37,8 @@
     "use_answer_consistency": true,
     "use_entropy_halt": true,
     "consistency_k": 3,
-    "entropy_threshold": 1.0,
-    "entropy_consecutive_steps": 2,
+    "entropy_threshold": 0.65,
+    "entropy_consecutive_steps": 1,
     "min_tokens_before_check": 100,
     "cooldown_tokens": 40
   },
@@ -61,7 +61,7 @@
   },
   
   "probe_system": {
-    "max_probe_tokens": 50,
+    "max_probe_tokens": 20,
     "probe_temperature": 0.1,
     "probe_strategies": {
       "calculation": "\n\nThe result of this calculation is: ",

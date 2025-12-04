@@ -19,10 +19,11 @@ class GenerationState:
 class CheckpointResult:
     """检查点结果数据类"""
     should_halt: bool
-    halt_reason: Optional[str]
     answer: Optional[str]
     entropy: float
+    halt_reason: Optional[str] = None
     confidence: Optional[float] = None
+    
     
     def __repr__(self) -> str:
         """返回结果的字符串表示"""

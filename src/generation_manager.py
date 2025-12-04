@@ -108,8 +108,8 @@ class GenerationManager:
             if prev_200 and last_200 == prev_200:
                 return True, "exact_repetition"
 
-        # 7. 检测过长生成
-        if len(text) > 2500:
-            return True, "max_length_safety"
+        # # 7. 检测过长生成
+        # if len(text) > 2500:
+        #     return True, "max_length_safety"
 
         return False, ""

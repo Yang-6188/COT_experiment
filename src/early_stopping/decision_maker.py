@@ -25,6 +25,10 @@ class SmartHaltDecisionMaker:
         self.use_consistency = early_stopping_config.get('use_answer_consistency', True)
         self.use_entropy = early_stopping_config.get('use_entropy_halt', True)
         
+        # 读取阶段控制配置
+        stage_control_config = config.get('stage_control', {})
+        self.use_smart_detection = stage_control_config.get('use_smart_detection', True)
+        
         # 读取检测器参数
         consistency_k = early_stopping_config.get('consistency_k', 3)
         entropy_threshold = early_stopping_config.get('entropy_threshold', 0.6)
@@ -34,6 +38,7 @@ class SmartHaltDecisionMaker:
         self.min_tokens_before_check = early_stopping_config.get('min_tokens_before_check', 100)
         self.cooldown_tokens = early_stopping_config.get('cooldown_tokens', 40)
         
+
         # 初始化检测器
         self.consistency_detector = AnswerConsistencyDetector(k=consistency_k)
         self.entropy_detector = EntropyHaltDetector(
@@ -47,6 +52,7 @@ class SmartHaltDecisionMaker:
         
         # 打印配置信息（用于调试）
         print(f"[SmartHaltDecisionMaker] 初始化配置:")
+        print(f"  - use_smart_detection: {self.use_smart_detection}")
         print(f"  - use_consistency: {self.use_consistency}")
         print(f"  - use_entropy: {self.use_entropy}")
         print(f"  - consistency_k: {consistency_k}")
@@ -86,6 +92,11 @@ class SmartHaltDecisionMaker:
         if tokens_used < self.min_tokens_before_check:
             return False
         
+        # 如果不使用智能检测，使用简单的冷却策略
+        if not self.use_smart_detection:
+            return (tokens_used - self.last_check_token_count) >= cooldown
+        
+        # 以下是智能检测逻辑
         # 如果在答案信号阶段,立即检查
         if stage == 'answer_signal':
             return True
@@ -127,14 +138,7 @@ class SmartHaltDecisionMaker:
         stage: str
     ) -> CheckpointResult:
         """
-        智能决策 - 考虑推理阶段和配置
-        
-        Args:
-            probe_result: 探针结果
-            stage: 当前推理阶段
-            
-        Returns:
-            决策结果
+        智能决策 - 考虑推理阶段和配置（支持单独验证）
         """
         # 如果早停功能完全禁用,直接返回不停止
         if not self.use_consistency and not self.use_entropy:
@@ -149,26 +153,53 @@ class SmartHaltDecisionMaker:
         if not probe_result.answer:
             return probe_result
         
-        # 获取熵阈值
+        # 如果不使用智能检测，使用统一决策方法
+        if not self.use_smart_detection:
+            return self._unified_decision(probe_result)
+        
+        # 以下是智能检测逻辑（基于阶段的决策，支持单独验证）
         entropy_threshold = self.entropy_detector.threshold
         
         # 答案信号阶段的决策更激进
         if stage == 'answer_signal':
+            # 熵值检测（如果启用）
             if self.use_entropy and probe_result.entropy < entropy_threshold * 0.8:
                 return CheckpointResult(
                     should_halt=True,
-                    halt_reason=f"answer_signal_high_confidence",
+                    halt_reason=f"answer_signal_low_entropy",
                     answer=probe_result.answer,
                     entropy=probe_result.entropy,
                     confidence=probe_result.confidence
                 )
+            
+            # 一致性检测（如果启用）
+            if self.use_consistency:
+                is_consistent = self.consistency_detector.add_answer(probe_result.answer)
+                if is_consistent:
+                    return CheckpointResult(
+                        should_halt=True,
+                        halt_reason=f"answer_signal_consistency",
+                        answer=probe_result.answer,
+                        entropy=probe_result.entropy,
+                        confidence=probe_result.confidence
+                    )
         
         # 结论阶段 - 中等激进
         if stage == 'conclusion':
-            # 一致性检测
+            # 极低熵检测（如果启用）
+            if self.use_entropy and probe_result.entropy < entropy_threshold * 0.5:
+                return CheckpointResult(
+                    should_halt=True,
+                    halt_reason=f"conclusion_very_low_entropy",
+                    answer=probe_result.answer,
+                    entropy=probe_result.entropy,
+                    confidence=probe_result.confidence
+                )
+            
+            # 一致性检测（如果启用）
             if self.use_consistency:
                 is_consistent = self.consistency_detector.add_answer(probe_result.answer)
-                if is_consistent and (not self.use_entropy or probe_result.entropy < entropy_threshold * 1.3):
+                if is_consistent:
                     return CheckpointResult(
                         should_halt=True,
                         halt_reason=f"conclusion_consistency",
@@ -177,11 +208,11 @@ class SmartHaltDecisionMaker:
                         confidence=probe_result.confidence
                     )
             
-            # 极低熵也可以在结论阶段停止
-            if self.use_entropy and probe_result.entropy < entropy_threshold * 0.5:
+            # 中等熵值检测（如果启用且一致性未启用或未通过）
+            if self.use_entropy and probe_result.entropy < entropy_threshold * 1.3:
                 return CheckpointResult(
                     should_halt=True,
-                    halt_reason=f"conclusion_high_confidence",
+                    halt_reason=f"conclusion_low_entropy",
                     answer=probe_result.answer,
                     entropy=probe_result.entropy,
                     confidence=probe_result.confidence
@@ -189,31 +220,32 @@ class SmartHaltDecisionMaker:
         
         # 计算阶段 - 保守策略
         if stage == 'calculation':
+            # 极低熵检测（如果启用）
             if self.use_entropy and probe_result.entropy < entropy_threshold * 0.25:
-                if self.use_consistency:
-                    is_consistent = self.consistency_detector.add_answer(probe_result.answer)
-                    if is_consistent:
-                        return CheckpointResult(
-                            should_halt=True,
-                            halt_reason=f"calculation_high_confidence_consistent",
-                            answer=probe_result.answer,
-                            entropy=probe_result.entropy,
-                            confidence=probe_result.confidence
-                        )
-                else:
+                return CheckpointResult(
+                    should_halt=True,
+                    halt_reason=f"calculation_very_low_entropy",
+                    answer=probe_result.answer,
+                    entropy=probe_result.entropy,
+                    confidence=probe_result.confidence
+                )
+            
+            # 一致性检测（如果启用）
+            if self.use_consistency:
+                is_consistent = self.consistency_detector.add_answer(probe_result.answer)
+                if is_consistent:
                     return CheckpointResult(
                         should_halt=True,
-                        halt_reason=f"calculation_high_confidence",
+                        halt_reason=f"calculation_consistency",
                         answer=probe_result.answer,
                         entropy=probe_result.entropy,
                         confidence=probe_result.confidence
                     )
         
-        # 记录答案但不停止
+        # 记录答案和熵值但不停止
         if self.use_consistency:
             self.consistency_detector.add_answer(probe_result.answer)
         
-        # 如果使用熵检测，记录熵值
         if self.use_entropy:
             self.entropy_detector.add_entropy(probe_result.entropy)
         
@@ -224,48 +256,28 @@ class SmartHaltDecisionMaker:
             entropy=probe_result.entropy,
             confidence=probe_result.confidence
         )
+
     
     def _unified_decision(self, probe_result: CheckpointResult) -> CheckpointResult:
         """
-        统一决策方法（如果需要的话）
-        
-        Args:
-            probe_result: 探针结果
-            
-        Returns:
-            决策结果
+        统一决策方法（支持单独验证）
         """
         if not probe_result.answer:
             return probe_result
         
-        # 添加熵值到检测器（如果启用）
-        if self.use_entropy:
-            should_halt_by_entropy = self.entropy_detector.add_entropy(probe_result.entropy)
-            
-            # 如果连续低熵，考虑停止
-            if should_halt_by_entropy:
-                # 如果同时启用一致性检测，需要一致性确认
-                if self.use_consistency:
-                    is_consistent = self.consistency_detector.add_answer(probe_result.answer)
-                    if is_consistent:
-                        return CheckpointResult(
-                            should_halt=True,
-                            halt_reason="low_entropy_consistent",
-                            answer=probe_result.answer,
-                            entropy=probe_result.entropy,
-                            confidence=probe_result.confidence
-                        )
-                else:
-                    # 只使用熵值检测
-                    return CheckpointResult(
-                        should_halt=True,
-                        halt_reason="low_entropy",
-                        answer=probe_result.answer,
-                        entropy=probe_result.entropy,
-                        confidence=probe_result.confidence
-                    )
+        entropy_threshold = self.entropy_detector.threshold
         
-        # 一致性检测
+        # 熵值检测（如果启用）
+        if self.use_entropy and probe_result.entropy < entropy_threshold:
+            return CheckpointResult(
+                should_halt=True,
+                halt_reason="low_entropy",
+                answer=probe_result.answer,
+                entropy=probe_result.entropy,
+                confidence=probe_result.confidence
+            )
+        
+        # 一致性检测（如果启用）
         if self.use_consistency:
             is_consistent = self.consistency_detector.add_answer(probe_result.answer)
             if is_consistent:
@@ -277,6 +289,10 @@ class SmartHaltDecisionMaker:
                     confidence=probe_result.confidence
                 )
         
+        # 记录熵值（如果启用且未在上面检测）
+        if self.use_entropy:
+            self.entropy_detector.add_entropy(probe_result.entropy)
+        
         # 不停止
         return CheckpointResult(
             should_halt=False,
@@ -285,6 +301,7 @@ class SmartHaltDecisionMaker:
             entropy=probe_result.entropy,
             confidence=probe_result.confidence
         )
+
     
     def reset(self):
         """重置决策器状态"""
